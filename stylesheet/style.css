@@ -58,7 +58,7 @@ body {
 }
 
 h1.title-text {
-    font: size 50vw;
+    font-size:50vw;
 }
 
 .body-text {
@@ -89,6 +89,4 @@ h1.title-text {
 .image1 {
     flex:1;
 }
-.image2 {
-    flex:1;
-}
+
