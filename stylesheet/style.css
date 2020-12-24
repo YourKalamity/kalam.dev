@@ -22,15 +22,15 @@ body {
 }
 
 @keyframes blur {
-    0% {filter:blur(0px);-webkit-filter:blur(0px)}
-    100%{filter:blur(10px);-webkit-filter:blur(10px);}
+    0% {filter:blur(0vw);-webkit-filter:blur(0vw)}
+    100%{filter:blur(1vw);-webkit-filter:blur(1vw);}
 }
 
 .bg-image {
     background-image:url("../images/night-city-8-bit-thumb.jpg");
     height: 100%;
-    filter:blur(10px);
-    -webkit-filter: blur(10px);
+    filter:blur(1vw);
+    -webkit-filter: blur(1vw);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -59,7 +59,7 @@ body {
 
 
 
-.body-text {
+.socials {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     border-radius: 1.5vw;
@@ -68,19 +68,21 @@ body {
     border: 3px solid #f1f1f1;
     position: absolute;
     filter:blur(0px);
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 10%;
-    height:10%;
-    padding: 1vw;
+    width: 17.5%;
+    height:12.5%;
+    padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
 }
 
 .row {
     display: flex;
+    top: 50%;
+    margin-top: 1.5vw;
 }
 
 
@@ -90,5 +92,15 @@ body {
 
 img.icon {
     width:2.5vw;
-    height:2.5vw;
 }
+
+.subtext{
+    font-family: Coves-Light;
+    height:1%;
+    font-size:0.7vw;
+    text-align: center;
+    vertical-align: text-top;
+}
+
+#github::hover + #socials-heading span {display:none}
+#github::hover::before + #socials-heading span {content:"G I T H U B"}
