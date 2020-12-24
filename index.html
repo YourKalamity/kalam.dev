@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="stylesheet/style.css">
     </head>
     
     <body>
         <div class="bg-image">
-        </div>
+        </div> 
         <div class="title-text">
-            <h1 id="fitTextthing">yourkalamity's site :)</h1>
+            <h1 id="responsive_headline">yourkalamity's site :)</h1>
         </div>
         <div class="body-text">
             <div class="row">
                 <div class="image1">
                     <a href="https://github.com/YourKalamity">
-                        <img src="images/github-logo.png" height="40">
+                        <img class="icon" src="images/github-logo.png" >
                     </a>
                 </div>
                 <div class="image1">
                     <a href="https://discord.gg/3XBcER9">
-                        <img src="images/discord-logo.png" height = "40">
+                        <img class="icon" src="images/discord-logo.png">
                     </a>
                 </div>
                 </div>
             </div>
         </div>
-
+        <script type="text/javascript" src="js/fittext.js"></script>
+        <script>
+            window.fitText( document.getElementById("responsive_headline") );
+        </script>
     </body>
 </html>

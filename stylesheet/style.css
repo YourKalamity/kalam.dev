@@ -41,7 +41,7 @@ body {
 .title-text {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-    border-radius: 25px;
+    border-radius: 1.5vw;
     color: white;
     font-weight: bold;
     border: 3px solid #f1f1f1;
@@ -52,31 +52,29 @@ body {
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 30%;
-    padding: 20px;
+    padding: 0.1vw;
     text-align: center;
     font-family: Coves-Bold;
 }
 
-h1.title-text {
-    font-size:50vw;
-}
+
 
 .body-text {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-    border-radius: 25px;
+    border-radius: 1.5vw;
     color: white;
     font-weight: bold;
     border: 3px solid #f1f1f1;
     position: absolute;
     filter:blur(0px);
-    top: 47%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 10%;
     height:10%;
-    padding: 20px;
+    padding: 1vw;
     text-align: center;
     font-family: Coves-Bold;
 }
@@ -90,3 +88,7 @@ h1.title-text {
     flex:1;
 }
 
+img.icon {
+    width:2.5vw;
+    height:2.5vw;
+}
