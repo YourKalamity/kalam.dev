@@ -26,6 +26,11 @@ body {
     100%{filter:blur(1vw);-webkit-filter:blur(1vw);}
 }
 
+@keyframes unblur {
+    0%{filter:blur(1vw);-webkit-filter:blur(1vw);}
+    100% {filter:blur(0vw);-webkit-filter:blur(0vw)}
+}
+
 .bg-image {
     background-image:url("../images/night-city-8-bit-thumb.jpg");
     height: 100%;
@@ -35,7 +40,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     animation-name: blur;
-    animation-duration: 5s;
+    animation-delay: 1s;
+    animation-duration: 2s;
 }
 
 .title-text {
@@ -55,6 +61,9 @@ body {
     padding: 0.1vw;
     text-align: center;
     font-family: Coves-Bold;
+    animation-delay: 1s;
+    animation-name: unblur;
+    animation-duration: 2s;
 }
 
 
@@ -77,6 +86,9 @@ body {
     padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
+    animation-delay: 1s;
+    animation-name: unblur;
+    animation-duration: 2s;
 }
 
 .row {
@@ -102,5 +114,5 @@ img.icon {
     vertical-align: text-top;
 }
 
-#github::hover + #socials-heading span {display:none}
-#github::hover::before + #socials-heading span {content:"G I T H U B"}
+.github::hover + .socials-heading span {display:none}
+.github::hover::before + .socials-heading span {content:"G I T H U B"}
