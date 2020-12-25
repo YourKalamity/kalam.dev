@@ -9,48 +9,81 @@
         <div class="bg-image">
         </div> 
         <div class="title-text">
-            <h1 class="responsive_headline" switchOnHover="just kalam's site :p" oldText="yourkalamity's site :)">yourkalamity's site :)</h1>
+            <h1 id="responsive_headline">yourkalamity's site :)</h1>
         </div>
         <div class="socials">
             <div class="subtext">
-                <h2 id="socials-heading" class="responsive_headline">S O C I A L S</h2>
+                <h2 class="socials-heading" id="responsive_headline"><span>S O C I A L S</span></h2>
             </div>
             <div class="row">
                 <div class="image1">
                     <a href="https://github.com/YourKalamity">
-                        <img class="icon github" switchTitleOnHover="G I T H U B" src="images/github-logo.png" >
+                        <img class="icon github" data-heading="G I T H U B" src="images/github-logo.png" >
                     </a>
                 </div>
                 <div class="image1">
                     <a href="https://discord.gg/3XBcER9">
-                        <img class="icon discord" switchTitleOnHover="D I S C O R D" src="images/discord-logo.png">
+                        <img class="icon discord" data-heading="D I S C O R D" src="images/discord-logo.png">
                     </a>
                 </div>
                 <div class="image1">
                     <a href="https://www.instagram.com/your.kalamity/">
-                        <img class="icon instagram" switchTitleOnHover="I N S T A G R A M" src="images/instagram-logo.png">
+                        <img class="icon instagram" data-heading="I N S T A G R A M" src="images/instagram-logo.png">
                     </a>
                 </div>
                 <div class="image1">
                     <a href="https://www.snapchat.com/add/mkxlxm">
-                        <img class="icon snapchat" switchTitleOnHover="S N A P C H A T" src="images/snapchat-logo.png">
+                        <img class="icon snapchat" data-heading="S N A P C H A T" src="images/snapchat-logo.png">
                     </a>
                 </div>
                 </div>
             </div>
         </div>
         <script type="text/javascript" src="js/fittext.js"></script>
+        <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
         <script>
-            document.querySelectorAll("[switchOnHover]").forEach(elem => {
-                elem.addEventListener("onmouseenter", () => elem.innerHTML = elem.getAttribute("switchOnHover"));
-                elem.addEventListener("onmouseleave", () => elem.innerHTML = elem.getAttribute("oldText"));
-            });
-            document.querySelectorAll("[switchTitleOnHover]").forEach(elem => {
-                elem.addEventListener("onmouseenter", () => document.getElementById("socials-heading").innerHTML = elem.getAttribute("switchTitleOnHover"));
-                elem.addEventListener("onmouseleave", () => document.getElementById("socials-heading").innerHTML = "S O C I A L S");
-            })
+            $('.icon')
+                .data('textToggle', "S O C I A L S")
+                .hover(function (e) {
+                    var that = $(".socials-heading");
+                    var thing = $(this);
+                    // get the text from data attribute
+                    var textToSet = thing.data('heading');
 
-            window.fitText( document.getElementsByClassName("responsive_headline") );
+                    // save the current text so it can be reverted
+                    that.data('textToggle', that.text());
+    
+                    // set the new text
+                    that.text(textToSet);
+
+                }, function (e) {
+                    var that = $(".socials-heading");
+                    var thing = $(this);
+                    // get the text from data attribute
+                    var textToSet = that.data('textToggle');
+
+                    // save the current text so it can be reverted
+                    that.data('textToggle', that.text());
+
+                    // set the new text
+                    that.text(textToSet);
+                });
+            
+            $("#responsive_headline")
+                .data('textToggle', "just kalam's site :p")
+                .hover(function(e){
+                    var that = $(this);
+                    var textToSet = that.data("textToggle");
+                    that.data("textToggle", that.text());
+                    that.text(textToSet);
+                }, function(e){
+                    var that = $(this);
+                    var textToSet = that.data("textToggle");
+                    that.data("textToggle", that.text());
+                    that.text(textToSet);
+                });
+
+            window.fitText( document.getElementById("responsive_headline") );
         </script>
     </body>
 </html>
