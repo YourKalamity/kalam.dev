@@ -50,7 +50,7 @@ body {
     border-radius: 1.5vw;
     color: white;
     font-weight: bold;
-    border: 3px solid #f1f1f1;
+    border: 0.25vw solid #f1f1f1;
     position: absolute;
     filter:blur(0px);
     top: 30%;
@@ -74,7 +74,7 @@ body {
     border-radius: 1.5vw;
     color: white;
     font-weight: bold;
-    border: 3px solid #f1f1f1;
+    border: 0.25vw solid #f1f1f1;
     position: absolute;
     filter:blur(0px);
     top: 50%;
@@ -82,7 +82,6 @@ body {
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 17.5%;
-    height:12.5%;
     padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
@@ -114,5 +113,16 @@ img.icon {
     vertical-align: text-top;
 }
 
-.github::hover + .socials-heading span {display:none}
-.github::hover::before + .socials-heading span {content:"G I T H U B"}
+@media only screen and (max-device-width: 480px){
+    .title-text, .socials {
+        width: 80%;
+        border: 0.75vw solid #f1f1f1;
+        border-radius: 2vw;
+    }
+    img.icon {
+        width:15vw;
+    }
+    .subtext{
+        font-size:4vw;
+    }
+}
