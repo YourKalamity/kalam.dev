@@ -8,12 +8,11 @@
     </head>
     
     <body>
-        <div class="bg-image">
-        </div> 
+        <div class="bg-image"></div> 
         <div class="title-text">
             <h1 id="responsive_headline">kalam's kool site :)</h1>
         </div>
-        <div class="socials">
+        <div class="socials" >
             <div class="subtext">
                 <h2 class="socials-heading" id="responsive_headline"><span>S O C I A L S</span></h2>
             </div>
@@ -45,12 +44,32 @@
                 </div>
             </div>
         </div>
-        <div id="projects">
+        <div class="projects" >
             <div class="subtext">
                 <h2 class="projects-heading" id="responsive_headline"><span>P R O J E C T S</span></h2>
             </div>
             <div class="row">
-                
+                <div class="image1">
+                        <img class="icon2 ldfd project" data-heading="L A Z Y  -  D S I  -  F I L E  -  D O W N L O A D E R" src="images/ldfd-icon.png" >
+                </div>
+                <div class="image1">
+                    <img class="icon2 senpai project" data-heading="S E N P A I - D I S C O R D - B O T " src="images/discord-bot-logo.png" >
+                </div>
+                <div class="image1">
+                    <img class="icon2 thissite project" data-heading="T H I S - S I T E" src="images/this-site-logo.png" >
+                </div>
+            </div>
+        </div>
+        <div class="project-details" style="visibility: hidden;"> 
+            <div class="subtext">
+                <h1 class="projects-details-heading" id="responsive_headline"></h2>
+            </div>
+            <img id="pd-image" src="images/ldfd-ss.png">
+            <div class="pd-text-div">
+                <p id="pd-text"></p>
+            </div>
+            <div class="pd-back-div">
+                <span> < B A C K </span>
             </div>
         </div>
         </div>
@@ -60,7 +79,7 @@
 
             window.onload = change_background_image;        
 
-            const background_pictures = ["url(../images/bg1.jpg)", "url(../images/bg2.jfif)", "url(../images/bg3.jpg)", "url(../images/bg4.png)", "url(../images/bg5.jpg)", "url(../images/bg6.png)"]
+            const background_pictures = ["url(../images/bg1.jpg)", "url(../images/bg2.jfif)", "url(../images/bg3.jpg)", "url(../images/bg4.png)", "url(../images/bg5.jpg)", "url(../images/bg6.png)", "url(../images/bg7.png)", "url(../images/bg8.png)", "url(../images/bg9.png)"]
 
             function Arrayrandom(array) {    
                 var item = array[Math.floor(Math.random() * array.length)];
@@ -71,8 +90,31 @@
             function change_background_image() {
                 document.getElementsByClassName("bg-image")[0].style.backgroundImage = Arrayrandom(background_pictures);
             }
+            
+            document.getElementsByClassName("ldfd")[0].onclick = function () {show_project_details("L A Z Y  -  D S I  -  F I L E  -  D O W N L O A D E R", "images/ldfd-ss.png", "Lazy DSi File Downloader is a crossplatform application written in Python3 with the TKinter library used to download files for https://dsi.cfw.guide . Created because it was tedious to setup the SD card for DSi homebrew, it is available for Windows, macOS and Linux + other Python3 runtime environments that supports the Tkinter GUI library.")};
+            document.getElementsByClassName("senpai")[0].onclick = function () {show_project_details("S E N P A I - D I S C O R D - B O T", "images/senpai-ss.png", "Senpai (formerly Slim Daley) used to be a basic bot that only could reply 'nm g wbu?' to 'wagwan g wys'. Created with the discord.py Python library, Senpai can convert images with the power of imagemagick and gifsicle and lookup data on GitHub and DS Homebrew's Nintendo DS index. This project really helped me learn and gave me confidence in the Python programming language.")};
+            document.getElementsByClassName("thissite")[0].onclick = function () {show_project_details("T H I S - S I T E", "images/this-site-ss.png", "This site is the first time since I took the iGCSE in 2018 in working with web development. Furthermore, this was created with raw HTML, CSS and JS, unlike the graphical programs we used in school. In the future I wish to create web based front ends for my projects and this is a step in the right direction.")};
+
 
             
+            function show_project_details(heading, image, details){
+                document.getElementsByClassName("projects-details-heading")[0].innerHTML = heading;
+                document.getElementById("pd-image").src = image;
+                document.getElementById("pd-text").innerHTML = details;
+                document.getElementsByClassName("project-details")[0].style.visibility = "visible";
+                document.getElementsByClassName("title-text")[0].style.visibility = "hidden";
+                document.getElementsByClassName("socials")[0].style.visibility = "hidden";
+                document.getElementsByClassName("projects")[0].style.visibility = "hidden";
+            }
+
+            document.getElementsByClassName("pd-back-div")[0].onclick = function () {back_to_home()}
+
+            function back_to_home(){
+                document.getElementsByClassName("project-details")[0].style.visibility = "hidden";
+                document.getElementsByClassName("title-text")[0].style.visibility = "visible";
+                document.getElementsByClassName("socials")[0].style.visibility = "visible";
+                document.getElementsByClassName("projects")[0].style.visibility = "visible";
+            }
 
             $('.icon')
                 .data('textToggle', "S O C I A L S")
@@ -90,6 +132,33 @@
 
                 }, function (e) {
                     var that = $(".socials-heading");
+                    var thing = $(this);
+                    // get the text from data attribute
+                    var textToSet = that.data('textToggle');
+
+                    // save the current text so it can be reverted
+                    that.data('textToggle', that.text());
+
+                    // set the new text
+                    that.text(textToSet);
+                });
+
+            $('.icon2')
+                .data('textToggle', "P R O J E C T S")
+                .hover(function (e) {
+                    var that = $(".projects-heading");
+                    var thing = $(this);
+                    // get the text from data attribute
+                    var textToSet = thing.data('heading');
+
+                    // save the current text so it can be reverted
+                    that.data('textToggle', that.text());
+    
+                    // set the new text
+                    that.text(textToSet);
+
+                }, function (e) {
+                    var that = $(".projects-heading");
                     var thing = $(this);
                     // get the text from data attribute
                     var textToSet = that.data('textToggle');

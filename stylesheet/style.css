@@ -33,6 +33,7 @@ body {
 
 .bg-image {
     background-image:url("../images/bg1.jpg");
+    background-position: center;
     height: 100%;
     filter:blur(1vw);
     -webkit-filter: blur(1vw);
@@ -53,7 +54,7 @@ body {
     border: 0.25vw solid #f1f1f1;
     position: absolute;
     filter:blur(0px);
-    top: 30%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -90,10 +91,47 @@ body {
     animation-duration: 2s;
 }
 
+.projects {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    border-radius: 1.5vw;
+    color: white;
+    font-weight: bold;
+    border: 0.25vw solid #f1f1f1;
+    position: absolute;
+    filter:blur(0px);
+    top: 67%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 20.0%;
+    padding: 0vw;
+    text-align: center;
+    font-family: Coves-Bold;
+    animation-delay: 1s;
+    animation-name: unblur;
+    animation-duration: 2s;
+}
+.project-details {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    border-radius: 1.5vw;
+    color: white;
+    font-weight: bold;
+    border: 0.25vw solid #f1f1f1;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 50%;
+}
+
 .row {
     display: flex;
     top: 50%;
     margin-top: 1.5vw;
+    margin-bottom: 0.5vw;
 }
 
 
@@ -101,8 +139,12 @@ body {
     flex:1;
 }
 
-img.icon {
+img.icon,img.icon2 {
     width:2.5vw;
+}
+
+img.icon2:hover, .pd-back-div:hover{
+    cursor: pointer;
 }
 
 .subtext{
@@ -112,17 +154,57 @@ img.icon {
     text-align: center;
     vertical-align: text-top;
 }
+#pd-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 0.1%;
+    max-height: 35%;
+}
+
+#pd-text{
+    font-family: Coves-Light;
+    font-size: 1.1vw;
+    text-align: justify;
+    margin-left: 0.1vw;
+    margin-right: 0.1vw;
+    background-position: center;
+}
+
+.pd-back-div {
+    max-height: 1vw;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5vw;
+    font-family: Coves-Light;
+    font-size: 1.1vw;
+}
 
 @media only screen and (max-device-width: 480px){
-    .title-text, .socials {
+    .title-text, .socials, .projects{
         width: 80%;
         border: 0.75vw solid #f1f1f1;
-        border-radius: 2vw;
+        border-radius: 4vw;
     }
-    img.icon {
-        width:15vw;
+    img.icon, img.icon2 {
+        width:13vw;
     }
+
+    .project-details{
+        width:80%;
+        height:65%;
+        border: 0.75vw solid #f1f1f1;
+        border-radius: 4vw;
+    }
+
+    .projects {
+        top:72%;
+    }
+
     .subtext{
-        font-size:4vw;
+        font-size:3.5vw;
+    }
+    #pd-text, .pd-back-div {
+        font-size: 3.5vw;
     }
 }
+
