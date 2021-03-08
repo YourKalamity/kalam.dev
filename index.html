@@ -2,6 +2,7 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0    , user-scalable=no">
     <head>
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
         <link rel="stylesheet" href="stylesheet/style.css">
         <title>kalam.dev :)</title>
     </head>
@@ -37,7 +38,12 @@
                         <img class="icon snapchat" data-heading="S N A P C H A T" src="images/snapchat-logo.png">
                     </a>
                 </div>
+                <div class="image1">
+                    <a href="https://tellonym.me/kalam03">
+                        <img class="icon tellonym" data-heading="T E L L O N Y M" src="images/tellonym-logo.png">
+                    </a>
                 </div>
+            </div>
         </div>
         <div id="projects">
             <div class="subtext">
@@ -55,7 +61,6 @@
             window.onload = change_background_image;        
 
             const background_pictures = ["url(../images/bg1.jpg)", "url(../images/bg2.jfif)", "url(../images/bg3.jpg)", "url(../images/bg4.png)", "url(../images/bg5.jpg)", "url(../images/bg6.png)"]
-
 
             function Arrayrandom(array) {    
                 var item = array[Math.floor(Math.random() * array.length)];
@@ -97,7 +102,7 @@
                 });
             
             $("#responsive_headline")
-                .data('textToggle', "just kalam's site :p")
+                .data('textToggle', "hi there! :p")
                 .hover(function(e){
                     var that = $(this);
                     var textToSet = that.data("textToggle");

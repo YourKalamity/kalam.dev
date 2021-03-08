@@ -81,7 +81,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 17.5%;
+    width: 20.0%;
     padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
@@ -107,7 +107,7 @@ img.icon {
 
 .subtext{
     font-family: Coves-Light;
-    height:1%;
+
     font-size:0.7vw;
     text-align: center;
     vertical-align: text-top;
