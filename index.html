@@ -3,13 +3,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0    , user-scalable=no">
     <head>
         <link rel="stylesheet" href="stylesheet/style.css">
+        <title>kalam.dev :)</title>
     </head>
     
     <body>
         <div class="bg-image">
         </div> 
         <div class="title-text">
-            <h1 id="responsive_headline">yourkalamity's site :)</h1>
+            <h1 id="responsive_headline">kalam's kool site :)</h1>
         </div>
         <div class="socials">
             <div class="subtext">
@@ -37,11 +38,37 @@
                     </a>
                 </div>
                 </div>
+        </div>
+        <div id="projects">
+            <div class="subtext">
+                <h2 class="projects-heading" id="responsive_headline"><span>P R O J E C T S</span></h2>
             </div>
+            <div class="row">
+                
+            </div>
+        </div>
         </div>
         <script type="text/javascript" src="js/fittext.js"></script>
         <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
         <script>
+
+            window.onload = change_background_image;        
+
+            const background_pictures = ["url(../images/bg1.jpg)", "url(../images/bg2.jfif)", "url(../images/bg3.jpg)", "url(../images/bg4.png)", "url(../images/bg5.jpg)", "url(../images/bg6.png)"]
+
+
+            function Arrayrandom(array) {    
+                var item = array[Math.floor(Math.random() * array.length)];
+                console.log(item);
+                return item;
+            };
+
+            function change_background_image() {
+                document.getElementsByClassName("bg-image")[0].style.backgroundImage = Arrayrandom(background_pictures);
+            }
+
+            
+
             $('.icon')
                 .data('textToggle', "S O C I A L S")
                 .hover(function (e) {
