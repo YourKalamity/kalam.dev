@@ -82,13 +82,13 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 20.0%;
+    width: 22.0%;
     padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
     animation-delay: 1s;
     animation-name: unblur;
-    animation-duration: 2s;
+    animation-duration: 2s
 }
 
 .projects {
@@ -104,7 +104,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 20.0%;
+    width: 22.0%;
     padding: 0vw;
     text-align: center;
     font-family: Coves-Bold;
@@ -143,13 +143,14 @@ img.icon,img.icon2 {
     width:2.5vw;
 }
 
-img.icon2:hover, .pd-back-div:hover{
+img.icon2:hover, .pd-back-div:hover, .title-text-box:hover{
     cursor: pointer;
 }
 
 .subtext{
     font-family: Coves-Light;
-
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
     font-size:0.7vw;
     text-align: center;
     vertical-align: text-top;
@@ -164,19 +165,21 @@ img.icon2:hover, .pd-back-div:hover{
 #pd-text{
     font-family: Coves-Light;
     font-size: 1.1vw;
-    text-align: justify;
-    margin-left: 0.1vw;
-    margin-right: 0.1vw;
+    text-align: center;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
     background-position: center;
 }
 
+
+
 .pd-back-div {
     max-height: 1vw;
-    display: flex;
-    align-items: flex-start;
+    text-align: center;
     margin-bottom: 0.5vw;
     font-family: Coves-Light;
     font-size: 1.1vw;
+    align-items: flex-end;
 }
 
 @media only screen and (max-device-width: 480px){
@@ -186,12 +189,12 @@ img.icon2:hover, .pd-back-div:hover{
         border-radius: 4vw;
     }
     img.icon, img.icon2 {
-        width:13vw;
+        width:12vw;
     }
 
     .project-details{
         width:80%;
-        height:65%;
+        height:90%;
         border: 0.75vw solid #f1f1f1;
         border-radius: 4vw;
     }
@@ -203,8 +206,18 @@ img.icon2:hover, .pd-back-div:hover{
     .subtext{
         font-size:3.5vw;
     }
-    #pd-text, .pd-back-div {
-        font-size: 3.5vw;
+    #pd-text {
+        font-size: 5vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        text-align:center;
     }
+    .pd-back-div {
+        font-size: 5vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        text-align: center;
+    }
+
 }
 
