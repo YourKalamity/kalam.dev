@@ -1,2 +1,4 @@
-# yourkalamity.github.io
-A site showcasing all the things I have created!
+# kalam.dev
+My personal site created with HTML, CSS and JS
+
+Credits go to the jQuery developers and fittext.js developers
