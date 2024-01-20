@@ -64,19 +64,19 @@
         <!-- Div used to contain the taskbar -->
         <div class="taskbar">
             <div class="start">
-                <img src="images/start.webp" alt="Start Button">
+                <img src="images/startNormal.webp" alt="Start Button">
             </div>
             <div class="taskbar-applications">
                 
-                <div class="taskbar-application" id="kalamTaskbarIcon">
+                <div class="taskbar-application active" id="kalamTaskbarIcon">
                     <img src="images/kalam.webp" alt="Kalam Icon">
                 </div>
 
-                <div class="taskbar-application" id="explorerTaskbarIcon">
+                <div class="taskbar-application default" id="explorerTaskbarIcon">
                     <img src="images/explorer.webp" alt="Explorer Icon">
                 </div>
 
-                <div class="taskbar-application" id="ieTaskbarIcon">
+                <div class="taskbar-application default" id="ieTaskbarIcon">
                     <img src="images/ie.webp" alt="Internet Explorer Icon">
                 </div>
                 
@@ -89,8 +89,8 @@
                     <img src="images/sound.webp" alt="Speaker Icon">
                 </div>
                 <div class="tray-datetime">
-                    <p id="tray-date">12:14 PM</p>
-                    <p id="tray-time">20/12/2023</p>
+                    <p id="tray-time">12:14 PM</p>
+                    <p id="tray-date">20/12/2023</p>
                 </div>
             </div>
             <div class="show-desktop-button">
@@ -99,6 +99,46 @@
 
         <!-- Div used to contain the desktop -->
         <div class="desktop">
+            <div class="window kalamApp">
+                <div class="titlebar">
+                    <div class="titlebar-icon">
+                        <img src="images/kalam.webp" alt="Kalam Icon">
+                    </div>
+                    <div class="titlebar-title">
+                        <p>kalam.dev app</p>
+                    </div>
+                    <div class="titlebar-buttons">
+                        <div class="titlebar-button" id="kalamMinimize">
+                            <img src="images/minimise.webp" alt="Minimize Button">
+                        </div>
+                        <div class="titlebar-button" id="kalamMaximize">
+                            <img src="images/maximise.webp" alt="Maximize Button">
+                        </div>
+                        <div class="titlebar-button" id="kalamClose">
+                            <img src="images/close.webp" alt="Close Button">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kalamApp-content">
+                    <h1>m kalam</h1>
+                    <h2>2nd Year Computer Science Student @ Aston University | Open Source Software Developer</h2>
+                    <p>Hi I'm Kalam, a computer science student and open source software enthusiast.<br>
+                        I'm currently in my second year of university and I'm looking for a placement year in the software development industry.<br>
+                        In my free time I work on open source projects and contribute to other projects.</p>
+                    <h2>Why this style?</h2>
+                    <p>Windows 7 was the first operating system I used and I've always loved the design of it.<br>
+
+                        It was on this operating system that my passion for computers and software development began.<br>
+                        The frutiger aero design and the emphasis on aero glass and transparency was something I loved.<br>
+                        I wanted to create a website that was a homage to this design and my passion for software development.<br>
+                        The source code for this website is available on my github page.</p>
+                </div>
+                <div class="app-footer">
+                    <button class="app-footer-button">Projects</button>
+                    <button class="app-footer-button">Socials</button>
+                </div>
+            </div>
         </div>
 
     </div>
