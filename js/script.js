@@ -59,7 +59,7 @@ function closeWindow(windowName) {
 }
 
 // function to toggle a window
-function toggleWindow(windowName) {
+function toggleWindow(windowName) { 
     // if the window is open, close it
     if (openWindows.includes(windowName)) {
         closeWindow(windowName);
@@ -127,8 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Get date and time elements and update them every second
-    const dateElement = document.querySelector('#tray-date');
-    const timeElement = document.querySelector('#tray-time');
+    const dateElement   = document.querySelector('#tray-date');
+    const timeElement   = document.querySelector('#tray-time');
+    let   semiColonFlag = true;
 
     setInterval(function () {
         const date = new Date();
@@ -150,8 +151,103 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add leading zeros to the minute if it is less than 10
         const minuteStr = minute < 10 ? `0${minute}` : minute;
 
-        timeElement.textContent = `${hour12}:${minuteStr} ${ampm}`;
+        const colon = semiColonFlag ? ':' : ' ';
+        semiColonFlag = !semiColonFlag;
+
+        timeElement.textContent = `${hour12}${colon}${minuteStr} ${ampm}`;
     }, 1000);
 
-
 });
+
+
+// Kalam App Script
+const kalamAppTextPairs = [
+    { title: "Software Developer", subtitle: "Projects available by clicking below" },
+    { title: "Computer Science Student", subtitle: "Placement Year @ Aston University" },
+    { title: "Open Source Contributor", subtitle: "Active contributor to Open Source Projects"},
+    { title: "Technology Enthusiast", subtitle: "Constantly exploring new technologies and programming languages"},
+    { title: "Community Founder", subtitle: "Leading a vibrant online community of nearly 200 members"},
+    { title: "Retail Professional", subtitle: "Experienced in sales, buying and customer service"},
+    { title: "Linux Server Administrator", subtitle: "Proficient in managing and configuring Linux for projects"},
+    { title: "Electronics Troubleshooter", subtitle: "Skilled at repairing various electronic devices"},
+    { title: "Aspiring Software Engineer", subtitle: "Due to start placement @ Blueberry Consultants"},
+  ];
+  
+  let currentKalamAppIndex = 0;
+  const kalamTitleElement = document.getElementById("kalamTitle");
+  const kalamSubtitleElement = document.getElementById("kalamSubtitle");
+  const typingSpeed = 40; // Adjust the typing speed (in milliseconds)
+  const pauseDuration = 1000; // Pause duration (in milliseconds)
+  
+  function typeText(element, text, callback) {
+    let i = 0;
+    element.innerHTML = "";
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, typingSpeed);
+      } else {
+        callback();
+      }
+    }
+    type();
+  }
+  
+  function deleteText(element, callback) {
+    let text = element.innerText;
+    let i = text.length;
+    function del() {
+      if (i > 0) {
+        element.innerText = text.substring(0, i - 1);
+        i--;
+        setTimeout(del, typingSpeed);
+      } else {
+        callback();
+      }
+    }
+    del();
+  }
+  
+  function cycleText() {
+    const { title, subtitle } = kalamAppTextPairs[currentKalamAppIndex];
+    let titleIndex = 0;
+    let subtitleIndex = 0;
+  
+    function typeTexts() {
+      if (titleIndex < title.length || subtitleIndex < subtitle.length) {
+        if (titleIndex < title.length) {
+          kalamTitleElement.innerHTML += title.charAt(titleIndex);
+          titleIndex++;
+        }
+        if (subtitleIndex < subtitle.length) {
+          kalamSubtitleElement.innerHTML += subtitle.charAt(subtitleIndex);
+          subtitleIndex++;
+        }
+        setTimeout(typeTexts, typingSpeed);
+      } else { 
+        setTimeout(deleteTexts, pauseDuration);
+      }
+    }
+  
+    function deleteTexts() {
+      if (titleIndex > 0 || subtitleIndex > 0) {
+        if (titleIndex > 0) {
+          kalamTitleElement.innerText = title.substring(0, titleIndex - 1);
+          titleIndex--;
+        }
+        if (subtitleIndex > 0) {
+          kalamSubtitleElement.innerText = subtitle.substring(0, subtitleIndex - 1);
+          subtitleIndex--;
+        }
+        setTimeout(deleteTexts, typingSpeed);
+      } else {
+        currentKalamAppIndex = (currentKalamAppIndex + 1) % kalamAppTextPairs.length;
+        setTimeout(cycleText, pauseDuration);
+      }
+    }
+  
+    typeTexts();
+  }
+  
+  cycleText();
