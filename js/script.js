@@ -126,6 +126,12 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleWindow('kalamApp');
     });
 
+    document.querySelector('#explorerTaskbarIcon').addEventListener('click', function () {
+      toggleWindow('projectsApp');
+  });
+
+
+
     // Get date and time elements and update them every second
     const dateElement   = document.querySelector('#tray-date');
     const timeElement   = document.querySelector('#tray-time');
@@ -157,6 +163,34 @@ document.addEventListener('DOMContentLoaded', function () {
         timeElement.textContent = `${hour12}${colon}${minuteStr} ${ampm}`;
     }, 1000);
 
+});
+
+// Window dragger
+document.querySelectorAll('.window').forEach(function(window) {
+    let titlebar = window.querySelector('.titlebar');
+    let isDragging = false;
+    let startX, startY, initialWindowLeft, initialWindowTop;
+
+    titlebar.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        initialWindowLeft = window.offsetLeft;
+        initialWindowTop = window.offsetTop;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            let deltaX = e.clientX - startX;
+            let deltaY = e.clientY - startY;
+            window.style.left = initialWindowLeft + deltaX + 'px';
+            window.style.top = initialWindowTop + deltaY + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
 });
 
 
@@ -251,3 +285,60 @@ const kalamAppTextPairs = [
   }
   
   cycleText();
+
+// Kalam App buttons
+document.getElementById("projectsButton").addEventListener('click', function(){
+  openWindow("projectsApp");
+});
+
+// Project App
+
+const toggleSidebarBtn = document.querySelector('.toggle-sidebar-btn');
+const projectList = document.querySelector('.project-list');
+
+document.querySelectorAll('.project').forEach(function(project) {
+  project.addEventListener('click', function() {
+      document.querySelectorAll('.project').forEach(function(proj) {
+          proj.classList.remove('active');
+      });
+
+      this.classList.add('active');
+
+      const projectId = this.getAttribute('data-project');
+      const projectLink = this.getAttribute('data-link');
+      const projectSource = this.getAttribute('data-source');
+
+
+      document.querySelectorAll('.project-details').forEach(function(details) {
+          details.classList.remove('active');
+      });
+
+      const sourceButton = document.getElementById("sourceButton");
+      const linkButton = document.getElementById("linkButton");
+
+      if (projectSource) {
+          sourceButton.setAttribute("onclick", "window.location.href='" + projectSource + "'");
+          sourceButton.classList.remove("disabled");
+      } else {
+          sourceButton.removeAttribute("onclick");
+          sourceButton.classList.add("disabled");
+      }
+
+      if (projectLink) {
+          linkButton.setAttribute("onclick", "window.location.href='" + projectLink + "'");
+          linkButton.classList.remove("disabled");
+      } else {
+          linkButton.removeAttribute("onclick");
+          linkButton.classList.add("disabled");
+      }
+
+      projectList.classList.remove('active');
+      document.getElementById(projectId).classList.add('active');
+  });
+});
+
+
+toggleSidebarBtn.addEventListener('click', function() {
+    projectList.classList.toggle('active');
+    toggleSidebarBtn.classList.toggle('active');
+});

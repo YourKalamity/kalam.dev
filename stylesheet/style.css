@@ -116,7 +116,6 @@ body {
 .start-menu-profile-icon img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
     max-width: 75px; 
     max-height: 75px; 
 }
@@ -339,6 +338,7 @@ body {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     height: 30px;
+    user-select: none;
 }
 
 .titlebar-icon img {
@@ -481,4 +481,217 @@ body {
         font-size: 1.125rem;
     }  
     
+}
+
+
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #919191 #ffffff;
+  }
+  
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #919191;
+    border-radius: 0px;
+    border: 3px solid #ffffff;
+    cursor: grab;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+    cursor: grab;
+  }
+
+.projectsApp {
+    min-width: 500px;
+    max-width: 100%;
+    min-height: 500px;
+    width: 800px; /* Add a fixed width */
+    left: 50%; /* Center the window horizontally */
+    transform: translateY(-80%); /* Center the window horizontally */
+}
+
+.file-explorer {
+    display: flex;
+    padding: 10px 10px 0px 10px;
+    min-height: 500px;
+}
+
+.projectImage {
+    max-width:100%;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.project-list {
+    width: 200px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    overflow-y: auto;
+}
+
+.project-list-container {
+    background-color: #f1f1f1;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.project.active {
+    background-color: #c4d8f3;
+}
+
+.project img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.preview-pane {
+    flex: 1;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.project-details {
+    display: none;
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.project-details.active {
+    display: block;
+}
+
+.project-list-container {
+    position: relative;
+    display: flex;
+}
+
+.toggle-sidebar-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.toggle-sidebar-btn.active{
+    transform: translateX(0%);
+}
+
+.button-spacer {
+    display: none;
+    height: 40px;
+}
+
+.app-footer-button.disabled {
+    background: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    border-color: #a0a0a0;
+}
+
+.app-footer-button.disabled:hover {
+    background: #e0e0e0;
+    border-color: #a0a0a0;
+}
+
+@media screen and (max-width: 800px) {
+    .project-list {
+        position: absolute;
+        top: 0;
+        left: -200px;
+        width: 200px;
+        height: 100%;
+        transition: left 0.3s ease;
+    }
+
+    .button-spacer {
+        display: block;
+    }
+    
+
+    .project-list.active {
+        left: 0;
+    }
+
+    .toggle-sidebar-btn {
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .window {
+        width: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .window.kalamApp,
+    .window.projectsApp {
+        min-width: 300px;
+        max-width: 100%;
+        min-height: 500px;
+    }
+
+    .kalamApp-content,
+    .file-explorer {
+        height: 75%;
+    }
+
+
+    .project-list {
+        position: absolute;
+        top: 0;
+        display: none;
+        width: 200px;
+        height: 97%;
+        transition: left 0.3s ease;
+    }
+
+    .project-list.active {
+        left: 0;
+        display: block;
+    }
+
+    .toggle-sidebar-btn {
+        display: block;
+    }
+
+    .preview-pane {
+        height : 60vh;
+    }
+
+
+    /* Reduce font sizes for headings */
+    .kalamApp-content h1,
+    .preview-pane h1 {
+        font-size: 1.5rem;
+    }
+    .kalamApp-content h2,
+    .preview-pane h2 {
+        font-size: 1.25rem;
+    }
+    .kalamApp-content h3,
+    .preview-pane h3 {
+        font-size: 1.125rem;
+    }
 }
