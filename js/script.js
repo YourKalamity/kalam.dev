@@ -65,6 +65,8 @@ function toggleWindow(windowName) {
         closeWindow(windowName);
     } else {
         // otherwise, open it
+        console.log(windowName);
+        bringWindowToTop(document.getElementById(windowName));
         openWindow(windowName);
     }
 }
@@ -193,6 +195,33 @@ document.querySelectorAll('.window').forEach(function(window) {
     });
 });
 
+// Bring Window to Top
+function bringWindowToTop(windowElement) {
+  const windows = document.querySelectorAll('.window');
+  windows.forEach(window => window.style.zIndex = '0');
+  windowElement.style.zIndex = '1';
+}
+
+document.querySelectorAll('.window').forEach(window => {
+  window.addEventListener('mousedown', function() {
+      bringWindowToTop(this);
+  });
+});
+
+// Titlebar buttons
+document.querySelectorAll('.window').forEach(window => {
+  const minimizeButton = window.querySelector('.titlebar-button[id$="Minimize"]');
+  const closeButton = window.querySelector('.titlebar-button[id$="Close"]');
+
+  minimizeButton.addEventListener('click', function() {
+      closeWindow(window.classList[1]);
+  });
+
+  closeButton.addEventListener('click', function() {
+      closeWindow(window.classList[1]);
+  });
+});
+
 
 // Kalam App Script
 const kalamAppTextPairs = [
@@ -289,6 +318,7 @@ const kalamAppTextPairs = [
 // Kalam App buttons
 document.getElementById("projectsButton").addEventListener('click', function(){
   openWindow("projectsApp");
+  bringWindowToTop(document.getElementById("projectsApp"));
 });
 
 // Project App
