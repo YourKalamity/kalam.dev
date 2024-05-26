@@ -517,7 +517,7 @@ body {
     min-height: 500px;
     width: 800px; /* Add a fixed width */
     left: 50%; /* Center the window horizontally */
-    transform: translateY(-80%); /* Center the window horizontally */
+    transform: translateY(-70%); /* Center the window horizontally */
 }
 
 .file-explorer {

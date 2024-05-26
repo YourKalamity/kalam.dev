@@ -182,6 +182,10 @@
                                 <img src="images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp" alt="Project Lazy DSi File Downloader">
                                 <p>Lazy DSi File Downloader</p>
                             </div>
+                            <div class="project" data-project="projectSenpai" data-source="https://github.com/YourKalamity/senpai">
+                                <img src="images/projects/senpai/senpai.webp" alt="Senpai">
+                                <p>Senpai</p>
+                            </div>
                         </div>
                     </div>
 
@@ -290,14 +294,60 @@
                                 <img alt="Static Badge" src="https://img.shields.io/badge/TKinter-726DA8">
                             </div>
                             <img class="projectImage" src="images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp" alt="Screen capture of Tokumei">
-                            
+                            <p>Lazy DSi File Downloader was created in order to simplify the homebrew process outlined in <a href="https://dsi.cfw.guide/">dsi.cfw.guide</a></p>
+                            <p>The naming was due to the fact that I felt too <i>lazy</i> to manually copy each of the files for each of my DSi systems I modded</p>
+                            <p>Instead I spent even longer developing this app to automatically do all of this.</p>
+                            <p><b>Features</b></p>
+                            <ul>
+                                <li>Download and install the appropriate <a href="https://gbatemp.net/threads/memory-pit-a-new-dsi-exploit-for-dsi-camera.539432/">memory pit</a> exploit corresponding to the DSi firmware version</li>
+                                <li>Download and install / update TWiLight Menu++</li>
+                                <li>Download and install the latest version of dumpTool</li>
+                                <li>Download and install the latest version of Unlaunch</li>
+                                <li>Detect and update an existing hiyaCFW installation</li>
+                                <li>And install a larger list of homebrew</li>
+                            </ul>
+                            <p>To handle the larger list of homebrew, I created a separate repository with a list of homebrew, download links, and instructions for my software to follow</p>
+                            <p>This extensibility meant that more homebrew could be added to the download list whilst keeping the size of Lazy DSi File Downloader</p>
+                            <p>Additionally, I created and maintained versions for Windows, macOS and supported Linux as well</p>
+                            <p>This was achieved by using GitHub Actions to automatically produce binaries for the operating systems for each release</p>
+                            <p>However, due to the security measures put in place on Windows, it became *more* difficult to use the app for new users, since they had to jump through hoops to allow unsigned code / create exceptions in their antivirus (as PyInstaller projects were automatically flagged as malware)</p>
+                            <p>This ultimately led to the archival of the project, and the official homebrew guide dropping support for Lazy DSi File Downloader</p>
                         </div>
+
+                        <div id="projectSenpai" class="project-details">
+                            <h1>Senpai</h1>
+                            <h2><i>A Discord chat bot with versatile features</i></h2>
+                            <div class="projectShields">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/Python 3-28567C">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/sqlite3-758ECD">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/discord.py-726DA8">
+                            </div>
+                            <img class="projectImage" src="images/projects/senpai/senpaiRecording.gif">
+                            <p><i>Senpai in action, searching for a supplied image via it's Anime lookup function</i></p>
+                            <p>Senpai is a Discord bot that I wrote initially as a form of experimentation and to better understand Discord bots in general</p>
+                            <p>Initially it was just a very basic bot that listened for "wys" to reply with "nm g wbu" (a common exchange of greetings here in the UK).</p>
+                            <p>It then evolved into a bot capable of performing maths and more complex things.</p>
+                            <p>Unlaunch, a bootcode exploit for the Nintendo DSi, came stock with a pirate ship wallpaper that wasn't like by many people. One of the members in the community had discovered a way to patch the application to use a specially formatted GIF file instead of the default background. This is a tedious method and requires image editing software to properly set the colour palette.</p>
+                            <p>I created a Senpai command to automatically take any image and convert it to the proper format, whilst also taking a parameter to select whether or not dithering should be used</p>
+                            <p>This functionality extended to being able to convert any image type to any image</p>
+                            <p>As well as convert between video types</p>
+                            <p>At the time, Senpai was being run on a fairly weak Raspberry Pi 2B+ on my home network, and so the conversion process was quite long</p>
+                            <p>Instead, for use in the DSi Mode Hacking Discord Server, the code for conversion was added to <a href="https://github.com/DS-Homebrew/TWLHelper">TWLHelper</a></p>
+                            <p>Senpai then went through a major redesign and rewrite from the ground up, she now lives on a much more powerful Ubuntu VPS</p>
+                            <p>The current set of features include :</p>
+                            <ul>
+                                <li>Stars - A system that uses senpais database to track how many stars a user has collected in a server (based on how many "star" reactions on their message)</li>
+                                <li>Conversion - A system that converts between file types</li>
+                                <li>Anime - A system that allows users to use any screencap of an anime and find out the exact show, episode, season and a small clip of the specified image</li>
+                            </ul>
+                        </div>
+
 
                     </div>
                 </div>
                 <div class="app-footer">
                     <button id="sourceButton" class="app-footer-button" onclick="window.location.href='https://github.com/aston-cs2tp-evotech/evotech'">View Source</button>
-                    <button id="linkButton" class="app-footer-button" onclick="window.location.href='https:/evotech.kalam.dev'">Open Project</button>
+                    <button id="linkButton" class="app-footer-button" onclick="window.location.href='https:/evotech.kalam.dev'">Open</button>
                 </div>
             </div>
         </div>
