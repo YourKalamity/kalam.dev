@@ -626,7 +626,6 @@ body {
         display: block;
     }
     
-
     .project-list.active {
         left: 0;
     }
@@ -645,16 +644,20 @@ body {
         transform: translate(-50%, -50%);
     }
 
-    .window.kalamApp,
-    .window.projectsApp {
-        min-width: 300px;
-        max-width: 100%;
-        min-height: 500px;
+    .projectsApp {
+        min-width: 90vw;
+        width : 90vw;
+        min-height : 60vh;
+        height : 80vh;
     }
 
-    .kalamApp-content,
     .file-explorer {
-        height: 75%;
+        min-height: 50vh;
+        height : 60vh;
+    }
+
+    .project-details {
+        height: 95%;
     }
 
 
@@ -664,7 +667,6 @@ body {
         display: none;
         width: 200px;
         height: 97%;
-        transition: left 0.3s ease;
     }
 
     .project-list.active {
@@ -674,10 +676,6 @@ body {
 
     .toggle-sidebar-btn {
         display: block;
-    }
-
-    .preview-pane {
-        height : 60vh;
     }
 
 
