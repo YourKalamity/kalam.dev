@@ -71,6 +71,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 .start-menu-app-search input {
@@ -108,10 +109,11 @@ body {
 }
 
 .start-menu-user {
-    position: relative;
     width: 40px;
     height: 40px;
     overflow: hidden;
+    left: auto;
+    right:auto;
 }
 
 .start-menu-profile-icon img{
@@ -346,6 +348,10 @@ body {
 
     .show-desktop-button {
         width: 25px;
+    }
+
+    .start-menu {
+        font-size: 0.7rem;
     }
 }
 
