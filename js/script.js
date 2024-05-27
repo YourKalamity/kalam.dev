@@ -16,46 +16,46 @@ const taskbarButtons = {
 
 // function to open a window
 function openWindow(windowName) {
-    // if the window is already open, return
-    if (openWindows.includes(windowName)) return;
+  // if the window is already open, return
+  if (openWindows.includes(windowName)) return;
 
-    // get the window element
-    const window = document.querySelector(`.${windowName}`);
+  // get the window element
+  const window = document.querySelector(`.${windowName}`);
 
-    // remove the hidden attribute
-    window.removeAttribute('hidden');
+  // remove the hidden class
+  window.classList.remove('hidden');
 
-    // add the window to the openWindows array
-    openWindows.push(windowName);
+  // add the window to the openWindows array
+  openWindows.push(windowName);
 
-    // set the window to the focused window
-    focusedWindow = windowName;
+  // set the window to the focused window
+  focusedWindow = windowName;
 
-    // change the taskbar button state to active
-    changeTaskbarButtonState(taskbarButtons[windowName], 'active');
+  // change the taskbar button state to active
+  changeTaskbarButtonState(taskbarButtons[windowName], 'active');
 }
 
 // function to close a window
 function closeWindow(windowName) {
-    // if the window is not open, return
-    if (!openWindows.includes(windowName)) return;
+  // if the window is not open, return
+  if (!openWindows.includes(windowName)) return;
 
-    // get the window element
-    const window = document.querySelector(`.${windowName}`);
+  // get the window element
+  const window = document.querySelector(`.${windowName}`);
 
-    // add the hidden attribute
-    window.setAttribute('hidden', '');
+  // add the hidden class
+  window.classList.add('hidden');
 
-    // remove the window from the openWindows array
-    openWindows.splice(openWindows.indexOf(windowName), 1);
+  // remove the window from the openWindows array
+  openWindows.splice(openWindows.indexOf(windowName), 1);
 
-    // if the window is the focused window, set the last window in the openWindows array to the focused window
-    if (focusedWindow === windowName) {
-        focusedWindow = openWindows[openWindows.length - 1];
-    }
+  // if the window is the focused window, set the last window in the openWindows array to the focused window
+  if (focusedWindow === windowName) {
+      focusedWindow = openWindows[openWindows.length - 1];
+  }
 
-    // change the taskbar button state to inactive
-    changeTaskbarButtonState(taskbarButtons[windowName], 'inactive');
+  // change the taskbar button state to inactive
+  changeTaskbarButtonState(taskbarButtons[windowName], 'inactive');
 }
 
 // function to toggle a window
@@ -130,7 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector('#explorerTaskbarIcon').addEventListener('click', function () {
       toggleWindow('projectsApp');
-  });
+    });
+
+    document.querySelector('#ieTaskbarIcon').addEventListener('click', function () {
+      toggleWindow('socialsApp');
+    });
 
 
 
@@ -169,32 +173,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Window dragger
 document.querySelectorAll('.window').forEach(function(window) {
-    let titlebar = window.querySelector('.titlebar');
-    let isDragging = false;
-    let startX, startY, initialWindowLeft, initialWindowTop;
+  let titlebar = window.querySelector('.titlebar');
+  let isDragging = false;
+  let startX, startY, initialWindowLeft, initialWindowTop;
 
-    titlebar.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        initialWindowLeft = window.offsetLeft;
-        initialWindowTop = window.offsetTop;
-    });
+  function startDragging(clientX, clientY) {
+      isDragging = true;
+      startX = clientX;
+      startY = clientY;
+      initialWindowLeft = window.offsetLeft;
+      initialWindowTop = window.offsetTop;
+  }
 
-    document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            let deltaX = e.clientX - startX;
-            let deltaY = e.clientY - startY;
-            window.style.left = initialWindowLeft + deltaX + 'px';
-            window.style.top = initialWindowTop + deltaY + 'px';
-        }
-    });
+  function stopDragging() {
+      isDragging = false;
+  }
 
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
+  function dragWindow(clientX, clientY) {
+      if (isDragging) {
+          let deltaX = clientX - startX;
+          let deltaY = clientY - startY;
+          window.style.left = initialWindowLeft + deltaX + 'px';
+          window.style.top = initialWindowTop + deltaY + 'px';
+      }
+  }
+
+  titlebar.addEventListener('mousedown', function(e) {
+      startDragging(e.clientX, e.clientY);
+  });
+
+  titlebar.addEventListener('touchstart', function(e) {
+      startDragging(e.touches[0].clientX, e.touches[0].clientY);
+  });
+
+  document.addEventListener('mousemove', function(e) {
+      dragWindow(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('touchmove', function(e) {
+      dragWindow(e.touches[0].clientX, e.touches[0].clientY);
+  });
+
+  document.addEventListener('mouseup', stopDragging);
+  document.addEventListener('touchend', stopDragging);
 });
-
 // Bring Window to Top
 function bringWindowToTop(windowElement) {
   const windows = document.querySelectorAll('.window');
@@ -219,6 +241,7 @@ document.querySelectorAll('.window').forEach(window => {
 
   closeButton.addEventListener('click', function() {
       closeWindow(window.classList[1]);
+      changeTaskbarButtonState(taskbarButtons[window.classList[1]], 'default');
   });
 });
 

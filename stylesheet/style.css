@@ -8,6 +8,7 @@
 }
 
 body {
+    overflow:hidden;
     margin: 0;
     font-family: "Segoe UI", 'Segoe UI Import', "M PLUS 2", Arial, sans-serif;
     background: url('/images/wal.jpg') no-repeat center center fixed;
@@ -692,4 +693,216 @@ body {
     .preview-pane h3 {
         font-size: 1.125rem;
     }
+}
+
+.socialsApp {
+    min-width: 500px;
+    max-width: 100%;
+    min-height: 500px;
+    width: 800px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.socialsApp-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+.socialsApp-navigation {
+    display: flex;
+    margin-right: 10px;
+}
+
+.socialsApp-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.socialsApp-url {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.socialsApp-url input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.socialsApp-search {
+    display: flex;
+}
+
+.socialsApp-search input {
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.socialsApp-content {
+    background-color: #fff;
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.socials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+@media screen and (max-width: 800px) {
+    .socials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+}
+
+@media screen and (max-width: 600px) {
+    .socials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.socials-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.socials-icon img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+}
+
+.socials-icon:hover {
+    background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 800px) {
+    .window {
+        width: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .socialsApp {
+        min-width: 90vw;
+        width: 90vw;
+        min-height: 60vh;
+        height: 80vh;
+        padding: 5px;
+    }
+
+    .socialsApp-content {
+        height: calc(100% - 120px);
+    }
+
+    .socials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .socials-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .socials-icon {
+        font-size: 12px;
+    }
+
+    .socialsApp-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .socialsApp-navigation {
+        margin-right: 5px;
+    }
+
+    .socialsApp-button {
+        padding: 5px;
+        margin-right: 3px;
+    }
+
+    .socialsApp-url {
+        margin-right: 5px;
+    }
+
+    .socialsApp-url input {
+        width: 95%;
+    }
+
+    .socialsApp-search input {
+        width: 100px;
+    }
+
+    .socials-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .socials-subtitle {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .socials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .socialsApp-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .socialsApp-navigation {
+        margin-bottom: 5px;
+    }
+
+    .socialsApp-url {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .socialsApp-search {
+        width: 100%;
+    }
+
+    .socialsApp-search input {
+        flex: 1;
+    }
+}
+
+.socialsApp-content h1, .socialsApp-content h2, .socialsApp-content h3, .socialsApp-content p {
+    text-align: center;
+}
+
+.window.hidden {
+    display: none;
 }
