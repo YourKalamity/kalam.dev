@@ -1,192 +1,442 @@
 <!DOCTYPE html>
-<html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0    , user-scalable=no">
-    <head>
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-        <link rel="stylesheet" href="stylesheet/style.css">
-        <title>kalam.dev :)</title>
-    </head>
-    
-    <body>
-        <div class="bg-image"></div> 
-        <div class="title-text">
-            <h1 class="title-text-box" id="responsive_headline">kalam's kool site :)</h1>
-        </div>
-        <div class="socials" >
-            <div class="subtext">
-                <h2 class="socials-heading" id="responsive_headline"><span>S O C I A L S</span></h2>
-            </div>
-            <div class="row">
-                <div class="image1">
-                    <a href="https://github.com/YourKalamity">
-                        <img class="icon github" data-heading="G I T H U B" src="images/github-logo.png" >
-                    </a>
-                </div>
-                <div class="image1">
-                    <a href="https://discord.kalam.dev/">
-                        <img class="icon discord" data-heading="D I S C O R D" src="images/discord-logo.png">
-                    </a>
-                </div>
-                <div class="image1">
-                    <a href="https://www.instagram.com/your.kalamity/">
-                        <img class="icon instagram" data-heading="I N S T A G R A M" src="images/instagram-logo.png">
-                    </a>
-                </div>
-                <div class="image1">
-                    <a href="https://www.snapchat.com/add/mkxlxm">
-                        <img class="icon snapchat" data-heading="S N A P C H A T" src="images/snapchat-logo.png">
-                    </a>
-                </div>
-                <div class="image1">
-                    <a href="https://tellonym.me/kalam03">
-                        <img class="icon tellonym" data-heading="T E L L O N Y M" src="images/tellonym-logo.png">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="projects" >
-            <div class="subtext">
-                <h2 class="projects-heading" id="responsive_headline"><span>P R O J E C T S</span></h2>
-            </div>
-            <div class="row">
-                <div class="image1">
-                        <img class="icon2 ldfd project" data-heading="L A Z Y  -  D S I  -  F I L E  -  D O W N L O A D E R" src="images/ldfd-icon.png" >
-                </div>
-                <div class="image1">
-                    <img class="icon2 senpai project" data-heading="S E N P A I - D I S C O R D - B O T " src="images/discord-bot-logo.png" >
-                </div>
-                <div class="image1">
-                    <img class="icon2 thissite project" data-heading="T H I S - S I T E" src="images/this-site-logo.png" >
-                </div>
-            </div>
-        </div>
-        <div class="project-details" style="visibility: hidden;"> 
-            <div class="subtext">
-                <h1 class="projects-details-heading" id="responsive_headline"></h2>
-            </div>
-            <img id="pd-image" src="images/ldfd-ss.png">
-            <div class="pd-text-div">
-                <p id="pd-text"></p>
-            </div>
-            <div class="pd-back-div">
-                <span id="backtext"> < B A C K </span>
-            </div>
-        </div>
-        </div>
-        <script type="text/javascript" src="js/fittext.js"></script>
-        <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-        <script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet/style.css">
+    <title>kalam.dev :></title>
+    <!--   rara as well-->
+</head>
+<body>
 
-            window.onload = change_background_image;        
+   <!--Display-->
+    <div class="display">
 
-            const background_pictures = ["url(../images/bg1.jpg)", "url(../images/bg2.jfif)", "url(../images/bg3.jpg)", "url(../images/bg4.png)", "url(../images/bg5.jpg)", "url(../images/bg6.png)", "url(../images/bg7.png)", "url(../images/bg8.png)", "url(../images/bg9.png)"]
+        <!--Start Menu-->
+        <div class="start-menu">
+            <div class="start-menu-apps">
+                <div class="start-menu-app-list">
+                    <div class="start-menu-app-option">
+                        <img class="start-menu-app-icon" src="images/kalam.webp" alt="Kalam Icon">
+                        <p class="start-menu-app-name">kalam.dev app</p>
+                    </div>
+                    <div class="start-menu-app-option">
+                        <img class="start-menu-app-icon" src="images/explorer.webp" alt="Projects Icon">
+                        <p class="start-menu-app-name">Projects</p>
+                    </div>
+                    <div class="start-menu-app-option">
+                        <img class="start-menu-app-icon" src="images/ie.webp" alt="Projects Icon">
+                        <p class="start-menu-app-name">Socials</p>
+                    </div>
+                </div>
+                <div class="start-menu-app-search">
+                    <input class="start-menu-app-search-box" type="text" placeholder="Search for apps">
+                </div>
+            </div>
+            <div class="start-menu-right-side">
+                <div class="start-menu-profile-icon">
+                    <img src="images/user.webp" alt="Profile Icon">
+                </div>
+                <div class="start-menu-right-buttons">
+                    <p>friend of kalam :></p>
+                    <p>Documents</p>
+                    <p>Pictures</p>
+                    <p>Music</p>
+                    <p>Games</p>
+                    <p>Computer</p>
+                    <p>Control Panel</p>
+                    <p>Devices and Printers</p>
+                    <p>Default Programs</p>
+                    <p>Help and Support</p>
+                </div>
+                <div class="start-menu-right-buttons">
+                    <div class="start-menu-shutdown-button">
+                        <p>Shut Down</p>
+                    </div>
+                    <div class="start-menu-power-buttons" hidden>
+                        <p>Log Off</p>
+                        <p>Lock</p>
+                        <p>Restart</p>
+                        <p>Shut Down</p>
+                    </div>
+                </div>
 
-            function Arrayrandom(array) {    
-                var item = array[Math.floor(Math.random() * array.length)];
-                console.log(item);
-                return item;
-            };
+            </div>
+        </div>
 
-            function change_background_image() {
-                document.getElementsByClassName("bg-image")[0].style.backgroundImage = Arrayrandom(background_pictures);
-            }
+        <!--Taskbar-->
+        <div class="taskbar">
+            <div class="start">
+                <img src="images/startNormal.webp" alt="Start Button">
+            </div>
+            <div class="taskbar-applications">
+                
+                <div class="taskbar-application active" id="kalamTaskbarIcon">
+                    <img src="images/kalam.webp" alt="Kalam Icon">
+                </div>
+
+                <div class="taskbar-application default" id="explorerTaskbarIcon">
+                    <img src="images/explorer.webp" alt="Explorer Icon">
+                </div>
+
+                <div class="taskbar-application default" id="ieTaskbarIcon">
+                    <img src="images/ie.webp" alt="Internet Explorer Icon">
+                </div>
+                
+            </div>
+            <div class="tray">
+                <div class="tray-network">
+                    <img src="images/network.webp" alt="Network Icon">
+                </div>
+                <div class="tray-audio">
+                    <img src="images/sound.webp" alt="Speaker Icon">
+                </div>
+                <div class="tray-datetime">
+                    <p id="tray-time">12:14 PM</p>
+                    <p id="tray-date">20/12/2023</p>
+                </div>
+            </div>
+            <div class="show-desktop-button">
+            </div>
+        </div>
+
+        <!--Desktop-->
+        <div class="desktop">
+
+            <!--Kalam App-->
+            <div id="kalamApp" class="window kalamApp">
+                <div class="titlebar">
+                    <div class="titlebar-icon">
+                        <img src="images/kalam.webp" alt="Kalam Icon">
+                    </div>
+                    <div class="titlebar-title">
+                        <p>kalam.dev app</p>
+                    </div>
+                    <div class="titlebar-buttons">
+                        <div class="titlebar-button" id="kalamMinimize">
+                            <img src="images/minimise.webp" alt="Minimize Button">
+                        </div>
+                         <div class="titlebar-button" id="kalamMaximize">
+                            <img src="images/maximise.webp" alt="Maximize Button">
+                        </div>
+                        <div class="titlebar-button" id="kalamClose">
+                            <img src="images/close.webp" alt="Close Button">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kalamApp-content">
+                    <h1>m kalam</h1>
+                    <div class="kalamTitleContainer">
+                        <h2 id="kalamTitle"></h2>
+                    </div>
+                    
+                    <img id="kalamIMG" src="images/kalamIMG.webp">
+                    <div class="kalamSubtitleContainer">
+                        <p id="kalamSubtitle"></p>
+                    </div>
+                    
+                </div>
+                <div class="app-footer">
+                    <button id="projectsButton" class="app-footer-button">Projects</button>
+                    <button id="socialsButton" class="app-footer-button">Socials</button>
+                </div>
+            </div>
+
+            <!--Projects App-->
+            <div id="projectsApp" class="window projectsApp hidden">
+                <div class="titlebar">
+                    <div class="titlebar-icon">
+                        <img src="images/explorer.webp" alt="Explorer Icon">
+                    </div>
+                    <div class="titlebar-title">
+                        <p>Projects - File Explorer</p>
+                    </div>
+                    <div class="titlebar-buttons">
+                        <div class="titlebar-button" id="projectsMinimize">
+                            <img src="images/minimise.webp" alt="Minimize Button">
+                        </div>
+                        <div class="titlebar-button" id="projectsMaximize">
+                            <img src="images/maximise.webp" alt="Maximize Button">
+                        </div>
+                        <div class="titlebar-button" id="projectsClose">
+                            <img src="images/close.webp" alt="Close Button">
+                        </div>
+                    </div>
+                </div>
             
-            document.getElementsByClassName("ldfd")[0].onclick = function () {show_project_details("L A Z Y  -  D S I  -  F I L E  -  D O W N L O A D E R", "images/ldfd-ss.png", "Lazy DSi File Downloader is a crossplatform application written in Python3 with the TKinter library used to download files for https://dsi.cfw.guide . Created because it was tedious to setup the SD card for DSi homebrew, it is available for Windows, macOS and Linux + other Python3 runtime environments that supports the Tkinter GUI library.")};
-            document.getElementsByClassName("senpai")[0].onclick = function () {show_project_details("S E N P A I - D I S C O R D - B O T", "images/senpai-ss.png", "Senpai (formerly Slim Daley) used to be a basic bot that only could reply 'nm g wbu?' to 'wagwan g wys'. Created with the discord.py Python library, Senpai can convert images with the power of imagemagick and gifsicle and lookup data on GitHub and DS Homebrew's Nintendo DS index. TWLHelper has succeeded Senpai.")};
-            document.getElementsByClassName("thissite")[0].onclick = function () {show_project_details("T H I S - S I T E", "images/this-site-ss.png", "This site is the first time since I took the iGCSE in 2018 in working with web development. Furthermore, this was created with raw HTML, CSS and JS, unlike the graphical programs we used in school. In the future I wish to create web based front ends for my projects and this is a step in the right direction.")};
-            document.getElementsByClassName("title-text")[0].onclick = function() {show_project_details("A B O U T - M E","images/abtme-ss.png","Hey people, I'm Kalamity.<br>I'm an Undergraduate Computer Science student that plays video games, consumes Japanese content and programs for fun.<br>Join my Discord to talk!")};
+                <div class="file-explorer">
 
-            function show_project_details(heading, image, details){
-                document.title = heading;
-                document.getElementsByClassName("projects-details-heading")[0].innerHTML = heading;
-                document.getElementById("pd-image").src = image;
-                document.getElementById("pd-text").innerHTML = details;
-                document.getElementsByClassName("project-details")[0].style.visibility = "visible";
-                document.getElementsByClassName("title-text")[0].style.visibility = "hidden";
-                document.getElementsByClassName("socials")[0].style.visibility = "hidden";
-                document.getElementsByClassName("projects")[0].style.visibility = "hidden";
-            }
+                    <div class="project-list-container">
+                        
+                        <div class="project-list">
+                            <div class="button-spacer"></div>
+                            <div class="project active" data-project="projectEvotech" data-link="https://evotech.kalam.dev" data-source="https://github.com/aston-cs2tp-evotech/evotech">
+                                <img src="images/projects/evotech/evotechLogo.webp" alt="Project Evotech">
+                                <p>evotech;</p>
+                            </div>
+                            <div class="project" data-project="projectTokumei" data-link="https://tokumei.kalam.dev" data-source="https://github.com/YourKalamity/tokumei">
+                                <img src="images/projects/tokumei/tokumei.webp" alt="Project Tokumei">
+                                <p>Tokumei</p>
+                            </div>
+                            <div class="project" data-project="projectLazyDSiFileDownloader" data-source="https://github.com/YourKalamity/lazy-dsi-file-downloader-archive">
+                                <img src="images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp" alt="Project Lazy DSi File Downloader">
+                                <p>Lazy DSi File Downloader</p>
+                            </div>
+                            <div class="project" data-project="projectSenpai" data-source="https://github.com/YourKalamity/senpai">
+                                <img src="images/projects/senpai/senpai.webp" alt="Senpai">
+                                <p>Senpai</p>
+                            </div>
+                        </div>
+                    </div>
 
-            document.getElementsByClassName("pd-back-div")[0].onclick = function () {back_to_home()}
+                    <div class="preview-pane">
+                        <button class="toggle-sidebar-btn">&#9776;</button>
+                        <div id="projectEvotech" class="project-details active">
+                            <h1>evotech;</h1>
+                            <h2><i>An open-source e-commerce platform</i></h2>
+                            <div class="projectShields">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/PHP-777BB4">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/MariaDB-013545">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/HTML5-E35026">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/CSS3-1472B6">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-F7DF1C">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/Apache-D42028">
+                            </div>
+                            <img class="projectImage" src="images/projects/evotech/evotechBanner.webp">
+                            <p>This is a team project that I lead as part of Aston University's team project module.</p>
+                            <p>I lead a team of 8 people in designing, developing and deploying an e-commerce site built from the ground up using PHP, MariaDB, HTML, CSS and JS</p>
+                            <p>Our team decided to create a website selling computer parts, something we all were familliar with and enthusiastic about.</p>
+                            <p><b>Features:</b></p>
+                            <ul>
+                                <li>Full stack e-commerce website</li>
+                                <li>Functioning baskets and checkout process</li>
+                                <li>Comprehensive API system</li>
+                                <li>Strong administrative panel and inventory management</li>
+                                <li>Beautifully designed</li>
+                                <li>Secure, encrypted data transmission and storage</li>
+                                <li>Flexible to end-users needs</li>
+                            </ul>
+                            <p>I learnt a great deal about project management, protected workflows, continuous integrations and comprehensive unit testing during this endeavour, and ultimately the efforts of the entire team combined to create a high-quality full-stack platform that can be deployed and used in a real-world scenario</p>
+                            <p>The source code contains insights not visibile when viewing the site as a customer such as the admin page :</p>
+                            <img class="projectImage" src ="images/projects/evotech/evotech-admin.webp">
+                            <p>As well as the development processes like the usage of GitHub actions and collaboration within the team</p>
+                            <p>I contributed heavily to the project and here is a list of the things I did</p>
+                            <p><b>Team Leadership</b></p>
+                            <ul>
+                                <li>Created a supportive team environment, encouraging open communication and particiaption among all members</li>
+                                <li>Organised regular team meetings</li>
+                            </ul>
+                            <p><b>Infrastructure Setup</b></p>
+                            <ul>
+                                <li>Established and configured GitHub repository, with protected workflows</li>
+                                <li>Created and structured Discord server in an organised manner for collaboration</li>
+                            </ul>
+                            <p><b>Protected System</b></p>
+                            <ul>
+                                <li>Utilised access controls to protect project secrets</li>
+                                <li>Created a comprehensive automated backup system</li>
+                                <li>Implemented automated deployment pipelines (GitHub Actions)</li>
+                            </ul>
+                            <p><b>Support and Mentoring</b></p>
+                            <ul>
+                                <li>Provided support to team members offering guidance and resources</li>
+                                <li>Conducted one-on-one mentoring for helping members</li>
+                            </ul>
+                            <p><b>Documentation</b></p>
+                            <ul>
+                                <li>Authored README.MD and CONTRIBUTING.MD</li>
+                                <li>Created user-friendly guides for git usage and project setup</li>
+                            </ul>
+                            <p><b>Database</b></p>
+                            <ul>
+                                <li>Created and designed project database</li>
+                                <li>Created scripts for generating dummy data</li>
+                            </ul>
+                            <p><b>Deployment Scripts</b></p>
+                            <ul>
+                                <li>Created scripts for automated deployment across various OS</li>
+                            </ul>
+                            <p><b>Development and Testing</b></p>
+                            <ul>
+                                <li>Took ownership of critical backend development tasks including :</li>
+                                <li>Database interactions</li>
+                                <li>API endpoints</li>
+                                <li>Designed and created complete stack for the admin dashboard and inventory management system</li>
+                                <li>Responsible for linking the frontend with the backend</li>
+                                <li>Designed and executed comprehensive unit tests using PHPUnit</li>
+                            </ul>
+                            <p><b>Quality Assurance</b></p>
+                            <ul>
+                                <li>Conducted code reviews on all code submitted to main branch</li>
+                                <li>Collaborated with frontend and backend teams to identify any crossfunctional issues</li>
+                            </ul>
+                        </div>
 
-            function back_to_home(){
-                document.title = "kalam.dev :)"
-                document.getElementsByClassName("project-details")[0].style.visibility = "hidden";
-                document.getElementsByClassName("title-text")[0].style.visibility = "visible";
-                document.getElementsByClassName("socials")[0].style.visibility = "visible";
-                document.getElementsByClassName("projects")[0].style.visibility = "visible";
-            }
 
-            $('.icon')
-                .data('textToggle', "S O C I A L S")
-                .hover(function (e) {
-                    var that = $(".socials-heading");
-                    var thing = $(this);
-                    // get the text from data attribute
-                    var textToSet = thing.data('heading');
+                        <div id="projectTokumei" class="project-details">
+                            <h1>Tokumei</h1>
+                            <h2><i>An open-source peer to peer encrypted messaging app</i></h2>
+                            <div class="projectShields">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/HTML5-E35026">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/CSS3-1472B6">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-F7DF1C">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/PeerJS-e96051">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/WebRTC-4284f3">
+                            </div>
+                            <img class="projectImage" src="images/projects/tokumei/tokumeiScreencap.webp" alt="Screen capture of Tokumei">
+                            <p>Tokumei is an application I created and designed as part of my A-Level Computer Science NEA</p>
+                            <p>At the time, WhatsApp, a popular messaging app, and a number of other apps were under public scrutiny due to privacy policy changes invoked fears that Meta / Facebook could read your messages</p>
+                            <p>The problem with these applications is that the very nature of them being closed-source and passing through a server means you can't completely trust it</p>
+                            <p>The solution?</p>
+                            <p>Why not send the messages directly to the recipient without a middle man?</p>
+                            <p>The concept of peer-to-peer data transfer has been incredibly successful with things like torrents, and as such I decided to implement this in my application</p>
+                            <p>By leveraging WebRTC and the PeerJS network, users are given a PeerID to host a connection with</p>
+                            <img class="projectImage" src="images/projects/tokumei/tokumeiCode.webp" alt="Screen capture of Tokumei">
+                            <p>Users can then connect to the supplied code and enjoy spy free encrypted messaging!</p>
+                            <p>This application was designed, developed, deployed and tested completely by me.</p>
+                        </div>
 
-                    // save the current text so it can be reverted
-                    that.data('textToggle', that.text());
-    
-                    // set the new text
-                    that.text(textToSet);
+                        <div id="projectLazyDSiFileDownloader" class="project-details">
+                            <h1>Lazy DSi File Downloader</h1>
+                            <h2><i>A tool for automated download, setup and configuration of homebrew on Nintendo DSi systems</i></h2>
+                            <div class="projectShields">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/Python 3-28567C">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/GitHub Actions-758ECD">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/TKinter-726DA8">
+                            </div>
+                            <img class="projectImage" src="images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp" alt="Screen capture of Tokumei">
+                            <p>Lazy DSi File Downloader was created in order to simplify the homebrew process outlined in <a href="https://dsi.cfw.guide/">dsi.cfw.guide</a></p>
+                            <p>The naming was due to the fact that I felt too <i>lazy</i> to manually copy each of the files for each of my DSi systems I modded</p>
+                            <p>Instead I spent even longer developing this app to automatically do all of this.</p>
+                            <p><b>Features</b></p>
+                            <ul>
+                                <li>Download and install the appropriate <a href="https://gbatemp.net/threads/memory-pit-a-new-dsi-exploit-for-dsi-camera.539432/">memory pit</a> exploit corresponding to the DSi firmware version</li>
+                                <li>Download and install / update TWiLight Menu++</li>
+                                <li>Download and install the latest version of dumpTool</li>
+                                <li>Download and install the latest version of Unlaunch</li>
+                                <li>Detect and update an existing hiyaCFW installation</li>
+                                <li>And install a larger list of homebrew</li>
+                            </ul>
+                            <p>To handle the larger list of homebrew, I created a separate repository with a list of homebrew, download links, and instructions for my software to follow</p>
+                            <p>This extensibility meant that more homebrew could be added to the download list whilst keeping the size of Lazy DSi File Downloader</p>
+                            <p>Additionally, I created and maintained versions for Windows, macOS and supported Linux as well</p>
+                            <p>This was achieved by using GitHub Actions to automatically produce binaries for the operating systems for each release</p>
+                            <p>However, due to the security measures put in place on Windows, it became *more* difficult to use the app for new users, since they had to jump through hoops to allow unsigned code / create exceptions in their antivirus (as PyInstaller projects were automatically flagged as malware)</p>
+                            <p>This ultimately led to the archival of the project, and the official homebrew guide dropping support for Lazy DSi File Downloader</p>
+                        </div>
 
-                }, function (e) {
-                    var that = $(".socials-heading");
-                    var thing = $(this);
-                    // get the text from data attribute
-                    var textToSet = that.data('textToggle');
+                        <div id="projectSenpai" class="project-details">
+                            <h1>Senpai</h1>
+                            <h2><i>A Discord chat bot with versatile features</i></h2>
+                            <div class="projectShields">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/Python 3-28567C">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/sqlite3-758ECD">
+                                <img alt="Static Badge" src="https://img.shields.io/badge/discord.py-726DA8">
+                            </div>
+                            <img class="projectImage" src="images/projects/senpai/senpaiRecording.gif">
+                            <p><i>Senpai in action, searching for a supplied image via it's Anime lookup function</i></p>
+                            <p>Senpai is a Discord bot that I wrote initially as a form of experimentation and to better understand Discord bots in general</p>
+                            <p>Initially it was just a very basic bot that listened for "wys" to reply with "nm g wbu" (a common exchange of greetings here in the UK).</p>
+                            <p>It then evolved into a bot capable of performing maths and more complex things.</p>
+                            <p>Unlaunch, a bootcode exploit for the Nintendo DSi, came stock with a pirate ship wallpaper that wasn't like by many people. One of the members in the community had discovered a way to patch the application to use a specially formatted GIF file instead of the default background. This is a tedious method and requires image editing software to properly set the colour palette.</p>
+                            <p>I created a Senpai command to automatically take any image and convert it to the proper format, whilst also taking a parameter to select whether or not dithering should be used</p>
+                            <p>This functionality extended to being able to convert any image type to any image</p>
+                            <p>As well as convert between video types</p>
+                            <p>At the time, Senpai was being run on a fairly weak Raspberry Pi 2B+ on my home network, and so the conversion process was quite long</p>
+                            <p>Instead, for use in the DSi Mode Hacking Discord Server, the code for conversion was added to <a href="https://github.com/DS-Homebrew/TWLHelper">TWLHelper</a></p>
+                            <p>Senpai then went through a major redesign and rewrite from the ground up, she now lives on a much more powerful Ubuntu VPS</p>
+                            <p>The current set of features include :</p>
+                            <ul>
+                                <li>Stars - A system that uses senpais database to track how many stars a user has collected in a server (based on how many "star" reactions on their message)</li>
+                                <li>Conversion - A system that converts between file types</li>
+                                <li>Anime - A system that allows users to use any screencap of an anime and find out the exact show, episode, season and a small clip of the specified image</li>
+                            </ul>
+                        </div>
 
-                    // save the current text so it can be reverted
-                    that.data('textToggle', that.text());
+                        
+                    </div>
+                </div>
+                <div class="app-footer">
+                    <button id="sourceButton" class="app-footer-button" onclick="window.location.href='https://github.com/aston-cs2tp-evotech/evotech'">View Source</button>
+                    <button id="linkButton" class="app-footer-button" onclick="window.location.href='https:/evotech.kalam.dev'">Open</button>
+                </div>
+            </div>
 
-                    // set the new text
-                    that.text(textToSet);
-                });
+            <!--Socials App-->
+            <div id="socialsApp" class="window socialsApp hidden">
+                <div class="titlebar">
+                    <div class="titlebar-icon">
+                        <img src="images/ie.webp" alt="Internet Explorer Icon">
+                    </div>
+                    <div class="titlebar-title">
+                        <p>Socials - Internet Explorer</p>
+                    </div>
+                    <div class="titlebar-buttons">
+                        <div class="titlebar-button" id="socialsMinimize">
+                            <img src="images/minimise.webp" alt="Minimize Button">
+                        </div>
+                        <div class="titlebar-button" id="socialsMaximize">
+                            <img src="images/maximise.webp" alt="Maximize Button">
+                        </div>
+                        <div class="titlebar-button" id="socialsClose">
+                            <img src="images/close.webp" alt="Close Button">
+                        </div>
+                    </div>
+                </div>
 
-            $('.icon2')
-                .data('textToggle', "P R O J E C T S")
-                .hover(function (e) {
-                    var that = $(".projects-heading");
-                    var thing = $(this);
-                    // get the text from data attribute
-                    var textToSet = thing.data('heading');
+                <div class="socialsApp-toolbar">
+                    <div class="socialsApp-navigation">
+                        <button class="socialsApp-button" id="socialsBack">Back</button>
+                        <button class="socialsApp-button" id="socialsForward">Forward</button>
+                    </div>
+                    <div class="socialsApp-url">
+                        <input type="text" id="socialsURL" placeholder="Enter URL:" value="https://kalam.dev/socials">
+                    </div>
+                    <div class="socialsApp-search">
+                        <input type="text" id="socialsSearch" placeholder="Search with Bing">
+                        <button class="socialsApp-button" id="socialsSearchButton">Go</button>
+                    </div>
+                </div>
 
-                    // save the current text so it can be reverted
-                    that.data('textToggle', that.text());
-    
-                    // set the new text
-                    that.text(textToSet);
+                <div class="socialsApp-content">
+                    <h2 class="socials-title">contact kalam!</h2>
+                    <div class="socials-grid">
+                        <a href="https://github.com/yourkalamity" target="_blank" class="socials-icon">
+                            <img src="images/socials/github.webp" alt="GitHub">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://discord.gg/3XBcER9" target="_blank" class="socials-icon">
+                            <img src="images/socials/discord.webp" alt="Discord">
+                            <span>Discord</span>
+                        </a>
+                        <a href="https://www.instagram.com/kalam.ty/" target="_blank" class="socials-icon">
+                            <img src="images/socials/instagram.webp" alt="Instagram">
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.snapchat.com/add/kalam.ity" target="_blank" class="socials-icon">
+                            <img src="images/socials/snapchat.webp" alt="Snapchat">
+                            <span>Snapchat</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kalamm/" target="_blank" class="socials-icon">
+                            <img src="images/socials/linkedin.webp" alt="LinkedIn">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:kalam@kalam.dev" target="_blank" class="socials-icon">
+                            <img src="images/socials/mail.webp" alt="Email">
+                            <span>Email</span>
+                        </a>
+                        <a href="https://signal.me/#eu/cl523B8WVXJCc6CDMxA2CUlRUL6prx-Pmv4cJUh2AMcLVAasqB1Lsa_X2Uodk6a2" target="_blank" class="socials-icon">
+                            <img src="images/socials/signal.webp" alt="Signal">
+                            <span>Signal</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                }, function (e) {
-                    var that = $(".projects-heading");
-                    var thing = $(this);
-                    // get the text from data attribute
-                    var textToSet = that.data('textToggle');
+    </div>
 
-                    // save the current text so it can be reverted
-                    that.data('textToggle', that.text());
-
-                    // set the new text
-                    that.text(textToSet);
-                });
-            
-            $("#responsive_headline")
-                .data('textToggle', "click me! :p")
-                .hover(function(e){
-                    var that = $(this);
-                    var textToSet = that.data("textToggle");
-                    that.data("textToggle", that.text());
-                    that.text(textToSet);
-                }, function(e){
-                    var that = $(this);
-                    var textToSet = that.data("textToggle");
-                    that.data("textToggle", that.text());
-                    that.text(textToSet);
-                });
-
-            window.fitText( document.getElementById("responsive_headline") );
-
-        </script>
-    </body>
+    <script src="js/script.js"></script>
+</body>
 </html>
