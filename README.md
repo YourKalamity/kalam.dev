@@ -1,4 +1,4 @@
 # kalam.dev
-My personal site created with HTML, CSS and JS
+My personal site created with HTML, CSS and JS based on Windows 7
 
-Credits go to the jQuery developers and fittext.js developers
+
