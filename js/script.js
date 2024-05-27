@@ -262,8 +262,8 @@ const kalamAppTextPairs = [
   let currentKalamAppIndex = 0;
   const kalamTitleElement = document.getElementById("kalamTitle");
   const kalamSubtitleElement = document.getElementById("kalamSubtitle");
-  const typingSpeed = 40; // Adjust the typing speed (in milliseconds)
-  const pauseDuration = 1000; // Pause duration (in milliseconds)
+  const typingSpeed = 40;
+  const pauseDuration = 1000; 
   
   function typeText(element, text, callback) {
     let i = 0;
@@ -342,6 +342,11 @@ const kalamAppTextPairs = [
 document.getElementById("projectsButton").addEventListener('click', function(){
   openWindow("projectsApp");
   bringWindowToTop(document.getElementById("projectsApp"));
+});
+
+document.getElementById("socialsButton").addEventListener('click', function(){
+  openWindow("socialsApp");
+  bringWindowToTop(document.getElementById("socialsApp"));
 });
 
 // Project App
