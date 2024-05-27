@@ -144,13 +144,13 @@
             </div>
 
             <!--Projects App-->
-            <div id="projectsApp" class="window projectsApp" hidden>
+            <div id="projectsApp" class="window projectsApp hidden">
                 <div class="titlebar">
                     <div class="titlebar-icon">
                         <img src="images/explorer.webp" alt="Explorer Icon">
                     </div>
                     <div class="titlebar-title">
-                        <p>Projects</p>
+                        <p>Projects - File Explorer</p>
                     </div>
                     <div class="titlebar-buttons">
                         <div class="titlebar-button" id="projectsMinimize">
@@ -354,12 +354,83 @@
                             </ul>
                         </div>
 
-
+                        
                     </div>
                 </div>
                 <div class="app-footer">
                     <button id="sourceButton" class="app-footer-button" onclick="window.location.href='https://github.com/aston-cs2tp-evotech/evotech'">View Source</button>
                     <button id="linkButton" class="app-footer-button" onclick="window.location.href='https:/evotech.kalam.dev'">Open</button>
+                </div>
+            </div>
+
+            <!--Socials App-->
+            <div id="socialsApp" class="window socialsApp hidden">
+                <div class="titlebar">
+                    <div class="titlebar-icon">
+                        <img src="images/ie.webp" alt="Internet Explorer Icon">
+                    </div>
+                    <div class="titlebar-title">
+                        <p>Socials - Internet Explorer</p>
+                    </div>
+                    <div class="titlebar-buttons">
+                        <div class="titlebar-button" id="socialsMinimize">
+                            <img src="images/minimise.webp" alt="Minimize Button">
+                        </div>
+                        <div class="titlebar-button" id="socialsMaximize">
+                            <img src="images/maximise.webp" alt="Maximize Button">
+                        </div>
+                        <div class="titlebar-button" id="socialsClose">
+                            <img src="images/close.webp" alt="Close Button">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="socialsApp-toolbar">
+                    <div class="socialsApp-navigation">
+                        <button class="socialsApp-button" id="socialsBack">Back</button>
+                        <button class="socialsApp-button" id="socialsForward">Forward</button>
+                    </div>
+                    <div class="socialsApp-url">
+                        <input type="text" id="socialsURL" placeholder="Enter URL:" value="https://kalam.dev/socials">
+                    </div>
+                    <div class="socialsApp-search">
+                        <input type="text" id="socialsSearch" placeholder="Search with Bing">
+                        <button class="socialsApp-button" id="socialsSearchButton">Go</button>
+                    </div>
+                </div>
+
+                <div class="socialsApp-content">
+                    <h2 class="socials-title">contact kalam!</h2>
+                    <div class="socials-grid">
+                        <a href="https://github.com/yourkalamity" target="_blank" class="socials-icon">
+                            <img src="images/socials/github.webp" alt="GitHub">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://discord.gg/3XBcER9" target="_blank" class="socials-icon">
+                            <img src="images/socials/discord.webp" alt="Discord">
+                            <span>Discord</span>
+                        </a>
+                        <a href="https://www.instagram.com/kalam.ty/" target="_blank" class="socials-icon">
+                            <img src="images/socials/instagram.webp" alt="Instagram">
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.snapchat.com/add/kalam.ity" target="_blank" class="socials-icon">
+                            <img src="images/socials/snapchat.webp" alt="Snapchat">
+                            <span>Snapchat</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kalamm/" target="_blank" class="socials-icon">
+                            <img src="images/socials/linkedin.webp" alt="LinkedIn">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:kalam@kalam.dev" target="_blank" class="socials-icon">
+                            <img src="images/socials/mail.webp" alt="Email">
+                            <span>Email</span>
+                        </a>
+                        <a href="https://signal.me/#eu/cl523B8WVXJCc6CDMxA2CUlRUL6prx-Pmv4cJUh2AMcLVAasqB1Lsa_X2Uodk6a2" target="_blank" class="socials-icon">
+                            <img src="images/socials/signal.webp" alt="Signal">
+                            <span>Signal</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
