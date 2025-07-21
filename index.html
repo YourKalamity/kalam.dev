@@ -1,442 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet/style.css">
-    <title>kalam.dev :></title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet/style.css" />
+
+    <title>M Kalam | Software Engineer</title>
     <!--   rara as well-->
-</head>
-<body>
+    <meta
+      name="description"
+      content="My portfolio showcasing my work as a full stack software developer."
+    />
 
-   <!--Display-->
+    <!-- OpenGraph -->
+    <meta property="og:title" content="M Kalam | Software Engineer" />
+    <meta
+      property="og:description"
+      content="My portfolio showcasing my work as a full stack software developer"
+    />
+    <meta
+      property="og:image"
+      content="https://www.kalam.dev/images/preview.webp"
+    />
+    <meta property="og:url" content="https://www.kalam.dev" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="M Kalam | Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="My portfolio showcasing my work as a full stack software developer."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.kalam.dev/images/preview.webp"
+    />
+
+    <link rel="icon" href="favicon.ico"/>
+  </head>
+  <body>
+    <!--Display-->
     <div class="display">
-
-        <!--Start Menu-->
-        <div class="start-menu">
-            <div class="start-menu-apps">
-                <div class="start-menu-app-list">
-                    <div class="start-menu-app-option">
-                        <img class="start-menu-app-icon" src="images/kalam.webp" alt="Kalam Icon">
-                        <p class="start-menu-app-name">kalam.dev app</p>
-                    </div>
-                    <div class="start-menu-app-option">
-                        <img class="start-menu-app-icon" src="images/explorer.webp" alt="Projects Icon">
-                        <p class="start-menu-app-name">Projects</p>
-                    </div>
-                    <div class="start-menu-app-option">
-                        <img class="start-menu-app-icon" src="images/ie.webp" alt="Projects Icon">
-                        <p class="start-menu-app-name">Socials</p>
-                    </div>
-                </div>
-                <div class="start-menu-app-search">
-                    <input class="start-menu-app-search-box" type="text" placeholder="Search for apps">
-                </div>
+      <!--Start Menu-->
+      <div class="start-menu">
+        <div class="start-menu-apps">
+          <div class="start-menu-app-list">
+            <div class="start-menu-app-option">
+              <img
+                class="start-menu-app-icon"
+                src="images/kalam.webp"
+                alt="Kalam Icon"
+              />
+              <p class="start-menu-app-name">kalam.dev app</p>
             </div>
-            <div class="start-menu-right-side">
-                <div class="start-menu-profile-icon">
-                    <img src="images/user.webp" alt="Profile Icon">
-                </div>
-                <div class="start-menu-right-buttons">
-                    <p>friend of kalam :></p>
-                    <p>Documents</p>
-                    <p>Pictures</p>
-                    <p>Music</p>
-                    <p>Games</p>
-                    <p>Computer</p>
-                    <p>Control Panel</p>
-                    <p>Devices and Printers</p>
-                    <p>Default Programs</p>
-                    <p>Help and Support</p>
-                </div>
-                <div class="start-menu-right-buttons">
-                    <div class="start-menu-shutdown-button">
-                        <p>Shut Down</p>
-                    </div>
-                    <div class="start-menu-power-buttons" hidden>
-                        <p>Log Off</p>
-                        <p>Lock</p>
-                        <p>Restart</p>
-                        <p>Shut Down</p>
-                    </div>
-                </div>
-
+            <div class="start-menu-app-option">
+              <img
+                class="start-menu-app-icon"
+                src="images/explorer.webp"
+                alt="Projects Icon"
+              />
+              <p class="start-menu-app-name">Projects</p>
             </div>
+            <div class="start-menu-app-option">
+              <img
+                class="start-menu-app-icon"
+                src="images/ie.webp"
+                alt="Socials Icon"
+              />
+              <p class="start-menu-app-name">Socials</p>
+            </div>
+          </div>
+          <div class="start-menu-app-search">
+            <input
+              class="start-menu-app-search-box"
+              type="text"
+              placeholder="Search for apps"
+            />
+          </div>
+        </div>
+        <div class="start-menu-right-side">
+          <div class="start-menu-profile-icon">
+            <img src="images/user.webp" alt="Profile Icon" />
+          </div>
+          <div class="start-menu-right-buttons">
+            <p>friend of kalam :></p>
+            <p>Documents</p>
+            <p>Pictures</p>
+            <p>Music</p>
+            <p>Games</p>
+            <p>Computer</p>
+            <p>Control Panel</p>
+            <p>Devices and Printers</p>
+            <p>Default Programs</p>
+            <p>Help and Support</p>
+          </div>
+          <div class="start-menu-right-buttons">
+            <div class="start-menu-shutdown-button">
+              <p>Shut Down</p>
+            </div>
+            <div class="start-menu-power-buttons" hidden>
+              <p>Log Off</p>
+              <p>Lock</p>
+              <p>Restart</p>
+              <p>Shut Down</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Taskbar-->
+      <div class="taskbar">
+        <div class="start">
+          <img src="images/startNormal.webp" alt="Start Button" />
+        </div>
+        <div class="taskbar-applications">
+          <div class="taskbar-application active" id="kalamTaskbarIcon">
+            <img src="images/kalam.webp" alt="Kalam Icon" />
+          </div>
+          <div class="taskbar-application default" id="explorerTaskbarIcon">
+            <img src="images/explorer.webp" alt="Explorer Icon" />
+          </div>
+          <div class="taskbar-application default" id="ieTaskbarIcon">
+            <img src="images/ie.webp" alt="Internet Explorer Icon" />
+          </div>
+        </div>
+        <div class="tray">
+          <div class="tray-network">
+            <img src="images/network.webp" alt="Network Icon" />
+          </div>
+          <div class="tray-audio">
+            <img src="images/sound.webp" alt="Speaker Icon" />
+          </div>
+          <div class="tray-datetime">
+            <p id="tray-time">12:00 PM</p>
+            <p id="tray-date">01/01/2024</p>
+          </div>
+        </div>
+        <div class="show-desktop-button"></div>
+      </div>
+
+      <!--Desktop-->
+      <div class="desktop">
+        <!--Kalam App -->
+        <div id="kalamApp" class="window kalamApp">
+          <div class="titlebar">
+            <div class="titlebar-icon">
+              <img src="images/kalam.webp" alt="Kalam Icon" />
+            </div>
+            <div class="titlebar-title"><p>kalam.dev app</p></div>
+            <div class="titlebar-buttons">
+              <div class="titlebar-button" id="kalamMinimize">
+                <img src="images/minimise.webp" alt="Minimize Button" />
+              </div>
+              <div class="titlebar-button" id="kalamMaximize">
+                <img src="images/maximise.webp" alt="Maximize Button" />
+              </div>
+              <div class="titlebar-button" id="kalamClose">
+                <img src="images/close.webp" alt="Close Button" />
+              </div>
+            </div>
+          </div>
+          <div class="kalamApp-content">
+            <h1>m kalam</h1>
+            <div class="kalamTitleContainer">
+              <h2 id="kalamTitle">Full Stack Software Engineer</h2>
+            </div>
+            <img
+              id="kalamIMG"
+              src="images/mini_kalam.webp"
+              alt="A photo of Kalam"
+            />
+            <div class="kalamSubtitleContainer">
+              <p id="kalamSubtitle">‹  Python  ›‹  Flutter ›‹  PHP  ›‹  Java  ›</p>
+            </div>
+          </div>
+          <div class="app-footer">
+            <button id="projectsButton" class="app-footer-button">
+              Projects
+            </button>
+            <button id="socialsButton" class="app-footer-button">
+              Socials
+            </button>
+          </div>
         </div>
 
-        <!--Taskbar-->
-        <div class="taskbar">
-            <div class="start">
-                <img src="images/startNormal.webp" alt="Start Button">
+        <!--Projects App --->
+        <div id="projectsApp" class="window projectsApp hidden">
+          <div class="titlebar">
+            <div class="titlebar-icon">
+              <img src="images/explorer.webp" alt="Explorer Icon" />
             </div>
-            <div class="taskbar-applications">
-                
-                <div class="taskbar-application active" id="kalamTaskbarIcon">
-                    <img src="images/kalam.webp" alt="Kalam Icon">
-                </div>
+            <div class="titlebar-title"><p>Projects - File Explorer</p></div>
+            <div class="titlebar-buttons">
+              <div class="titlebar-button" id="projectsMinimize">
+                <img src="images/minimise.webp" alt="Minimize Button" />
+              </div>
+              <div class="titlebar-button" id="projectsMaximize">
+                <img src="images/maximise.webp" alt="Maximize Button" />
+              </div>
+              <div class="titlebar-button" id="projectsClose">
+                <img src="images/close.webp" alt="Close Button" />
+              </div>
+            </div>
+          </div>
+          <div class="file-explorer">
+            <div class="project-list-container">
+              <div class="button-spacer"></div>
 
-                <div class="taskbar-application default" id="explorerTaskbarIcon">
-                    <img src="images/explorer.webp" alt="Explorer Icon">
-                </div>
+              <div class="project-list"></div>
+            </div>
+            <div class="preview-pane">
+              <button class="toggle-sidebar-btn">☰</button>
 
-                <div class="taskbar-application default" id="ieTaskbarIcon">
-                    <img src="images/ie.webp" alt="Internet Explorer Icon">
-                </div>
-                
+              <div class="project-details-content"></div>
             </div>
-            <div class="tray">
-                <div class="tray-network">
-                    <img src="images/network.webp" alt="Network Icon">
-                </div>
-                <div class="tray-audio">
-                    <img src="images/sound.webp" alt="Speaker Icon">
-                </div>
-                <div class="tray-datetime">
-                    <p id="tray-time">12:14 PM</p>
-                    <p id="tray-date">20/12/2023</p>
-                </div>
-            </div>
-            <div class="show-desktop-button">
-            </div>
+          </div>
+          <div class="app-footer">
+            <button id="sourceButton" class="app-footer-button">
+              View Source
+            </button>
+            <button id="linkButton" class="app-footer-button">Open</button>
+          </div>
         </div>
 
-        <!--Desktop-->
-        <div class="desktop">
-
-            <!--Kalam App-->
-            <div id="kalamApp" class="window kalamApp">
-                <div class="titlebar">
-                    <div class="titlebar-icon">
-                        <img src="images/kalam.webp" alt="Kalam Icon">
-                    </div>
-                    <div class="titlebar-title">
-                        <p>kalam.dev app</p>
-                    </div>
-                    <div class="titlebar-buttons">
-                        <div class="titlebar-button" id="kalamMinimize">
-                            <img src="images/minimise.webp" alt="Minimize Button">
-                        </div>
-                         <div class="titlebar-button" id="kalamMaximize">
-                            <img src="images/maximise.webp" alt="Maximize Button">
-                        </div>
-                        <div class="titlebar-button" id="kalamClose">
-                            <img src="images/close.webp" alt="Close Button">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kalamApp-content">
-                    <h1>m kalam</h1>
-                    <div class="kalamTitleContainer">
-                        <h2 id="kalamTitle"></h2>
-                    </div>
-                    
-                    <img id="kalamIMG" src="images/kalamIMG.webp">
-                    <div class="kalamSubtitleContainer">
-                        <p id="kalamSubtitle"></p>
-                    </div>
-                    
-                </div>
-                <div class="app-footer">
-                    <button id="projectsButton" class="app-footer-button">Projects</button>
-                    <button id="socialsButton" class="app-footer-button">Socials</button>
-                </div>
+        <!--Socials App-->
+        <div id="socialsApp" class="window socialsApp hidden">
+          <div class="titlebar">
+            <div class="titlebar-icon">
+              <img src="images/ie.webp" alt="Internet Explorer Icon" />
             </div>
-
-            <!--Projects App-->
-            <div id="projectsApp" class="window projectsApp hidden">
-                <div class="titlebar">
-                    <div class="titlebar-icon">
-                        <img src="images/explorer.webp" alt="Explorer Icon">
-                    </div>
-                    <div class="titlebar-title">
-                        <p>Projects - File Explorer</p>
-                    </div>
-                    <div class="titlebar-buttons">
-                        <div class="titlebar-button" id="projectsMinimize">
-                            <img src="images/minimise.webp" alt="Minimize Button">
-                        </div>
-                        <div class="titlebar-button" id="projectsMaximize">
-                            <img src="images/maximise.webp" alt="Maximize Button">
-                        </div>
-                        <div class="titlebar-button" id="projectsClose">
-                            <img src="images/close.webp" alt="Close Button">
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="file-explorer">
-
-                    <div class="project-list-container">
-                        
-                        <div class="project-list">
-                            <div class="button-spacer"></div>
-                            <div class="project active" data-project="projectEvotech" data-link="https://evotech.kalam.dev" data-source="https://github.com/aston-cs2tp-evotech/evotech">
-                                <img src="images/projects/evotech/evotechLogo.webp" alt="Project Evotech">
-                                <p>evotech;</p>
-                            </div>
-                            <div class="project" data-project="projectTokumei" data-link="https://tokumei.kalam.dev" data-source="https://github.com/YourKalamity/tokumei">
-                                <img src="images/projects/tokumei/tokumei.webp" alt="Project Tokumei">
-                                <p>Tokumei</p>
-                            </div>
-                            <div class="project" data-project="projectLazyDSiFileDownloader" data-source="https://github.com/YourKalamity/lazy-dsi-file-downloader-archive">
-                                <img src="images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp" alt="Project Lazy DSi File Downloader">
-                                <p>Lazy DSi File Downloader</p>
-                            </div>
-                            <div class="project" data-project="projectSenpai" data-source="https://github.com/YourKalamity/senpai">
-                                <img src="images/projects/senpai/senpai.webp" alt="Senpai">
-                                <p>Senpai</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="preview-pane">
-                        <button class="toggle-sidebar-btn">&#9776;</button>
-                        <div id="projectEvotech" class="project-details active">
-                            <h1>evotech;</h1>
-                            <h2><i>An open-source e-commerce platform</i></h2>
-                            <div class="projectShields">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/PHP-777BB4">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/MariaDB-013545">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/HTML5-E35026">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/CSS3-1472B6">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-F7DF1C">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/Apache-D42028">
-                            </div>
-                            <img class="projectImage" src="images/projects/evotech/evotechBanner.webp">
-                            <p>This is a team project that I lead as part of Aston University's team project module.</p>
-                            <p>I lead a team of 8 people in designing, developing and deploying an e-commerce site built from the ground up using PHP, MariaDB, HTML, CSS and JS</p>
-                            <p>Our team decided to create a website selling computer parts, something we all were familliar with and enthusiastic about.</p>
-                            <p><b>Features:</b></p>
-                            <ul>
-                                <li>Full stack e-commerce website</li>
-                                <li>Functioning baskets and checkout process</li>
-                                <li>Comprehensive API system</li>
-                                <li>Strong administrative panel and inventory management</li>
-                                <li>Beautifully designed</li>
-                                <li>Secure, encrypted data transmission and storage</li>
-                                <li>Flexible to end-users needs</li>
-                            </ul>
-                            <p>I learnt a great deal about project management, protected workflows, continuous integrations and comprehensive unit testing during this endeavour, and ultimately the efforts of the entire team combined to create a high-quality full-stack platform that can be deployed and used in a real-world scenario</p>
-                            <p>The source code contains insights not visibile when viewing the site as a customer such as the admin page :</p>
-                            <img class="projectImage" src ="images/projects/evotech/evotech-admin.webp">
-                            <p>As well as the development processes like the usage of GitHub actions and collaboration within the team</p>
-                            <p>I contributed heavily to the project and here is a list of the things I did</p>
-                            <p><b>Team Leadership</b></p>
-                            <ul>
-                                <li>Created a supportive team environment, encouraging open communication and particiaption among all members</li>
-                                <li>Organised regular team meetings</li>
-                            </ul>
-                            <p><b>Infrastructure Setup</b></p>
-                            <ul>
-                                <li>Established and configured GitHub repository, with protected workflows</li>
-                                <li>Created and structured Discord server in an organised manner for collaboration</li>
-                            </ul>
-                            <p><b>Protected System</b></p>
-                            <ul>
-                                <li>Utilised access controls to protect project secrets</li>
-                                <li>Created a comprehensive automated backup system</li>
-                                <li>Implemented automated deployment pipelines (GitHub Actions)</li>
-                            </ul>
-                            <p><b>Support and Mentoring</b></p>
-                            <ul>
-                                <li>Provided support to team members offering guidance and resources</li>
-                                <li>Conducted one-on-one mentoring for helping members</li>
-                            </ul>
-                            <p><b>Documentation</b></p>
-                            <ul>
-                                <li>Authored README.MD and CONTRIBUTING.MD</li>
-                                <li>Created user-friendly guides for git usage and project setup</li>
-                            </ul>
-                            <p><b>Database</b></p>
-                            <ul>
-                                <li>Created and designed project database</li>
-                                <li>Created scripts for generating dummy data</li>
-                            </ul>
-                            <p><b>Deployment Scripts</b></p>
-                            <ul>
-                                <li>Created scripts for automated deployment across various OS</li>
-                            </ul>
-                            <p><b>Development and Testing</b></p>
-                            <ul>
-                                <li>Took ownership of critical backend development tasks including :</li>
-                                <li>Database interactions</li>
-                                <li>API endpoints</li>
-                                <li>Designed and created complete stack for the admin dashboard and inventory management system</li>
-                                <li>Responsible for linking the frontend with the backend</li>
-                                <li>Designed and executed comprehensive unit tests using PHPUnit</li>
-                            </ul>
-                            <p><b>Quality Assurance</b></p>
-                            <ul>
-                                <li>Conducted code reviews on all code submitted to main branch</li>
-                                <li>Collaborated with frontend and backend teams to identify any crossfunctional issues</li>
-                            </ul>
-                        </div>
-
-
-                        <div id="projectTokumei" class="project-details">
-                            <h1>Tokumei</h1>
-                            <h2><i>An open-source peer to peer encrypted messaging app</i></h2>
-                            <div class="projectShields">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/HTML5-E35026">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/CSS3-1472B6">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-F7DF1C">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/PeerJS-e96051">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/WebRTC-4284f3">
-                            </div>
-                            <img class="projectImage" src="images/projects/tokumei/tokumeiScreencap.webp" alt="Screen capture of Tokumei">
-                            <p>Tokumei is an application I created and designed as part of my A-Level Computer Science NEA</p>
-                            <p>At the time, WhatsApp, a popular messaging app, and a number of other apps were under public scrutiny due to privacy policy changes invoked fears that Meta / Facebook could read your messages</p>
-                            <p>The problem with these applications is that the very nature of them being closed-source and passing through a server means you can't completely trust it</p>
-                            <p>The solution?</p>
-                            <p>Why not send the messages directly to the recipient without a middle man?</p>
-                            <p>The concept of peer-to-peer data transfer has been incredibly successful with things like torrents, and as such I decided to implement this in my application</p>
-                            <p>By leveraging WebRTC and the PeerJS network, users are given a PeerID to host a connection with</p>
-                            <img class="projectImage" src="images/projects/tokumei/tokumeiCode.webp" alt="Screen capture of Tokumei">
-                            <p>Users can then connect to the supplied code and enjoy spy free encrypted messaging!</p>
-                            <p>This application was designed, developed, deployed and tested completely by me.</p>
-                        </div>
-
-                        <div id="projectLazyDSiFileDownloader" class="project-details">
-                            <h1>Lazy DSi File Downloader</h1>
-                            <h2><i>A tool for automated download, setup and configuration of homebrew on Nintendo DSi systems</i></h2>
-                            <div class="projectShields">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/Python 3-28567C">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/GitHub Actions-758ECD">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/TKinter-726DA8">
-                            </div>
-                            <img class="projectImage" src="images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp" alt="Screen capture of Tokumei">
-                            <p>Lazy DSi File Downloader was created in order to simplify the homebrew process outlined in <a href="https://dsi.cfw.guide/">dsi.cfw.guide</a></p>
-                            <p>The naming was due to the fact that I felt too <i>lazy</i> to manually copy each of the files for each of my DSi systems I modded</p>
-                            <p>Instead I spent even longer developing this app to automatically do all of this.</p>
-                            <p><b>Features</b></p>
-                            <ul>
-                                <li>Download and install the appropriate <a href="https://gbatemp.net/threads/memory-pit-a-new-dsi-exploit-for-dsi-camera.539432/">memory pit</a> exploit corresponding to the DSi firmware version</li>
-                                <li>Download and install / update TWiLight Menu++</li>
-                                <li>Download and install the latest version of dumpTool</li>
-                                <li>Download and install the latest version of Unlaunch</li>
-                                <li>Detect and update an existing hiyaCFW installation</li>
-                                <li>And install a larger list of homebrew</li>
-                            </ul>
-                            <p>To handle the larger list of homebrew, I created a separate repository with a list of homebrew, download links, and instructions for my software to follow</p>
-                            <p>This extensibility meant that more homebrew could be added to the download list whilst keeping the size of Lazy DSi File Downloader</p>
-                            <p>Additionally, I created and maintained versions for Windows, macOS and supported Linux as well</p>
-                            <p>This was achieved by using GitHub Actions to automatically produce binaries for the operating systems for each release</p>
-                            <p>However, due to the security measures put in place on Windows, it became *more* difficult to use the app for new users, since they had to jump through hoops to allow unsigned code / create exceptions in their antivirus (as PyInstaller projects were automatically flagged as malware)</p>
-                            <p>This ultimately led to the archival of the project, and the official homebrew guide dropping support for Lazy DSi File Downloader</p>
-                        </div>
-
-                        <div id="projectSenpai" class="project-details">
-                            <h1>Senpai</h1>
-                            <h2><i>A Discord chat bot with versatile features</i></h2>
-                            <div class="projectShields">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/Python 3-28567C">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/sqlite3-758ECD">
-                                <img alt="Static Badge" src="https://img.shields.io/badge/discord.py-726DA8">
-                            </div>
-                            <img class="projectImage" src="images/projects/senpai/senpaiRecording.gif">
-                            <p><i>Senpai in action, searching for a supplied image via it's Anime lookup function</i></p>
-                            <p>Senpai is a Discord bot that I wrote initially as a form of experimentation and to better understand Discord bots in general</p>
-                            <p>Initially it was just a very basic bot that listened for "wys" to reply with "nm g wbu" (a common exchange of greetings here in the UK).</p>
-                            <p>It then evolved into a bot capable of performing maths and more complex things.</p>
-                            <p>Unlaunch, a bootcode exploit for the Nintendo DSi, came stock with a pirate ship wallpaper that wasn't like by many people. One of the members in the community had discovered a way to patch the application to use a specially formatted GIF file instead of the default background. This is a tedious method and requires image editing software to properly set the colour palette.</p>
-                            <p>I created a Senpai command to automatically take any image and convert it to the proper format, whilst also taking a parameter to select whether or not dithering should be used</p>
-                            <p>This functionality extended to being able to convert any image type to any image</p>
-                            <p>As well as convert between video types</p>
-                            <p>At the time, Senpai was being run on a fairly weak Raspberry Pi 2B+ on my home network, and so the conversion process was quite long</p>
-                            <p>Instead, for use in the DSi Mode Hacking Discord Server, the code for conversion was added to <a href="https://github.com/DS-Homebrew/TWLHelper">TWLHelper</a></p>
-                            <p>Senpai then went through a major redesign and rewrite from the ground up, she now lives on a much more powerful Ubuntu VPS</p>
-                            <p>The current set of features include :</p>
-                            <ul>
-                                <li>Stars - A system that uses senpais database to track how many stars a user has collected in a server (based on how many "star" reactions on their message)</li>
-                                <li>Conversion - A system that converts between file types</li>
-                                <li>Anime - A system that allows users to use any screencap of an anime and find out the exact show, episode, season and a small clip of the specified image</li>
-                            </ul>
-                        </div>
-
-                        
-                    </div>
-                </div>
-                <div class="app-footer">
-                    <button id="sourceButton" class="app-footer-button" onclick="window.location.href='https://github.com/aston-cs2tp-evotech/evotech'">View Source</button>
-                    <button id="linkButton" class="app-footer-button" onclick="window.location.href='https:/evotech.kalam.dev'">Open</button>
-                </div>
+            <div class="titlebar-title"><p>Socials - Internet Explorer</p></div>
+            <div class="titlebar-buttons">
+              <div class="titlebar-button" id="socialsMinimize">
+                <img src="images/minimise.webp" alt="Minimize Button" />
+              </div>
+              <div class="titlebar-button" id="socialsMaximize">
+                <img src="images/maximise.webp" alt="Maximize Button" />
+              </div>
+              <div class="titlebar-button" id="socialsClose">
+                <img src="images/close.webp" alt="Close Button" />
+              </div>
             </div>
-
-            <!--Socials App-->
-            <div id="socialsApp" class="window socialsApp hidden">
-                <div class="titlebar">
-                    <div class="titlebar-icon">
-                        <img src="images/ie.webp" alt="Internet Explorer Icon">
-                    </div>
-                    <div class="titlebar-title">
-                        <p>Socials - Internet Explorer</p>
-                    </div>
-                    <div class="titlebar-buttons">
-                        <div class="titlebar-button" id="socialsMinimize">
-                            <img src="images/minimise.webp" alt="Minimize Button">
-                        </div>
-                        <div class="titlebar-button" id="socialsMaximize">
-                            <img src="images/maximise.webp" alt="Maximize Button">
-                        </div>
-                        <div class="titlebar-button" id="socialsClose">
-                            <img src="images/close.webp" alt="Close Button">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="socialsApp-toolbar">
-                    <div class="socialsApp-navigation">
-                        <button class="socialsApp-button" id="socialsBack">Back</button>
-                        <button class="socialsApp-button" id="socialsForward">Forward</button>
-                    </div>
-                    <div class="socialsApp-url">
-                        <input type="text" id="socialsURL" placeholder="Enter URL:" value="https://kalam.dev/socials">
-                    </div>
-                    <div class="socialsApp-search">
-                        <input type="text" id="socialsSearch" placeholder="Search with Bing">
-                        <button class="socialsApp-button" id="socialsSearchButton">Go</button>
-                    </div>
-                </div>
-
-                <div class="socialsApp-content">
-                    <h2 class="socials-title">contact kalam!</h2>
-                    <div class="socials-grid">
-                        <a href="https://github.com/yourkalamity" target="_blank" class="socials-icon">
-                            <img src="images/socials/github.webp" alt="GitHub">
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://discord.gg/3XBcER9" target="_blank" class="socials-icon">
-                            <img src="images/socials/discord.webp" alt="Discord">
-                            <span>Discord</span>
-                        </a>
-                        <a href="https://www.instagram.com/kalam.ty/" target="_blank" class="socials-icon">
-                            <img src="images/socials/instagram.webp" alt="Instagram">
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.snapchat.com/add/kalam.ity" target="_blank" class="socials-icon">
-                            <img src="images/socials/snapchat.webp" alt="Snapchat">
-                            <span>Snapchat</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kalamm/" target="_blank" class="socials-icon">
-                            <img src="images/socials/linkedin.webp" alt="LinkedIn">
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="mailto:kalam@kalam.dev" target="_blank" class="socials-icon">
-                            <img src="images/socials/mail.webp" alt="Email">
-                            <span>Email</span>
-                        </a>
-                        <a href="https://signal.me/#eu/cl523B8WVXJCc6CDMxA2CUlRUL6prx-Pmv4cJUh2AMcLVAasqB1Lsa_X2Uodk6a2" target="_blank" class="socials-icon">
-                            <img src="images/socials/signal.webp" alt="Signal">
-                            <span>Signal</span>
-                        </a>
-                    </div>
-                </div>
+          </div>
+          <div class="socialsApp-toolbar">
+            <div class="socialsApp-navigation">
+              <button class="socialsApp-button" id="socialsBack">Back</button>
+              <button class="socialsApp-button" id="socialsForward">
+                Forward
+              </button>
             </div>
+            <div class="socialsApp-url">
+              <input
+                type="text"
+                id="socialsURL"
+                placeholder="Enter URL:"
+                value="https://kalam.dev/socials"
+              />
+            </div>
+            <div class="socialsApp-search">
+              <input
+                type="text"
+                id="socialsSearch"
+                placeholder="Search with Bing"
+              />
+              <button class="socialsApp-button" id="socialsSearchButton">
+                Go
+              </button>
+            </div>
+          </div>
+          <div class="socialsApp-content">
+            <h2 class="socials-title">contact kalam!</h2>
+            <div class="socials-grid">
+              <a
+                href="https://github.com/yourkalamity"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/github.webp" alt="GitHub" />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://discord.gg/3XBcER9"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/discord.webp" alt="Discord" />
+                <span>Discord</span>
+              </a>
+              <a
+                href="https://www.instagram.com/kalam.ty/"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/instagram.webp" alt="Instagram" />
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://www.snapchat.com/add/kalam.ity"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/snapchat.webp" alt="Snapchat" />
+                <span>Snapchat</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/kalamm/"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/linkedin.webp" alt="LinkedIn" />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="mailto:kalam@kalam.dev"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/mail.webp" alt="Email" />
+                <span>Email</span>
+              </a>
+              <a
+                href="https://signal.me/#eu/cl523B8WVXJCc6CDMxA2CUlRUL6prx-Pmv4cJUh2AMcLVAasqB1Lsa_X2Uodk6a2"
+                target="_blank"
+                class="socials-icon"
+              >
+                <img src="images/socials/signal.webp" alt="Signal" />
+                <span>Signal</span>
+              </a>
+            </div>
+          </div>
         </div>
 
+        <noscript>
+          <div
+            style="
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background: linear-gradient(
+                to bottom,
+                rgba(28, 28, 28, 0.3),
+                rgba(28, 28, 28, 0.2)
+              );
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(10px);
+              border-radius: 10px;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+              max-width: 800px;
+              margin: 40px auto;
+              overflow: hidden;
+              color: #fff;
+              max-height: 90vh;
+            "
+          >
+            <!-- Titlebar -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                padding: 8px 12px;
+                user-select: none;
+              "
+            >
+              <img
+                src="images/kalam.webp"
+                alt="Icon"
+                style="width: 20px; height: 20px; margin-right: 10px"
+              />
+              <strong style="font-weight: normal; font-size: 14px"
+                >kalam.dev app - JavaScript Disabled</strong
+              >
+            </div>
+
+            <!-- Content Area -->
+            <div style="padding: 10px 10px 0 10px">
+              <div
+                style="
+                  background-color: #fff;
+                  padding: 25px 25px 0 25px;
+                  margin: 0 auto;
+                  color: #333;
+                  line-height: 1.6;
+                  border-radius: 5px 5px 0 0;
+                "
+              >
+                <h1
+                  style="
+                    color: #2d475e;
+                    margin-top: 0;
+                    border-bottom: 1px solid #eee;
+                    padding-bottom: 10px;
+                  "
+                >
+                  m kalam!
+                </h1>
+                <p>
+                    Hello! This website uses JavaScript to provide the interactive
+                    experience of my portfolio. Unfortunately, it seems that 
+                    JavaScript is currently disabled in your browser, which means
+                    you won't be able to view the cool site I worked on!
+                    Please enable JavaScript in your browser settings to fully experience
+                    it or alternatively, you can view this static fallback.
+                </p>
+                <p>
+                  Here's a summary of my work as a full stack software engineer:
+                </p>
+
+                <h2
+                  style="
+                    color: #2d475e;
+                    border-bottom: 1px solid #eee;
+                    padding-bottom: 5px;
+                    margin-top: 30px;
+                  "
+                >
+                  Key Projects
+                </h2>
+                <ul
+                  style="
+                    padding-left: 20px;
+                    margin: 0;
+                    list-style-position: inside;
+                  "
+                >
+                  <li>
+                    <strong>AI-Powered Laryngoscope App:</strong> Took ownership
+                    of a Flutter app, integrating a specialized USB camera and
+                    deploying an on-device YOLO model for early cancer
+                    detection.
+                  </li>
+                  <li>
+                    <strong>SnapStream (Offline Data Transfer):</strong>
+                    Independently developed and commercialized a unique protocol
+                    using QR code streams to transfer large data payloads in
+                    network-denied environments.
+                  </li>
+                  <li>
+                    <strong>AI-Powered Pet Urine Test Reader:</strong> Contributed
+                    to a Flutter app that reads pet urine test strips using an
+                    AI model running on a server, enabling pet owners to check pet health
+                    from home.
+                  </li>
+                  <li>
+                    <strong>evotech;:</strong> Led an 8-member
+                    team to develop a full e-commerce platform, managing the
+                    project from architecture to deployment.
+                  </li>
+                </ul>
+
+                <h2
+                  style="
+                    color: #2d475e;
+                    border-bottom: 1px solid #eee;
+                    padding-bottom: 5px;
+                    margin-top: 30px;
+                  "
+                >
+                  Contact & Links
+                </h2>
+                <p style="margin: 0">
+                  <strong>Email:</strong>
+                  <a
+                    href="mailto:kalam@kalam.dev"
+                    style="color: #005a9c; text-decoration: none"
+                    >kalam@kalam.dev</a
+                  ><br />
+                  <strong>GitHub:</strong>
+                  <a
+                    href="https://github.com/yourkalamity"
+                    target="_blank"
+                    style="color: #005a9c; text-decoration: none"
+                    >github.com/yourkalamity</a
+                  ><br />
+                  <strong>LinkedIn:</strong>
+                  <a
+                    href="https://www.linkedin.com/in/kalamm/"
+                    target="_blank"
+                    style="color: #005a9c; text-decoration: none"
+                    >linkedin.com/in/kalamm</a
+                  >
+                </p>
+              </div>
+            </div>
+
+            <!-- App Footer -->
+            <div
+              style="
+                display: flex;
+                justify-content: flex-end;
+                background-color: #f1f1f1;
+                padding: 0px 10px 10px 10px;
+                margin: 0 10px 10px 10px;
+                border-radius: 0 0 5px 5px;
+              "
+            >
+              <a
+                href="https://github.com/yourkalamity/"
+                target="_blank"
+                style="
+                  padding: 8px 15px;
+                  background: linear-gradient(#f2f2f2, #d8d8d8);
+                  border: 1px solid #707070;
+                  border-radius: 3px;
+                  color: #000;
+                  cursor: pointer;
+                  text-decoration: none;
+                  font-size: 14px;
+                "
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </noscript>
+      </div>
     </div>
-
-    <script src="js/script.js"></script>
-</body>
+    <script type="module" src="js/script.js"></script>
+  </body>
 </html>

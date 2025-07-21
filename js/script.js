@@ -1,402 +1,396 @@
-// array to hold currently opened windows
-let openWindows = ['kalamApp'];
+import { kalamAppTextPairs, projectsData } from './data.js';
 
-// variable to hold the currently focused window
-let focusedWindow = null;
 
-// possible windows to open
-const windows = ['kalamApp', 'projectsApp', 'socialsApp'];
+// Website state management
+const state = {
+    // List of currently open windows
+    openWindows: ['kalamApp'],
 
-// map of window names to their taskbar buttons
+    // The currently focused window
+    focusedWindow: 'kalamApp',
+
+    // Counter to manage how many windows are on top
+    zIndexCounter: 2,
+};
+
+
+// DOM Elements
+const desktop = document.querySelector('.desktop');
 const taskbarButtons = {
     kalamApp: document.querySelector('#kalamTaskbarIcon'),
     projectsApp: document.querySelector('#explorerTaskbarIcon'),
     socialsApp: document.querySelector('#ieTaskbarIcon')
+};
+const projectListContainer = document.querySelector('.project-list');
+const projectDetailsContainer = document.querySelector('.project-details-content');
+const sourceButton = document.getElementById('sourceButton');
+const linkButton = document.getElementById('linkButton');
+
+
+/**
+ * Brings specified window to top of window stack.
+ * @param {HTMLElement} windowElement - The window element to bring to the top.
+ * @returns {void}
+ */
+function bringWindowToTop(windowElement) {
+    if (!windowElement) return;
+    state.zIndexCounter++;
+    windowElement.style.zIndex = state.zIndexCounter;
+    state.focusedWindow = windowElement.id;
 }
 
-// function to open a window
-function openWindow(windowName) {
-  // if the window is already open, return
-  if (openWindows.includes(windowName)) return;
+/**
+ * Opens a window by its ID, bringing it to the top of the stack.
+ * @param {string} windowId - The ID of the window to open.
+ * @return
+ */
+function openWindow(windowId) {
+    if (state.openWindows.includes(windowId)) {
+        bringWindowToTop(document.getElementById(windowId));
+        return;
+    }
+    const windowElement = document.getElementById(windowId);
+    if (!windowElement) return;
 
-  // get the window element
-  const window = document.querySelector(`.${windowName}`);
-
-  // remove the hidden class
-  window.classList.remove('hidden');
-
-  // add the window to the openWindows array
-  openWindows.push(windowName);
-
-  // set the window to the focused window
-  focusedWindow = windowName;
-
-  // change the taskbar button state to active
-  changeTaskbarButtonState(taskbarButtons[windowName], 'active');
+    windowElement.classList.remove('hidden');
+    state.openWindows.push(windowId);
+    bringWindowToTop(windowElement);
+    changeTaskbarButtonState(taskbarButtons[windowId], 'active');
 }
 
-// function to close a window
-function closeWindow(windowName) {
-  // if the window is not open, return
-  if (!openWindows.includes(windowName)) return;
 
-  // get the window element
-  const window = document.querySelector(`.${windowName}`);
+/**
+ * Closes a window by its ID, removing it from the open windows list.
+ * @param {string} windowId - The ID of the window to close.
+ * @return
+ */
+function closeWindow(windowId) {
+    if (!state.openWindows.includes(windowId)) return;
 
-  // add the hidden class
-  window.classList.add('hidden');
+    document.getElementById(windowId).classList.add('hidden');
+    state.openWindows = state.openWindows.filter(w => w !== windowId);
 
-  // remove the window from the openWindows array
-  openWindows.splice(openWindows.indexOf(windowName), 1);
-
-  // if the window is the focused window, set the last window in the openWindows array to the focused window
-  if (focusedWindow === windowName) {
-      focusedWindow = openWindows[openWindows.length - 1];
-  }
-
-  // change the taskbar button state to inactive
-  changeTaskbarButtonState(taskbarButtons[windowName], 'inactive');
+    if (state.focusedWindow === windowId) {
+        state.focusedWindow = state.openWindows[state.openWindows.length - 1] || null;
+    }
+    changeTaskbarButtonState(taskbarButtons[windowId], 'default');
 }
 
-// function to toggle a window
-function toggleWindow(windowName) { 
-    // if the window is open, close it
-    if (openWindows.includes(windowName)) {
-        closeWindow(windowName);
+
+/**
+ * Toggles the visibility of a window by its ID. Simulates minimize/restore behavior.
+ * @param {*} windowId - The ID of the window to toggle.
+ * @return
+ */
+function toggleWindow(windowId) {
+    const windowEl = document.getElementById(windowId);
+    if (!windowEl || !windowEl.classList.contains('hidden')) {
+        closeWindow(windowId);
     } else {
-        // otherwise, open it
-        console.log(windowName);
-        bringWindowToTop(document.getElementById(windowName));
-        openWindow(windowName);
+        openWindow(windowId);
     }
 }
 
-// function to change taskbar button state
+
+/**
+ * Changes the state of a taskbar button. Simulates behavior of active, inactive, or default states.
+ * @param {*} button - The taskbar button element to change state for.
+ * @param {*} state - The new state to apply ('default', 'active', 'inactive').
+ * @returns 
+ */
 function changeTaskbarButtonState(button, state) {
-    let allowedStates = ['default', 'active', 'inactive'];
-
-    // if the state is not allowed, return
-    if (!allowedStates.includes(state)) return;
-
-    // remove all states from the button
-    button.classList.remove(...allowedStates);
-
-    // add the state to the button
+    const validStates = ['default', 'active', 'inactive'];
+    if (!button && !validStates.includes(state)) return;
+    button.classList.remove(...validStates);
     button.classList.add(state);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Get references to the start button and start menu
-    const startButton = document.querySelector('.start');
-    const startMenu = document.querySelector('.start-menu');
 
-    // Get reference to the image element
-    const startImg = document.querySelector('.start img');
-
-    // Add a click event listener to the start button
-    startButton.addEventListener('click', function () {
-        // Toggle the "active" class on the start menu
-        startMenu.classList.toggle('active');
-
-        // Change the img src based on the startMenu's active state
-        if (startMenu.classList.contains('active')) {
-            startImg.src = '/images/startClicked.webp';
-        } else {
-            startImg.src = '/images/startNormal.webp';
+/**
+ * Populates the project list with project data.
+ * @returns {void}
+ */
+function populateProjectList() {
+    // Reset the project list container
+    projectListContainer.innerHTML = '';
+    projectsData.forEach((project, index) => {
+        const projectElement = document.createElement('div');
+        projectElement.className = 'project';
+        if (index === 0) {
+            projectElement.classList.add('active');
         }
+        projectElement.dataset.projectId = project.id;
+
+        projectElement.innerHTML = `
+            <img src="${project.icon}" alt="${project.name} icon">
+            <p>${project.name}</p>
+        `;
+        projectListContainer.appendChild(projectElement);
     });
-
-    // Add a mouseover event listener to the start button
-    startButton.addEventListener('mouseover', function () {
-        // Change the img src to /images/startHover.webp when not active
-        if (!startMenu.classList.contains('active')) {
-            startImg.src = '/images/startHover.webp';
-        }
-    });
-
-    // Add a mouseout event listener to the start button
-    startButton.addEventListener('mouseout', function () {
-        // Change the img src back to /images/startNormal.webp when not active
-        if (!startMenu.classList.contains('active')) {
-            startImg.src = '/images/startNormal.webp';
-        }
-    });
-
-
-    // Add listeners to the taskbar application buttons
-    document.querySelector('#kalamTaskbarIcon').addEventListener('click', function () {
-        toggleWindow('kalamApp');
-    });
-
-    document.querySelector('#explorerTaskbarIcon').addEventListener('click', function () {
-      toggleWindow('projectsApp');
-    });
-
-    document.querySelector('#ieTaskbarIcon').addEventListener('click', function () {
-      toggleWindow('socialsApp');
-    });
-
-
-
-    // Get date and time elements and update them every second
-    const dateElement   = document.querySelector('#tray-date');
-    const timeElement   = document.querySelector('#tray-time');
-    let   semiColonFlag = true;
-
-    setInterval(function () {
-        const date = new Date();
-
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-
-        const hour = date.getHours();
-        const minute = date.getMinutes();
-
-        dateElement.textContent = `${day}/${month}/${year}`;
-
-        // Convert the hour to 12 hour format and add AM/PM to the end
-        let hour12 = hour % 12;
-        if (hour12 === 0) hour12 = 12;
-        const ampm = hour < 12 ? 'AM' : 'PM';
-
-        // Add leading zeros to the minute if it is less than 10
-        const minuteStr = minute < 10 ? `0${minute}` : minute;
-
-        const colon = semiColonFlag ? ':' : ' ';
-        semiColonFlag = !semiColonFlag;
-
-        timeElement.textContent = `${hour12}${colon}${minuteStr} ${ampm}`;
-    }, 1000);
-
-});
-
-// Window dragger
-document.querySelectorAll('.window').forEach(function(window) {
-  let titlebar = window.querySelector('.titlebar');
-  let isDragging = false;
-  let startX, startY, initialWindowLeft, initialWindowTop;
-
-  function startDragging(clientX, clientY) {
-      isDragging = true;
-      startX = clientX;
-      startY = clientY;
-      initialWindowLeft = window.offsetLeft;
-      initialWindowTop = window.offsetTop;
-  }
-
-  function stopDragging() {
-      isDragging = false;
-  }
-
-  function dragWindow(clientX, clientY) {
-      if (isDragging) {
-          let deltaX = clientX - startX;
-          let deltaY = clientY - startY;
-          window.style.left = initialWindowLeft + deltaX + 'px';
-          window.style.top = initialWindowTop + deltaY + 'px';
-      }
-  }
-
-  titlebar.addEventListener('mousedown', function(e) {
-      startDragging(e.clientX, e.clientY);
-  });
-
-  titlebar.addEventListener('touchstart', function(e) {
-      startDragging(e.touches[0].clientX, e.touches[0].clientY);
-  });
-
-  document.addEventListener('mousemove', function(e) {
-      dragWindow(e.clientX, e.clientY);
-  });
-
-  document.addEventListener('touchmove', function(e) {
-      dragWindow(e.touches[0].clientX, e.touches[0].clientY);
-  });
-
-  document.addEventListener('mouseup', stopDragging);
-  document.addEventListener('touchend', stopDragging);
-});
-// Bring Window to Top
-function bringWindowToTop(windowElement) {
-  const windows = document.querySelectorAll('.window');
-  windows.forEach(window => window.style.zIndex = '0');
-  windowElement.style.zIndex = '1';
 }
 
-document.querySelectorAll('.window').forEach(window => {
-  window.addEventListener('mousedown', function() {
-      bringWindowToTop(this);
-  });
-});
 
-// Titlebar buttons
-document.querySelectorAll('.window').forEach(window => {
-  const minimizeButton = window.querySelector('.titlebar-button[id$="Minimize"]');
-  const closeButton = window.querySelector('.titlebar-button[id$="Close"]');
+/**
+ * Dynamically shows project details based on the selected project.
+ * @param {string} projectId - The ID of the project to show details for.
+ * @returns {void}
+ */
+function showProjectDetails(projectId) {
+    // Attempt to find the project by ID
+    const project = projectsData.find(p => p.id === projectId);
+    if (!project) return;
 
-  minimizeButton.addEventListener('click', function() {
-      closeWindow(window.classList[1]);
-  });
+    // Shields are small badges representing project tags
+    const shields = project.tags.map(tag =>
+        `<img alt="${tag}" src="https://img.shields.io/badge/${tag.replace(/\s/g, '_')}-informational?style=flat&logo=${tag.toLowerCase().replace('.','').replace(' ','')}&logoColor=white&color=282828">`
+    ).join(' ');
 
-  closeButton.addEventListener('click', function() {
-      closeWindow(window.classList[1]);
-      changeTaskbarButtonState(taskbarButtons[window.classList[1]], 'default');
-  });
-});
+    // Project information dynamically populated
+    projectDetailsContainer.innerHTML = `
+        <h1>${project.name}</h1>
+        <h2><i>${project.shortDescription}</i></h2>
+        <div class="projectShields">${shields}</div>
+    ` 
+    var mediaHtml = '';
 
+    if (project.bannerVideo) {
+        mediaHtml = `
+            <div class="video-container" style="position:relative;">
+            <img 
+                class="projectImageDontFit" 
+                src="${project.bannerPoster || ''}" 
+                alt="${project.name} poster" 
+                style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;"
+            >
+            <video 
+                class="projectImageDontFit" 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                poster="${project.bannerPoster || ''}" 
+                preload="metadata"
+                style="position:relative;z-index:2;"
+                onplaying="this.previousElementSibling.style.display='none';"
+            >
+                <source src="${project.bannerVideo}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+        `;
+    } else if (project.bannerImage) {
+        mediaHtml = `
+        <img class="projectImage" src="${project.bannerImage}" alt="${project.name} banner">
+        `;
+    } 
 
-// Kalam App Script
-const kalamAppTextPairs = [
-    { title: "Software Developer", subtitle: "Projects available by clicking below" },
-    { title: "Computer Science Student", subtitle: "Placement Year @ Aston University" },
-    { title: "Open Source Contributor", subtitle: "Active contributor to Open Source Projects"},
-    { title: "Technology Enthusiast", subtitle: "Constantly exploring new technologies and programming languages"},
-    { title: "Community Founder", subtitle: "Leading a vibrant online community of nearly 200 members"},
-    { title: "Retail Professional", subtitle: "Experienced in sales, buying and customer service"},
-    { title: "Linux Server Administrator", subtitle: "Proficient in managing and configuring Linux for projects"},
-    { title: "Electronics Troubleshooter", subtitle: "Skilled at repairing various electronic devices"},
-    { title: "Aspiring Software Engineer", subtitle: "Due to start placement @ Blueberry Consultants"},
-  ];
-  
-  let currentKalamAppIndex = 0;
-  const kalamTitleElement = document.getElementById("kalamTitle");
-  const kalamSubtitleElement = document.getElementById("kalamSubtitle");
-  const typingSpeed = 40;
-  const pauseDuration = 1000; 
-  
-  function typeText(element, text, callback) {
-    let i = 0;
-    element.innerHTML = "";
-    function type() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, typingSpeed);
-      } else {
-        callback();
-      }
+    projectDetailsContainer.innerHTML += mediaHtml || '';
+    
+    if (project.tldr) {
+        projectDetailsContainer.innerHTML += `
+        <div class="tldrContainer">
+            <h2>TL;DR</h2>
+            <p class="tldr">${project.tldr}</p>
+        </div>
+        `;
     }
-    type();
-  }
-  
-  function deleteText(element, callback) {
-    let text = element.innerText;
-    let i = text.length;
-    function del() {
-      if (i > 0) {
-        element.innerText = text.substring(0, i - 1);
-        i--;
-        setTimeout(del, typingSpeed);
-      } else {
-        callback();
-      }
+
+    projectDetailsContainer.innerHTML += `
+        ${project.details}
+    `;
+
+    // Connect data to footer buttons
+    updateProjectFooterButtons(project);
+
+    // Scroll to the top of the project details container
+    projectDetailsContainer.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+/**
+ * Updates the footer buttons based on the project data.
+ * Disables buttons if links are not provided.
+ * @param {*} project - The project object containing source and live links.
+ */
+function updateProjectFooterButtons(project) {
+    if (project.sourceLink) {
+        sourceButton.classList.remove('disabled');
+        sourceButton.onclick = () => window.open(project.sourceLink, '_blank');
+    } else {
+        sourceButton.classList.add('disabled');
+        sourceButton.onclick = null;
     }
-    del();
-  }
-  
-  function cycleText() {
-    const { title, subtitle } = kalamAppTextPairs[currentKalamAppIndex];
-    let titleIndex = 0;
-    let subtitleIndex = 0;
-  
-    function typeTexts() {
-      if (titleIndex < title.length || subtitleIndex < subtitle.length) {
-        if (titleIndex < title.length) {
-          kalamTitleElement.innerHTML += title.charAt(titleIndex);
-          titleIndex++;
-        }
-        if (subtitleIndex < subtitle.length) {
-          kalamSubtitleElement.innerHTML += subtitle.charAt(subtitleIndex);
-          subtitleIndex++;
-        }
-        setTimeout(typeTexts, typingSpeed);
-      } else { 
-        setTimeout(deleteTexts, pauseDuration);
-      }
+
+    if (project.liveLink) {
+        linkButton.classList.remove('disabled');
+        linkButton.onclick = () => window.open(project.liveLink, '_blank');
+    } else {
+        linkButton.classList.add('disabled');
+        linkButton.onclick = null;
     }
-  
-    function deleteTexts() {
-      if (titleIndex > 0 || subtitleIndex > 0) {
-        if (titleIndex > 0) {
-          kalamTitleElement.innerText = title.substring(0, titleIndex - 1);
-          titleIndex--;
-        }
-        if (subtitleIndex > 0) {
-          kalamSubtitleElement.innerText = subtitle.substring(0, subtitleIndex - 1);
-          subtitleIndex--;
-        }
-        setTimeout(deleteTexts, typingSpeed);
-      } else {
-        currentKalamAppIndex = (currentKalamAppIndex + 1) % kalamAppTextPairs.length;
-        setTimeout(cycleText, pauseDuration);
-      }
+}
+
+
+/**
+ * Starts the typing effect for the Kalam app title and subtitle.
+ * Cycles through predefined text pairs.
+ * @returns {void}
+ */
+function startTypingEffect() {
+    const kalamTitleElement = document.getElementById("kalamTitle");
+    const kalamSubtitleElement = document.getElementById("kalamSubtitle");
+    if (!kalamTitleElement || !kalamSubtitleElement) return;
+    
+    let currentIndex = 1;
+    const typingSpeed = 40;
+    const pauseDuration = 2000;
+
+    function type(element, text, callback) {
+        let i = 0;
+        element.innerHTML = "";
+        const typeWriter = () => {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, typingSpeed);
+            } else if (callback) {
+                callback();
+            }
+        };
+        typeWriter();
     }
-  
-    typeTexts();
-  }
-  
-  cycleText();
 
-// Kalam App buttons
-document.getElementById("projectsButton").addEventListener('click', function(){
-  openWindow("projectsApp");
-  bringWindowToTop(document.getElementById("projectsApp"));
-});
+    function cycle() {
+        const pair = kalamAppTextPairs[currentIndex];
+        type(kalamTitleElement, pair.title, () => {
+            type(kalamSubtitleElement, pair.subtitle, () => {
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % kalamAppTextPairs.length;
+                    cycle();
+                }, pauseDuration);
+            });
+        });
+    }
 
-document.getElementById("socialsButton").addEventListener('click', function(){
-  openWindow("socialsApp");
-  bringWindowToTop(document.getElementById("socialsApp"));
-});
-
-// Project App
-
-const toggleSidebarBtn = document.querySelector('.toggle-sidebar-btn');
-const projectList = document.querySelector('.project-list');
-
-document.querySelectorAll('.project').forEach(function(project) {
-  project.addEventListener('click', function() {
-      document.querySelectorAll('.project').forEach(function(proj) {
-          proj.classList.remove('active');
-      });
-
-      this.classList.add('active');
-
-      const projectId = this.getAttribute('data-project');
-      const projectLink = this.getAttribute('data-link');
-      const projectSource = this.getAttribute('data-source');
+    // Start the cycle after a short delay
+    setTimeout(cycle, pauseDuration);
+}
 
 
-      document.querySelectorAll('.project-details').forEach(function(details) {
-          details.classList.remove('active');
-      });
+// DOM Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Start Menu Logic
+    const startButton = document.querySelector('.start');
+    const startMenu = document.querySelector('.start-menu');
+    const startImg = document.querySelector('.start img');
+    startButton.addEventListener('click', () => {
+        startMenu.classList.toggle('active');
+        startImg.src = startMenu.classList.contains('active') ? '/images/startClicked.webp' : '/images/startNormal.webp';
+    });
 
-      const sourceButton = document.getElementById("sourceButton");
-      const linkButton = document.getElementById("linkButton");
+    // Date and Time Display
+    const dateElement = document.querySelector('#tray-date');
+    const timeElement = document.querySelector('#tray-time');
+    setInterval(() => {
+        const now = new Date();
+        dateElement.textContent = now.toLocaleDateString();
+        timeElement.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }, 1000);
 
-      if (projectSource) {
-          sourceButton.setAttribute("onclick", "window.location.href='" + projectSource + "'");
-          sourceButton.classList.remove("disabled");
-      } else {
-          sourceButton.removeAttribute("onclick");
-          sourceButton.classList.add("disabled");
-      }
+    // Populate project list and show first project details showing first project by default
+    populateProjectList();
+    showProjectDetails(projectsData[0].id);
 
-      if (projectLink) {
-          linkButton.setAttribute("onclick", "window.location.href='" + projectLink + "'");
-          linkButton.classList.remove("disabled");
-      } else {
-          linkButton.removeAttribute("onclick");
-          linkButton.classList.add("disabled");
-      }
+    // Initialize the Kalam app typing effect
+    startTypingEffect();
 
-      projectList.classList.remove('active');
-      document.getElementById(projectId).classList.add('active');
-  });
-});
+    // Event listeners for taskbar and window interactions
+    document.body.addEventListener('click', (e) => {
+        // Taskbar clicks
+        if (e.target.closest('#kalamTaskbarIcon')) toggleWindow('kalamApp');
+        if (e.target.closest('#explorerTaskbarIcon')) toggleWindow('projectsApp');
+        if (e.target.closest('#ieTaskbarIcon')) toggleWindow('socialsApp');
+        
+
+        const closeButton = e.target.closest('.titlebar-button[id$="Close"]');
+        if (closeButton) closeWindow(closeButton.closest('.window').id);
+
+        const minimizeButton = e.target.closest('.titlebar-button[id$="Minimize"]');
+        if (minimizeButton) closeWindow(minimizeButton.closest('.window').id);
+        
+
+        if(e.target.closest('.toggle-sidebar-btn')) {
+            document.querySelector('.project-list').classList.toggle('active');
+        }
+
+        if (e.target.closest('#projectsButton')) openWindow('projectsApp');
+        if (e.target.closest('#socialsButton')) openWindow('socialsApp');
+    });
 
 
-toggleSidebarBtn.addEventListener('click', function() {
-    projectList.classList.toggle('active');
-    toggleSidebarBtn.classList.toggle('active');
+    // Project list click handling
+    projectListContainer.addEventListener('click', (e) => {
+        const projectElement = e.target.closest('.project');
+        if (projectElement) {
+            projectListContainer.querySelector('.active')?.classList.remove('active');
+            projectElement.classList.add('active');
+            showProjectDetails(projectElement.dataset.projectId);
+            // Set the scroll position to the top of the project details
+            
+
+            if(window.innerWidth <= 800) {
+                 projectListContainer.classList.remove('active');
+            }
+        }
+    });
+
+    // Window dragging logic
+    desktop.addEventListener('mousedown', (e) => {
+        const targetWindow = e.target.closest('.window');
+        if(targetWindow) bringWindowToTop(targetWindow);
+
+        const titlebar = e.target.closest('.titlebar');
+        if (titlebar) {
+            e.preventDefault(); 
+            const windowEl = titlebar.closest('.window');
+            let isDragging = true;
+            let startX = e.clientX;
+            let startY = e.clientY;
+            let initialLeft = windowEl.offsetLeft;
+            let initialTop = windowEl.offsetTop;
+
+            const drag = (moveEvent) => {
+                if (!isDragging) return;
+                
+               
+                let newLeft = initialLeft + (moveEvent.clientX - startX);
+                let newTop = initialTop + (moveEvent.clientY - startY);
+
+                
+                const viewportHeight = document.documentElement.clientHeight;
+                const titlebarHeight = titlebar.offsetHeight;
+
+                
+                newTop = Math.max(0, newTop);
+                
+                newTop = Math.min(newTop, viewportHeight - titlebarHeight);
+
+
+                windowEl.style.left = `${newLeft}px`;
+                windowEl.style.top = `${newTop}px`;
+            };
+
+            const stopDrag = () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', drag);
+                document.removeEventListener('mouseup', stopDrag);
+            };
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDrag);
+        }
+    });
 });
