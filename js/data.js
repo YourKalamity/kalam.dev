@@ -1,8 +1,8 @@
 // Text in this file is used to populate the kalamApp text pairs and project data.
 export const kalamAppTextPairs = [
-    { title: "Fullstack Software Engineer", subtitle: "‹  Python  ›‹  Flutter ›‹  PHP  ›‹  Java  ›" },
+    { title: "Software Engineer", subtitle: "C <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Python <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Flutter <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> PHP <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Java" },
     { title: "E2E Project Owner", subtitle: "Shipped full-stack apps from scratch to release" },
-    { title: "Software Developer", subtitle: "Delivered production grade solutions at Blueberry Consultants" },
+    { title: "Proven Track Record", subtitle: "Delivered production grade solutions at Blueberry Consultants" },
     { title: "Computer Science Student", subtitle: "on track for a First Class Honours at Aston University" },
     { title: "Machine Learning Engineer", subtitle: "Delivered AI and Machine Learning applications" },
     { title: "Open Source Contributor", subtitle: "Actively work with open source projects" },
@@ -234,7 +234,7 @@ export const projectsData = [
     {
         id: "projectEvotech",
         name: "evotech;",
-        shortDescription: "A robust, full-stack e-commerce platform built from scratch - and salvaged under pressure",
+        shortDescription: "A robust, full-stack e-commerce platform built from scratch",
         icon: "images/projects/evotech/evotechLogo.webp",
         liveLink: "https://evotech.kalam.dev",
         sourceLink: "https://github.com/aston-cs2tp-evotech/evotech",
@@ -253,53 +253,83 @@ export const projectsData = [
         details: `
             <h3>Project Overview</h3>
             <p>
-                <strong>Evotech</strong> is a full-stack e-commerce web application built as part of a university group project. While it began as a collaborative effort among eight students, I ultimately took ownership of the vast majority of technical implementation due to repeated absences, skill gaps, and lack of communication from several teammates. 
+                <strong>evotech</strong> is a full-stack e-commerce web application built as part of my university's team project module in second year.
+                The goal was to create a robust, production ready platform that fit specific user requirements that as a group we had to define.
+                Some students created a pet store, others created a clothing store, but we decided to create a tech store that sold computer parts.
             </p>
 
             <h3>Custom MVC Framework</h3>
             <p>
-                To bring structure to the backend and make the project more accessible to the team, I developed a custom PHP MVC framework tailored to the needs of the platform. This provided:
+                At Aston University, we had a dedicated module in first year that taught us the fundamentals of web development, including
+                the Model-View-Controller (MVC) architecture and how to build web applications using PHP, HTML, CSS, and JavaScript. This 
+                was a mandatory module for all Computer Science and Cyber Security students, so at the start of the project, I assumed
+                my peers would have a good understanding of how to build web applications.
+            </p>
+            <p>
+                To further simplify development for everyone involved, I created a custom lightweight PHP MVC framework that provided 
+                a structured way to build the application. This framework included:
             </p>
             <ul>
-                <li>A clear separation of concerns for models, views, and controllers</li>
-                <li>Simplified routing and templating for frontend engineers with limited experience</li>
-                <li>Reusable components and a predictable project structure for collaboration</li>
+                <li>A routing system baked into the index.php file that mapped URLs to controller actions</li>
+                <li>A base controller class that provided common functionality like rendering views and handling requests</li>
+                <li>A model class that handled database interactions using prepared statements</li>
+                <li>A view system that allowed for easy templating and dynamic content rendering</li>
+                <li>Built-in error handling and logging to simplify debugging</li>
+                <li>Authentication system with tokens</li>
+                <li>Generation of API tokens for external use</li>
             </ul>
             <p>
-                This decision not only improved maintainability but also reduced technical friction for less experienced teammates.
+                Fundamentally this meant those working on the front end (where our less experienced peers were) could
+                focus on HTML, CSS, and JavaScript without worrying about the underlying PHP logic - something most of my peers 
+                had chosen to skip. 
+            </p>
+            <italic>
+                This was a flaw of the way first year modules were set up; students only required 40%
+                of a module total to pass, and there is no incentive to get higher than that. This meant that after the
+                basic web development assessment (HTML, CSS, JS) and the database assessment (SQL), the final assessment of using
+                PHP and integrating basic web dev with a database was not taken seriously by most students and in a lot of cases, not even attempted.
+            </italic>
+
+            <p>
+                Additionally, I created a guide to teach everyone how to use Git and how it integrates with our GitHub repository, as well 
+                as spending one to one time with those who had never used Git before.
             </p>
 
             <h3>Emergency Admin Dashboard Rebuild</h3>
             <p>
-                One team member, who claimed to be building the Admin Dashboard while abroad, failed to deliver anything until days before final submission — revealing they hadn’t started. I took over completely and within 72 hours:
+                Mid-project, one of the members of the team who was responsible for the Admin Dashboard, had decided to go 
+                on holiday for 2 months, assuring us he would be able to commit the code from India whilst he was away.
+                The more I pressed on this, the more excuses I received, primarily saying that he has completed it but
+                the Internet speed in India was too slow to upload the code.
+            </p>
+            <p>
+                When he finally returned back to the UK, he put his hands up and said actually he had not done
+                any of the work and had not even started it. When I asked to see it, he had quickly generated code using
+                ChatGPT that was not functional, and had not even bothered to test it as well as looking completely different
+                to the designs.
+            </p>
+            <p>
+                At this moment in time, with a close deadline looming, I had to step in and take over the entire Admin Dashboard
+                since I would've been responsible with tying it to the backend anyway. I had 3 days to complete the entire
+                Admin Dashboard, which included:
             </p>
             <ul>
-                <li>Built the entire Admin and Inventory Management interface from scratch (frontend + backend)</li>
-                <li>Designed and connected secure CRUD APIs for product listings, orders, stock control, and user permissions</li>
-                <li>Implemented authentication, token-based access, and client-side validation</li>
+                <li>Designing the entire frontend using HTML, CSS, and JavaScript</li>
+                <li>Implementing the backend logic in PHP to handle all the CRUD operations</li>
+                <li>Creating the database schema and writing the SQL queries to interact with the database</li>
+                <li>Integrating the frontend and backend to ensure everything worked together</li>
+                <li>Creating an API token management system (for example to allow scanners to control stock levels)</li>
+                <li>Implementing a secure authentication system to protect sensitive routes</li>
             </ul>
+
+            <img src="images/projects/evotech/evotech-admin.webp" alt="Admin Dashboard" class="projectImage">
 
             <h3>Infrastructure, Testing, and DevOps</h3>
             <p>
-                I was also responsible for the foundational infrastructure and development tooling:
-            </p>
-            <ul>
-                <li>Set up GitHub repository with protected branches, fork-based contributions, and automated pull request testing</li>
-                <li>Integrated PHPUnit and GitHub Actions to ensure test coverage and code stability (179+ assertions)</li>
-                <li>Developed cross-platform deployment scripts (Bash, PowerShell) for consistent local and production environments</li>
-                <li>Built an automated backup pipeline using a VPS and cloud storage for 3-2-1 recovery</li>
-            </ul>
-
+               
             <h3>Security and Robustness</h3>
             <p>
-                Security was built into every layer of the stack:
-            </p>
-            <ul>
-                <li>All inputs were sanitized and validated on both client and server sides</li>
-                <li>Protected sensitive routes and config files via <code>.htaccess</code> and backend session validation</li>
-                <li>Implemented scoped API tokens with expiry and CSRF prevention measures</li>
-                <li>Tested system resilience through simulated failures and enforced exception handling</li>
-            </ul>
+                Security was a huge consideration for an e-
 
             <h3>Team Management and Mentorship</h3>
             <p>
@@ -307,22 +337,24 @@ export const projectsData = [
             </p>
             <ul>
                 <li>Created project workflows in Trello and Discord, and managed all technical communication</li>
-                <li>Authored project documentation including guides, onboarding, CONTRIBUTING.md, and README</li>
-                <li>Trained teammates with no Git experience and walked them through their first merges</li>
+                <li>Authored project documentation including guides, onboarding and README.MD</li>
                 <li>Conducted code reviews, debugged issues for other subteams, and handled cross-functional blockers</li>
             </ul>
 
             <h3>Outcome</h3>
             <p>
-                Despite significant disruptions, miscommunications, and critical gaps from other team members, the final platform was delivered on time, fully functional, and production-ready. It included:
+                The project was a huge success, with the final product being a fully functional e-commerce platform that met all the requirements set out at the start of the project.
+                The platform was well-received by the examiner as well as by people I show the site to.
             </p>
             <ul>
-                <li>Responsive customer-facing storefront with authentication and basket/checkout flows</li>
-                <li>Full admin panel with inventory management, order tracking, and dynamic database updates</li>
-                <li>Secure database integration, unit and integration testing, and automated backups</li>
+                <li>Every member achieved a high mark for this project (based on their contribution)</li>
+                <li>I received a first class mark for my contribution, with the examiner praising my leadership and technical skills</li>
+                <li>The project was considered to be one of my best pieces when I was interviewing for placements</li>
             </ul>
             <p>
-                This project became an exercise not just in software engineering, but in resilience, leadership, and rapid delivery under high pressure. From building custom frameworks to firefighting last-minute failures, I took the lead in every technical domain to ensure the project was not only completed — but exceeded expectations.
+                Overall, this project was a great learning experience for me, as it allowed me to apply my 
+                knowledge of web development in a real world scenario, but crucially, it taught me how to manage a team of developers,
+                and how to deliver a project from start to finish under pressure.
             </p>
         `
     },

@@ -116,11 +116,18 @@ body {
     right:auto;
 }
 
+.start-menu-profile-icon {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .start-menu-profile-icon img{
     width: 100%;
     height: 100%;
     max-width: 75px; 
-    max-height: 75px; 
+    max-height: 75px;
+
 }
 
 .start-menu-user-details {
@@ -131,8 +138,29 @@ body {
     width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 10px;
+    height: 100%;
+}
+
+.start-menu-user-details p {
+  text-align: left;
+  margin: 8px 0 0 0;
+  font-weight: bold;
+}
+.start-menu-right-buttons {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.start-menu-right-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    align-items: center;
 }
 
 .start-menu-right-buttons p {
@@ -154,6 +182,10 @@ body {
     position: absolute;
     top: 50%;
     right: 10px;
+    font: 0.1rem;
+    font-family: 'Arial', sans-serif; 
+    font-size: 10px;
+    vertical-align:middle;
     transform: translateY(-50%);
 }
 
