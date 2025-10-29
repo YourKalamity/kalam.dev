@@ -1,35 +1,74 @@
 // Text in this file is used to populate the kalamApp text pairs and project data.
 export const kalamAppTextPairs = [
-    { title: "Software Engineer", subtitle: "C <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Python <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Flutter <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> PHP <span style=\"font-size:0.5em; vertical-align:middle;\">✿</span> Java" },
-    { title: "E2E Project Owner", subtitle: "Shipped full-stack apps from scratch to release" },
-    { title: "Proven Track Record", subtitle: "Delivered production grade solutions at Blueberry Consultants" },
-    { title: "Computer Science Student", subtitle: "on track for a First Class Honours at Aston University" },
-    { title: "Machine Learning Engineer", subtitle: "Delivered AI and Machine Learning applications" },
-    { title: "Open Source Contributor", subtitle: "Actively work with open source projects" },
-    { title: "CI/CD Automator", subtitle: "Implemented CICD pipelines with GitHub Actions and GitLab CICD" },
-    { title: "Linux Systems Builder", subtitle: "Configured secure VPSs for custom services" },
-    { title: "Community Founder", subtitle: "Runs a community of almost 200 people" },
-    { title: "Grounded in Data", subtitle: "Background in Physics and Mathematics (A-Levels)" },
+  {
+    title: "Software Engineer",
+    subtitle:
+      'C <span style="font-size:0.5em; vertical-align:middle;">✿</span> Python <span style="font-size:0.5em; vertical-align:middle;">✿</span> Flutter <span style="font-size:0.5em; vertical-align:middle;">✿</span> PHP <span style="font-size:0.5em; vertical-align:middle;">✿</span> Java',
+  },
+  {
+    title: "E2E Project Owner",
+    subtitle: "Shipped full-stack apps from scratch to release",
+  },
+  {
+    title: "Proven Track Record",
+    subtitle: "Delivered production grade solutions at Blueberry Consultants",
+  },
+  {
+    title: "Computer Science Student",
+    subtitle: "on track for a First Class Honours at Aston University",
+  },
+  {
+    title: "Machine Learning Engineer",
+    subtitle: "Delivered AI and Machine Learning applications",
+  },
+  {
+    title: "Open Source Contributor",
+    subtitle: "Actively work with open source projects",
+  },
+  {
+    title: "CI/CD Automator",
+    subtitle: "Implemented CICD pipelines with GitHub Actions and GitLab CICD",
+  },
+  {
+    title: "Linux Systems Builder",
+    subtitle: "Configured secure VPSs for custom services",
+  },
+  {
+    title: "Community Founder",
+    subtitle: "Runs a community of almost 200 people",
+  },
+  {
+    title: "Grounded in Data",
+    subtitle: "Background in Physics and Mathematics (A-Levels)",
+  },
 ];
 
 // Data for the projects displayed in the project app
 export const projectsData = [
-    {
-        id: "projectLaryngoscope",
-        name: "AI-Powered Laryngoscope Application",
-        shortDescription: "On-device Throat Disease Detection",
-        icon: "images/projects/laryngoscope/laryngoscope-icon.webp",
-        liveLink: null,
-        sourceLink: null,
-        bannerImage: "",
-        bannerVideo: "images/projects/laryngoscope/laryngoscope-banner.mp4",
-        bannerPoster: "images/projects/laryngoscope/laryngoscope-poster.webp",
-        tags: [
-            "Android", "Flutter", "Dart", "TensorFlow", "YOLO", "Edge AI", "Computer Vision",
-            "UVC Camera", "Model Quantisation", "Realtime Inference"
-        ],
+  {
+    id: "projectLaryngoscope",
+    name: "AI-Powered Laryngoscope Application",
+    shortDescription: "On-device Throat Disease Detection",
+    icon: "images/projects/laryngoscope/laryngoscope-icon.webp",
+    liveLink: null,
+    sourceLink: null,
+    bannerImage: "",
+    bannerVideo: "images/projects/laryngoscope/laryngoscope-banner.mp4",
+    bannerPoster: "images/projects/laryngoscope/laryngoscope-poster.webp",
+    tags: [
+      "Android",
+      "Flutter",
+      "Dart",
+      "TensorFlow",
+      "YOLO",
+      "Edge AI",
+      "Computer Vision",
+      "UVC Camera",
+      "Model Quantisation",
+      "Realtime Inference",
+    ],
 
-        tldr: `
+    tldr: `
             <ul>
                 <li>Developed an application for throat disease detection using ML.</li>
                 <li>Curated and annotated a dataset of 3018 throat images.</li>
@@ -41,7 +80,7 @@ export const projectsData = [
             </ul>
         `,
 
-        details: `
+    details: `
             <h3>Project Overview</h3>
             <p>
                 I had worked as the lead developer on a project to create a laryngoscope app for Android that uses
@@ -152,18 +191,18 @@ export const projectsData = [
                 This project has been a great learning experience for me, as it has allowed me to work with real-time object detection on mobile devices,
                 and importantly, has bolstered my enthusiasm for AI and ML applications in general.
             </p>
-        `
-        },
-    {
-        id: "projectSnapStream",
-        name: "SnapStream",
-        shortDescription: "Offline QR Code Data-Transfer Protocol",
-        icon: "images/projects/snapstream/snapstream-icon.webp", 
-        liveLink: null,
-        sourceLink: null, 
-        bannerImage: "images/projects/snapstream/snapstream-banner.webp",
-        tags: ["CSharp", "Flutter", "Dart", "Data Protocol", "Offline First"],
-        tldr: `
+        `,
+  },
+  {
+    id: "projectSnapStream",
+    name: "SnapStream",
+    shortDescription: "Offline QR Code Data-Transfer Protocol",
+    icon: "images/projects/snapstream/snapstream-icon.webp",
+    liveLink: null,
+    sourceLink: null,
+    bannerImage: "images/projects/snapstream/snapstream-banner.webp",
+    tags: ["CSharp", "Flutter", "Dart", "Data Protocol", "Offline First"],
+    tldr: `
             <ul>
                 <li>Developed SnapStream, an offline data-transfer protocol using QR codes</li>
                 <li>Designed to transfer large data payloads in environments without reliable connectivity</li>
@@ -171,7 +210,7 @@ export const projectsData = [
                 <li>Created a proof of concept in C# and final version in Flutter/Dart</li>
                 <li>Successfully commercialised and adopted by major clients for field data transfer</li>
         `,
-        details: `
+    details: `
             <h3>Project Overview</h3>
             <p>
                 When I started at Blueberry Consultants, a client had a unique challenge - they needed to transfer large amounts of data
@@ -229,18 +268,30 @@ export const projectsData = [
                 For me personally, it was a way to prove myself in a new workplace and show my ability to innovate and deliver solutions under pressure.
             </p>
 
-        `
-    },
-    {
-        id: "projectEvotech",
-        name: "evotech;",
-        shortDescription: "A robust, full-stack e-commerce platform built from scratch",
-        icon: "images/projects/evotech/evotechLogo.webp",
-        liveLink: "https://evotech.kalam.dev",
-        sourceLink: "https://github.com/aston-cs2tp-evotech/evotech",
-        bannerImage: "images/projects/evotech/evotechBanner.webp",
-        tags: ["PHP", "Custom MVC", "MariaDB", "HTML", "CSS", "JavaScript", "CI/CD", "GitHub Actions", "Security", "Leadership"],
-        tldr: `
+        `,
+  },
+  {
+    id: "projectEvotech",
+    name: "evotech;",
+    shortDescription:
+      "A robust, full-stack e-commerce platform built from scratch",
+    icon: "images/projects/evotech/evotechLogo.webp",
+    liveLink: "https://evotech.kalam.dev",
+    sourceLink: "https://github.com/aston-cs2tp-evotech/evotech",
+    bannerImage: "images/projects/evotech/evotechBanner.webp",
+    tags: [
+      "PHP",
+      "Custom MVC",
+      "MariaDB",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "CI/CD",
+      "GitHub Actions",
+      "Security",
+      "Leadership",
+    ],
+    tldr: `
             <ul>
                 <li>Designed and led development of a full-stack e-commerce platform</li>
                 <li>Built a custom lightweight PHP MVC framework to support structured and maintainable code</li>
@@ -250,7 +301,7 @@ export const projectsData = [
                 <li>Managed team workflows, reviewed all merges, and mentored teammates with no web experience</li>
             </ul>
         `,
-        details: `
+    details: `
             <h3>Project Overview</h3>
             <p>
                 <strong>evotech</strong> is a full-stack e-commerce web application built as part of my university's team project module in second year.
@@ -356,18 +407,21 @@ export const projectsData = [
                 knowledge of web development in a real world scenario, but crucially, it taught me how to manage a team of developers,
                 and how to deliver a project from start to finish under pressure.
             </p>
-        `
-    },
-    {
-        id: "projectLazyDSiFileDownloader",
-        name: "Lazy DSi File Downloader",
-        shortDescription: "A tool for automated homebrew setup on Nintendo DSi systems",
-        icon: "images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp",
-        liveLink: null,
-        sourceLink: "https://github.com/YourKalamity/lazy-dsi-file-downloader-archive",
-        bannerImage: "images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp",
-        tags: ["Python", "GitHub Actions", "Tkinter"],
-        details: `
+        `,
+  },
+  {
+    id: "projectLazyDSiFileDownloader",
+    name: "Lazy DSi File Downloader",
+    shortDescription:
+      "A tool for automated homebrew setup on Nintendo DSi systems",
+    icon: "images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp",
+    liveLink: null,
+    sourceLink:
+      "https://github.com/YourKalamity/lazy-dsi-file-downloader-archive",
+    bannerImage:
+      "images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp",
+    tags: ["Python", "GitHub Actions", "Tkinter"],
+    details: `
             <p>Lazy DSi File Downloader was created in order to simplify the homebrew process outlined in <a href="https://dsi.cfw.guide/">dsi.cfw.guide</a></p>
             <p>The naming was due to the fact that I felt too <i>lazy</i> to manually copy each of the files for each of my DSi systems I modded</p>
             <p>Instead I spent even longer developing this app to automatically do all of this.</p>
@@ -382,18 +436,114 @@ export const projectsData = [
             </ul>
             <p>To handle the larger list of homebrew, I created a separate repository with a list of homebrew, download links, and instructions for my software to follow. This extensibility meant that more homebrew could be added to the download list whilst keeping the size of Lazy DSi File Downloader small.</p>
             <p>However, due to the security measures put in place on Windows, it became *more* difficult to use the app for new users... This ultimately led to the archival of the project.</p>
-        `
-    },
-    {
-        id: "projectSenpai",
-        name: "Senpai",
-        shortDescription: "A Discord chat bot with versatile features",
-        icon: "images/projects/senpai/senpai.webp",
-        liveLink: null,
-        sourceLink: "https://github.com/YourKalamity/senpai",
-        bannerImage: "images/projects/senpai/senpai-demo.gif",
-        tags: ["Python", "sqlite", "discord.py"],
-        details: `
+        `,
+  },
+  {
+    id: "projectWaterdash",
+    name: "WaterDash",
+    shortDescription:
+      "Shopify storefront & AWS serverless backend for a bottled spring water brand",
+    icon: "images/projects/waterdash/waterdash-icon.webp",
+    liveLink: "https://waterdash.co.uk",
+    sourceLink: null,
+    bannerImage: "images/projects/waterdash/waterdash-banner.webp",
+    tags: [
+      "Freelance",
+      "Shopify",
+      "AWS",
+      "Lambda",
+      "API Gateway",
+      "CI/CD",
+      "GitHub Actions",
+      "Zoho Mail",
+      "Domain Setup",
+      "Serverless",
+    ],
+
+    tldr: `
+        <ul>
+            <li>Delivered a production-grade Shopify storefront for a bottled spring water company.</li>
+            <li>Collaborated as a two-person freelance team under the brand <strong>Whimsico</strong>.</li>
+            <li>Implemented a custom AWS backend (Lambda + API Gateway) for postcode-based delivery interest registration.</li>
+            <li>Set up an AWS Organization and managed infrastructure provisioning for the WaterDash client.</li>
+            <li>Automated Shopify theme and Lambda deployments via CI/CD pipelines.</li>
+            <li>Configured a professional domain, Zoho Mail workspace, and team infrastructure for Whimsico.</li>
+        </ul>
+    `,
+
+    details: `
+        <h3>Project Overview</h3>
+        <p>
+            <strong>WaterDash</strong> was a real-world freelance project delivered collaboratively under the
+            <strong>Whimsico</strong> brand, a micro-agency founded by myself and my good friend.
+            Our client was a bottled spring water company seeking a Shopify-based e-commerce site to showcase and sell their product
+            while supporting unique, data-driven customer interactions.
+        </p>
+
+        <h3>Collaboration and Scope</h3>
+        <p>
+            The project was initiated when my good friend, <a href="https://maciejm.dev/">Maciej</a>, was approached by the business owner, a friend of his, to create a custom website.
+            We decided to collaborate and deliver the engagement together, forming <strong>Whimsico</strong> as our operating identity.
+            We worked on the project equally 
+        </p>
+
+        <h3>Technical Architecture</h3>
+        <p>
+            The frontend storefront was built on <strong>Shopify</strong>, using the client's design language and feedback to iteratively refine the layout and
+            user experience. My primary contribution focused on enabling the backend and deployment automation through <strong>AWS</strong> and CI/CD pipelines.
+        </p>
+
+        <ul>
+            <li><strong>AWS Organizations:</strong> I established a dedicated AWS Organization for WaterDash to ensure clean account separation and scalability.</li>
+            <li><strong>API Gateway + Lambda:</strong> Implemented a custom serverless backend that collected user <em>postcodes</em> and <em>email addresses</em> 
+                from visitors interested in deliveries in areas not yet served, a unique request from the client.</li>
+            <li><strong>Data Handling:</strong> The Lambda function validated input and securely stored customer interest data for future market expansion insights.</li>
+        </ul>
+
+        <h3>Automation and CI/CD</h3>
+        <p>
+            To support seamless iteration and client feedback cycles, I developed <strong>continuous integration and deployment pipelines</strong> for both
+            the Shopify theme and the AWS Lambda backend:
+        </p>
+        <ul>
+            <li>Automatic deployment of theme updates to the live Shopify store when changes were merged to main.</li>
+            <li>Automated packaging and deployment of Lambda functions via CI/CD to the client's AWS environment.</li>
+            <li>Reduced manual deployment time to near-zero, ensuring consistent, reliable updates across systems.</li>
+        </ul>
+
+        <h3>Infrastructure & Business Setup</h3>
+        <p>
+            Beyond the technical build, I also handled the foundational infrastructure for Whimsico as an operating entity:
+        </p>
+        <ul>
+            <li>Registered and configured the <strong>Whimsico domain</strong>.</li>
+            <li>Set up <strong>Zoho Mail</strong> for professional team communication.</li>
+            <li>Provisioned the full AWS environment for both our team and the client.</li>
+        </ul>
+
+        <h3>Outcome</h3>
+        <p>
+            The project was successfully delivered and deployed to production, fully meeting the client's design and technical requirements.
+            It represented a complete <strong>freelance production delivery</strong> — from design collaboration to automated deployment —
+            and served as an excellent case study in small-team execution, client management, and modern cloud-based Shopify development.
+        </p>
+
+        <p>
+            The experience of building WaterDash through Whimsico not only expanded my technical expertise in <strong>serverless AWS architectures</strong> and
+            <strong>CI/CD automation</strong>, but also solidified my confidence in end-to-end freelance delivery, client collaboration, and business operations.
+        </p>
+    `,
+  },
+  {
+    id: "projectSenpai",
+    name: "Senpai",
+    shortDescription: "A Discord chat bot with versatile features",
+    icon: "images/projects/senpai/senpai.webp",
+    liveLink: null,
+    sourceLink: "https://github.com/YourKalamity/senpai",
+    bannerImage: "images/projects/senpai/senpai-demo.gif",
+    tags: ["Python", "sqlite", "discord.py"],
+    details: `
             <p><i>Senpai in action, searching for a supplied image via its Anime lookup function</i></p>
             <p>Senpai is a Discord bot that I wrote initially as a form of experimentation and to better understand Discord bots in general</p>
             <p>Initially it was just a very basic bot... It then evolved into a bot capable of performing maths and more complex things.</p>
@@ -405,19 +555,26 @@ export const projectsData = [
                 <li>Conversion - A system that converts between file types</li>
                 <li>Anime - A system that allows users to use any screencap of an anime and find out the exact show, episode, season and a small clip of the specified image</li>
             </ul>
-        `
-    },
-    {
+        `,
+  },
+  {
     id: "projectNhsScripts",
     name: "NHS Reporting Scripts",
-    shortDescription: "Automated Reporting Pipeline for NHS Telephony Providers",
+    shortDescription:
+      "Automated Reporting Pipeline for NHS Telephony Providers",
     icon: "images/projects/nhs-reporting/nhs-reporting.webp",
     liveLink: null,
     sourceLink: null,
     bannerImage: "images/projects/nhs-reporting/nhs-reporting-banner.webp",
     tags: [
-        "Python", "PowerShell", "MS SQL", "JWT Auth",
-        "ETL", "Automation", "Windows Task Scheduler", "CSV/XLSX"
+      "Python",
+      "PowerShell",
+      "MS SQL",
+      "JWT Auth",
+      "ETL",
+      "Automation",
+      "Windows Task Scheduler",
+      "CSV/XLSX",
     ],
 
     tldr: `
@@ -593,8 +750,163 @@ export const projectsData = [
             This project was a great learning experience for me, as it allowed me to work with real
             world APIs, data transformation, and reporting. It also taught me the importance of error handling and monitoring in production systems,
             as well as the power of vectorised operations for performance optimisation.
+        </p>  
+    `,
+  },
+  {
+    id: "projectRouterRevival",
+    name: "Legacy System Modernisation",
+    shortDescription:
+      "Securing and containerising a legacy PHP system",
+    icon: "images/projects/router-revival/router-icon.webp",
+    liveLink: null,
+    sourceLink: null,
+    bannerImage: "images/projects/router-revival/router-banner.webp",
+    tags: [
+      "System Administration",
+      "DevOps",
+      "Docker",
+      "Linux",
+      "Security Hardening",
+      "PHP",
+      "Python",
+      "SQL Injection",
+      "Legacy Code",
+    ],
+
+    tldr: `
+        <ul>
+            <li>Resurrected, secured, and modernised a critical 9-year-old legacy PHP application.</li>
+            <li>Conducted a full security audit, identifying and remediating major vulnerabilities like SQL injection.</li>
+            <li>Containerised the entire multi-service application using Docker and Docker Compose.</li>
+            <li>Managed a high-stakes server OS upgrade from Ubuntu 16.04 to 24.04 LTS.</li>
+            <li>Transformed a complex, insecure manual setup into a stable, one-command deployment.</li>
+        </ul>
+    `,
+
+    details: `
+        <h3>Project Overview</h3>
+        <p>
+            I was tasked with the challenge of reviving a critical, 9-year-old virtual router system written in legacy PHP. 
+            The initial request was simple: get it running. 
+            However, my initial audit revealed the system was a significant security and operational risk.
+            I took the initiative to not just revive it, but to completely re-engineer its foundation for the modern era.
         </p>
+
+        <h3>Security Audit and Remediation</h3>
+        <p>
+            My first step was a comprehensive security audit of the legacy codebase. 
+            I discovered and remediated numerous critical vulnerabilities, including:
+        </p>
+        <ul>
+            <li>Direct susceptibility to <strong>SQL injection attacks</strong> due to unsanitised inputs.</li>
+            <li>Hardcoded database credentials and sensitive API keys committed directly into the codebase.</li>
+            <li>Outdated dependencies with known public exploits.</li>
+        </ul>
+        <p>
+            I systematically patched these flaws, used .env files for all secrets, and updated all dependencies to secure, stable versions.
+        </p>
+
+        <h3>Modernization and Containerization</h3>
+        <p>
+            To solve the system's brittleness and complex manual deployment process, I containerised the entire application 
+            using <strong>Docker and Docker Compose</strong>. This involved:
+        </p>
+        <ul>
+            <li>Creating separate, optimized Docker images for the PHP application, the database, and other services.</li>
+            <li>Writing a streamlined <code>docker-compose.yml</code> file that transformed the deployment into a single, reliable command.</li>
+            <li>This approach eliminated environment inconsistencies and dramatically simplified future maintenance and deployments.</li>
+        </ul>
         
-        
-    `
-}];
+        <h3>Infrastructure Management</h3>
+        <p>
+            The final challenge was deploying the modernized application onto the client's infrastructure, 
+            which was running an end-of-life version of Ubuntu (16.04 LTS). 
+            I successfully managed a high-stakes, in-place server upgrade to <strong>Ubuntu 24.04 LTS</strong>, 
+            navigating and resolving all resulting package dependency conflicts to
+            ensure a stable host environment for the new containerized system.
+        </p>
+
+        <h3>Outcome</h3>
+        <p>
+            What began as a simple revival task became a full-scale modernisation project. 
+            The result was a system that was not only functional but also secure, stable, and maintainable for the foreseeable future. 
+            I transformed a high-risk legacy asset into a reliable, modern service.
+        </p>
+    `,
+  },
+  {
+    id: "projectCicdPipeline",
+    name: "Automated Mobile Release Pipeline",
+    shortDescription: "CI/CD automation for building & deploying Flutter apps",
+    icon: "images/projects/cicd/cicd-icon.webp",
+    liveLink: null,
+    sourceLink: null,
+    tags: [
+      "DevOps",
+      "CI/CD",
+      "GitHub Actions",
+      "GitLab CI/CD",
+      "Automation",
+      "Flutter",
+      "Android",
+      "iOS",
+    ],
+
+    tldr: `
+        <ul>
+            <li>Identified and solved a major manual bottleneck in the mobile app release process.</li>
+            <li>Architected and built a fully automated CI/CD pipeline for Flutter applications.</li>
+            <li>Automated building, code signing, versioning, and deployment to both app stores.</li>
+            <li>Solution was adopted as the official company-wide template for all new mobile projects.</li>
+            <li>Authored the comprehensive guide for its implementation across the company.</li>
+        </ul>
+    `,
+
+    details: `
+        <h3>Project Overview</h3>
+        <p>
+            I identified a significant inefficiency in our mobile development lifecycle: 
+            the process of building, signing, and deploying new app versions to the app stores was entirely manual, 
+            time-consuming, and prone to human error. 
+            I took the initiative to design and implement a fully automated solution to solve this bottleneck.
+        </p>
+
+        <h3>Pipeline Architecture and Implementation</h3>
+        <p>
+            I architected a robust CI/CD pipeline using <strong>GitLab CI/CD</strong>
+            (with concepts portable to GitHub Actions) that automated every step of 
+            the release process for our Flutter applications:
+        </p>
+        <ul>
+            <li><strong>Automated Builds:</strong> 
+            The pipeline automatically triggers on a new tag, 
+            building the release versions for both Android (APK/AAB) and iOS (IPA).</li>
+
+            <li><strong>Code Signing & Versioning:</strong> 
+            Securely managed signing keys and automatically incremented build numbers, 
+            eliminating a complex and error-prone manual step.</li>
+
+            <li><strong>Automated Deployment:</strong> 
+            Integrated with the Google Play Store 
+            and Apple App Store Connect APIs to automatically upload the finished builds 
+            and submit them for review.</li>
+        </ul>
+
+        <h3>Outcome and Impact</h3>
+        <p>
+            The new automated pipeline transformed our release process,
+            reducing the time required for a new deployment from hours of 
+            manual work to a few minutes of automated execution. 
+            It eliminated human error, ensured consistency, and allowed developers 
+            to focus on building features instead of managing releases.
+        </p>
+        <p>
+            The solution was so successful and well-received that it was adopted as the 
+            <strong>official company-wide template</strong> for all new mobile application projects. 
+            I was subsequently tasked with writing the comprehensive internal guide to facilitate its adoption by other teams. 
+            This project was a clear example of how strategic automation can act as a force multiplier for an entire engineering department.
+        </p>
+    `,
+  }
+];
