@@ -3,7 +3,7 @@ export const kalamAppTextPairs = [
   {
     title: "Software Engineer",
     subtitle:
-      'C <span style="font-size:0.5em; vertical-align:middle;">✿</span> Python <span style="font-size:0.5em; vertical-align:middle;">✿</span> Flutter <span style="font-size:0.5em; vertical-align:middle;">✿</span> PHP <span style="font-size:0.5em; vertical-align:middle;">✿</span> Java',
+      'C ✿ Python ✿ Flutter ✿ PHP ✿ Java',
   },
   {
     title: "E2E Project Owner",
