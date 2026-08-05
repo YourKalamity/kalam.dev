@@ -24,6 +24,14 @@ const jsonLd = {
       sameAs,
     },
     {
+      '@type': 'ProfilePage',
+      '@id': `${SITE.url}/#profilepage`,
+      url: SITE.url,
+      name: SITE.title,
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      mainEntity: { '@id': `${SITE.url}/#person` },
+    },
+    {
       '@type': 'WebSite',
       '@id': `${SITE.url}/#website`,
       url: SITE.url,
