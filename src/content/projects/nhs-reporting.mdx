@@ -1,0 +1,112 @@
+---
+title: NHS Reporting Scripts
+shortDescription: Automated Reporting Pipeline for NHS Telephony Providers
+icon: /images/projects/nhs-reporting/nhs-reporting.webp
+order: 7
+liveLink: null
+sourceLink: null
+bannerImage: /images/projects/nhs-reporting/nhs-reporting-banner.webp
+tags:
+  - Python
+  - PowerShell
+  - MS SQL
+  - JWT Auth
+  - ETL
+  - Automation
+  - Windows Task Scheduler
+  - CSV/XLSX
+tldr:
+  - Designed & delivered a fully automated reporting pipeline for 150+ GP practices across England.
+  - Reverse-engineered an undocumented, rate-limited API that silently truncated data.
+  - Built custom interval logic to match the NHS spec.
+  - Implemented resilient JWT token refresh, error detection & email alerting.
+  - Orchestrated with Windows Task Scheduler.
+---
+
+### Project Overview
+
+The NHS had mandated a new set of reports to be produced at the end of the month from every telephony provider that works with GP surgeries, to give the NHS a better understanding of the demand and weak points in the system. One of these telephony providers asked Blueberry Consultants to create a fully automated pipeline to pull the data from their reporting API and, at the end of the month, generate the reports ready to send directly to the NHS.
+
+I was selected to be the sole developer on this project thanks to my experience with Python and PowerShell, and at the time it was thought to be a simple one-week project.
+
+### "Endless Suffering"
+
+Despite the seemingly easy nature of the project, it quickly became apparent that the API was incredibly poorly documented, and not designed to be used in the way we needed. For starters, the contact from the client had provided me with a Postman collection, and the filename was titled "Endless Suffering". It was not hyperbole.
+
+The API was set up on Swagger, but only the bare minimum was provided. For example, the endpoint to "generate a report" (collect the call data for a given time period) provided only the names of the parameters, without explaining what exactly was expected or how to format it. To get a report for a specific set of practices, the API required a parameter called `sites`, which was a list of IDs corresponding to the practices. Upon further investigation:
+
+- `sites` was actually a _pipe (`|`)_ separated list of IDs.
+- This is in contrast to other parameters which were comma (`,`) separated.
+- Another parameter was _semicolon (`;`)_ separated, but again no explanation was given.
+- Even more maddening, there were 3 separate IDs that could be the practice ID, but again it was not clear which one to use.
+
+And that was just **one** parameter of **one** API endpoint. Some of the other problems I found were:
+
+- To grab a report for a specific practice, all the phone numbers the practice uses had to be provided.
+- There was an endpoint to get **all** the phone numbers _for every single practice_ in the system.
+- None of these phone numbers _had a link to the practice ID_ whatsoever.
+- A siteID was provided with each phone number, but this was not the same as the practice ID.
+- I assumed at first that providing phone numbers that did not belong to the practice would error. Instead, it would just ignore them, with no way to know which phone numbers were ignored.
+
+And more:
+
+- If **too much** data was requested, the API would silently truncate the data: no error, no warning, nothing. The script would carry on unaware that the data was incomplete.
+- The API took an extremely long time to respond, often 20 minutes at first; when more practices were added, it took over 3 hours.
+- With the truncation problem, pulling the data had to be split into smaller chunks, but the API did not allow concurrent requests, so each chunk had to be pulled sequentially.
+- Development was difficult, as the only way to test data was to wait for the complete response.
+
+As can be seen, the API was not designed to be used in the way we needed, and the documentation was not helpful. This led to a lot of trial and error, and a lot of wasted time.
+
+### Reverse Engineering
+
+Eventually, through trial and error in a test Python script, I was able to figure out how to use the API and get the data we needed. This involved reverse-engineering the API to understand how it worked and what parameters were expected, trying different formats until the data I needed was returned. This was a very time-consuming process, and there was a lot of pressure on me as the client expected the project to be completed in a week, and I was already running way behind schedule.
+
+### Building the Pipeline
+
+Once I had figured out how to use the API, I was able to build the pipeline to pull the data and generate the reports. The pipeline was built using Python and PowerShell: Python to pull the data from the API, and PowerShell to automate running the scripts necessary to generate the reports.
+
+1. First, at 3:00 AM every day, the PowerShell script called the Python script to pull the data from the API.
+2. The Python script would then pull the data from the API.
+3. It would then insert the data into a local MS SQL database.
+
+### Report Generation
+
+At the end of the month, the reports had to be generated ready to be sent to the NHS. This, like the data pull, was not a simple task. The reports were formatted in a strange way, and the fields did not directly match the data pulled from the API. This meant a lot of data transformation, as well as a lot of assumptions about the data.
+
+One of the most challenging aspects was the specific formatting requirements. The NHS had defined a complex structure using what they called "CBT" buckets, which required data to be split across multiple dimensions:
+
+- **Day Buckets**: each day of the month (1-31) needed to be reported separately.
+- **Time Buckets**: each day was split into 21 specific time intervals, ranging from large blocks like `00:00:00-05:59:59` to smaller 15-minute segments during peak hours (e.g. `08:15:00-08:29:59`).
+- **Sub-Buckets**: within each time period, data had to be further categorised by duration ranges (e.g. calls answered within 0 seconds, 1-30 seconds, 31-60 seconds, etc.).
+
+This meant a single metric like "Time to Answer Call" would generate over 1,800 individual data points per practice per month (31 days x 21 time intervals x 9 duration buckets). The reporting format required each data point to have a unique identifier following the pattern `CBT003_Day-15_08:15:00_08:29:59_31_60` to represent calls answered on day 15, between 8:15-8:29 AM, that took 31-60 seconds to answer.
+
+To handle this complexity, I implemented a data transformation pipeline that:
+
+- Converted timestamps into day indices and time bins using pandas.
+- Applied duration-based bucket assignment functions for sub-categorisation.
+- Used MultiIndex operations to ensure all possible combinations were represented (even with zero values).
+- Generated the specific submission names required by the NHS specification.
+
+The final challenge was that some report types (like "Inbound Calls") were calculated by summing multiple other report types, requiring careful coordination to avoid double-counting while ensuring all the complex bucket relationships were maintained.
+
+### Error Handling and Monitoring
+
+Given the critical nature of NHS reporting and the complexity of the pipeline, I implemented comprehensive error handling and monitoring:
+
+- Automated email alerts with log-file attachments when errors occurred.
+- JWT token refresh logic to handle API authentication expiry.
+- Progress bars and detailed logging for long-running operations.
+- Data validation to detect API truncation and incomplete responses.
+
+### Optimising using Vectorisation
+
+The initial implementation of the data transformation pipeline was functional but suffered from performance issues, particularly when processing large datasets. The use of nested loops and iterative operations made the code slow and inefficient, especially when handling the complex multi-dimensional data required for NHS reporting.
+
+To address these bottlenecks, I reimplemented the logic using vectorised operations with the pandas library. This approach allowed me to leverage the power of C under the hood, enabling operations on entire arrays of data at once rather than iterating through individual elements. This made report generation go from taking 3 hours to 12 minutes, a significant improvement.
+
+### Outcome
+
+The project was delivered and successfully deployed to production, and has been running since November 2024. Occasionally the NHS demand changes and the API has to be updated to match the new requirements, but the core pipeline remains intact and is still used to generate the reports.
+
+This project was a great learning experience, as it allowed me to work with real-world APIs, data transformation, and reporting. It also taught me the importance of error handling and monitoring in production systems, as well as the power of vectorised operations for performance optimisation.

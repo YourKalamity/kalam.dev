@@ -1,0 +1,26 @@
+---
+import Window from './Window.astro';
+import { kalamTextPairs, apps } from '../lib/site.ts';
+const first = kalamTextPairs[0];
+const def = apps.find((a) => a.id === 'kalamApp')!;
+interface Props { hidden?: boolean }
+const { hidden = false } = Astro.props;
+---
+<Window id="kalamApp" app="kalamApp" title={def.title} icon={def.icon} className="kalamApp" hidden={hidden} bodyClass="has-space" resizable={false} maximizable={false}>
+  <div class="kalam-intro">
+    <h1>m kalam</h1>
+    <div class="kalamTitleContainer">
+      <h2 id="kalamTitle" data-typed>{first.title}</h2>
+    </div>
+    <img id="kalamIMG" src="/images/mini_kalam.webp" alt="A photo of a young Kalam on a computer" width="240" height="240" />
+    <div class="kalamSubtitleContainer">
+      <p id="kalamSubtitle" data-typed set:html={
+        'C <span class="kalam-flower">✿</span> Python <span class="kalam-flower">✿</span> Flutter <span class="kalam-flower">✿</span> PHP <span class="kalam-flower">✿</span> Java'
+      } />
+    </div>
+  </div>
+  <section class="kalam-actions">
+    <button type="button" data-wm-open="projectsApp">Projects</button>
+    <button type="button" data-wm-open="socialsApp">Socials</button>
+  </section>
+</Window>

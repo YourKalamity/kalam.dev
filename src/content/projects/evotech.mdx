@@ -1,0 +1,94 @@
+---
+title: evotech;
+shortDescription: A robust, full-stack e-commerce platform built from scratch
+icon: /images/projects/evotech/evotechLogo.webp
+order: 3
+liveLink: https://evotech.kalam.dev
+sourceLink: https://github.com/aston-cs2tp-evotech/evotech
+bannerImage: /images/projects/evotech/evotechBanner.webp
+tags:
+  - PHP
+  - Custom MVC
+  - MariaDB
+  - HTML
+  - CSS
+  - JavaScript
+  - CI/CD
+  - GitHub Actions
+  - Security
+  - Leadership
+tldr:
+  - Designed and led development of a full-stack e-commerce platform.
+  - Built a custom lightweight PHP MVC framework to support structured and maintainable code.
+  - Stepped in to single-handedly deliver the entire Admin Dashboard frontend & backend in just 3 days.
+  - Implemented secure API endpoints, token-based auth, and dynamic admin tools.
+  - Developed a CI/CD pipeline, automated backups, and cross-platform deployment scripts.
+  - Managed team workflows, reviewed all merges, and mentored teammates with no web experience.
+---
+
+### Project Overview
+
+**evotech** is a full-stack e-commerce web application built as part of my university's team project module in second year. The goal was to create a robust, production-ready platform that fit specific user requirements which, as a group, we had to define. Some students created a pet store, others a clothing store. We decided to build a tech store that sold computer parts.
+
+### Custom MVC Framework
+
+At Aston University, we had a dedicated first-year module that taught the fundamentals of web development, including the Model-View-Controller (MVC) architecture and how to build web applications using PHP, HTML, CSS, and JavaScript. This was mandatory for all Computer Science and Cyber Security students, so at the start of the project I assumed my peers would have a good understanding of how to build web applications.
+
+To further simplify development for everyone involved, I created a custom lightweight PHP MVC framework that provided a structured way to build the application. This framework included:
+
+- A routing system baked into the `index.php` file that mapped URLs to controller actions.
+- A base controller class that provided common functionality like rendering views and handling requests.
+- A model class that handled database interactions using prepared statements.
+- A view system that allowed for easy templating and dynamic content rendering.
+- Built-in error handling and logging to simplify debugging.
+- An authentication system with tokens.
+- Generation of API tokens for external use.
+
+Fundamentally this meant those working on the front end (where our less experienced peers were) could focus on HTML, CSS, and JavaScript without worrying about the underlying PHP logic, something most of my peers had chosen to skip.
+
+_This was a flaw in the way first-year modules were set up; students only required 40% of a module total to pass, and there was no incentive to score higher. This meant that after the basic web development assessment (HTML, CSS, JS) and the database assessment (SQL), the final assessment of using PHP and integrating basic web dev with a database was not taken seriously by most students, and in a lot of cases not even attempted._
+
+Additionally, I created a guide to teach everyone how to use Git and how it integrates with our GitHub repository, as well as spending one-to-one time with those who had never used Git before.
+
+### Emergency Admin Dashboard Rebuild
+
+Mid-project, one of the team members responsible for the Admin Dashboard decided to go on holiday for 2 months, assuring us he would be able to commit the code from India while he was away. The more I pressed on this, the more excuses I received, primarily that he had completed it but the internet speed in India was too slow to upload the code.
+
+When he finally returned to the UK, he put his hands up and admitted he had not done any of the work and had not even started it. When I asked to see it, he had quickly generated code using ChatGPT that was not functional, had not been tested, and looked completely different to the designs.
+
+At this moment, with a close deadline looming, I had to step in and take over the entire Admin Dashboard, since I would have been responsible for tying it to the backend anyway. I had 3 days to complete the entire dashboard, which included:
+
+- Designing the entire frontend using HTML, CSS, and JavaScript.
+- Implementing the backend logic in PHP to handle all the CRUD operations.
+- Creating the database schema and writing the SQL queries to interact with the database.
+- Integrating the frontend and backend to ensure everything worked together.
+- Creating an API token management system (for example, to allow scanners to control stock levels).
+- Implementing a secure authentication system to protect sensitive routes.
+
+![Admin Dashboard](/images/projects/evotech/evotech-admin.webp)
+
+### Infrastructure, Testing, and DevOps
+
+To keep the platform reliable, I set up a CI/CD pipeline with GitHub Actions, automated database backups, and cross-platform deployment scripts so the app could be stood up consistently across environments.
+
+### Security and Robustness
+
+Security was a huge consideration for an e-commerce platform. All database access went through prepared statements to guard against SQL injection, sensitive routes were protected by token-based authentication, and API access was gated behind generated API tokens.
+
+### Team Management and Mentorship
+
+Beyond the code, I managed the entire development process:
+
+- Created project workflows in Trello and Discord, and managed all technical communication.
+- Authored project documentation including guides, onboarding, and the README.
+- Conducted code reviews, debugged issues for other subteams, and handled cross-functional blockers.
+
+### Outcome
+
+The project was a huge success, with the final product being a fully functional e-commerce platform that met all the requirements set out at the start. The platform was well received by the examiner as well as by people I show the site to.
+
+- Every member achieved a high mark for this project (based on their contribution).
+- I received a first-class mark for my contribution, with the examiner praising my leadership and technical skills.
+- The project was considered one of my best pieces when I was interviewing for placements.
+
+Overall, this project was a great learning experience. It allowed me to apply my knowledge of web development in a real-world scenario but, crucially, it taught me how to manage a team of developers and how to deliver a project from start to finish under pressure.

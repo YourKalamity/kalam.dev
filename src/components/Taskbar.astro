@@ -1,0 +1,38 @@
+---
+import { apps } from '../lib/site.ts';
+interface Props { openApp: string }
+const { openApp } = Astro.props;
+const taskbarApps = apps;
+---
+<div class="taskbar">
+  <div class="start" role="button" tabindex="0" aria-label="Start" aria-haspopup="menu" aria-controls="startMenu" aria-expanded="false">
+    <img src="/images/startNormal.webp" alt="" />
+  </div>
+
+  <div class="taskbar-applications">
+    {taskbarApps.map((a) => (
+      <div
+        class:list={['taskbar-application', { 'is-active': openApp === a.id }]}
+        data-wm-taskbar={a.id}
+        data-wm-unpinned={a.taskbar ? undefined : ''}
+        hidden={!a.taskbar && openApp !== a.id}
+        role="button"
+        tabindex="0"
+        aria-label={a.title}
+        title={a.title}
+      >
+        <img src={a.icon} alt="" />
+      </div>
+    ))}
+  </div>
+
+  <div class="tray">
+    <div class="tray-network"><img src="/images/network.webp" alt="Network" /></div>
+    <div class="tray-audio"><img src="/images/sound.webp" alt="Sound" /></div>
+    <div class="tray-datetime">
+      <p id="tray-time">--:--</p>
+      <p id="tray-date">--/--/----</p>
+    </div>
+  </div>
+  <div class="show-desktop-button" role="button" tabindex="0" aria-label="Show desktop" title="Show desktop"></div>
+</div>

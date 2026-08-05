@@ -1,0 +1,121 @@
+---
+interface Props { name: string; size?: number }
+const { name, size = 16 } = Astro.props;
+const s = { width: size, height: size };
+---
+{name === 'home' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <path d="M12 3 1 13h3v8h6v-6h4v6h6v-8h3z" fill="#3a7bbf" />
+    <path d="M12 5.2 3.2 13H4v7h5v-6h6v6h5v-7h.8z" fill="#7fb3e0" />
+  </svg>
+)}
+{name === 'feeds' && <img {...s} src="/images/icons/feeds.webp" alt="" class="ie-ico" />}
+{name === 'print' && <img {...s} src="/images/icons/print.webp" alt="" class="ie-ico" />}
+{name === 'page' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <path d="M6 2h8l4 4v16H6z" fill="#fff" stroke="#8a97a4" stroke-width="1.2" />
+    <path d="M14 2v4h4z" fill="#cdd7e1" />
+    <path d="M8 11h8M8 14h8M8 17h5" stroke="#9fb0c0" stroke-width="1.1" />
+  </svg>
+)}
+{name === 'safety' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <path d="M12 2 4 5v6c0 5 8 9 8 9s8-4 8-9V5z" fill="#f2c230" stroke="#c99a06" stroke-width="1" />
+    <path d="M10.6 14.2 8.2 11.8l-1.3 1.3 3.7 3.7 6-6-1.3-1.3z" fill="#2e8540" />
+  </svg>
+)}
+{name === 'tools' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58a.5.5 0 00.12-.61l-1.92-3.32a.5.5 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.49.49 0 00-.48-.41h-3.84a.49.49 0 00-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.5.5 0 00-.59.22L2.74 8.87a.5.5 0 00.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.5.5 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.24.41.47.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.12-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.5.5 0 00-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z" fill="#4a7fb5" />
+  </svg>
+)}
+{name === 'help' && <img {...s} src="/images/icons/help.webp" alt="" class="ie-ico" />}
+{name === 'star' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <path d="M12 2.5l2.7 6 6.5.5-4.9 4.3 1.5 6.4L12 16.9 6.2 19.7l1.5-6.4L2.8 9l6.5-.5z" fill="#f5b301" stroke="#d99e00" stroke-width="0.8" />
+  </svg>
+)}
+{name === 'refresh' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <path d="M3.7 5A5.3 5.3 0 0113 6.2" fill="none" stroke="#3f9c46" stroke-width="1.9" />
+    <path d="M14.8 3.2l.1 5-4.3-2.5z" fill="#3f9c46" />
+    <path d="M12.3 11A5.3 5.3 0 013 9.8" fill="none" stroke="#3f9c46" stroke-width="1.9" />
+    <path d="M1.2 12.8l-.1-5 4.3 2.5z" fill="#3f9c46" />
+  </svg>
+)}
+{name === 'stop' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="#c43b31" stroke-width="2.4" stroke-linecap="round" />
+  </svg>
+)}
+{name === 'compat' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <path d="M3 2h6.5v3.5l-2 1.5 2 1.5V13H3z" fill="#eef1f4" stroke="#9aa5b0" stroke-width="1" />
+    <path d="M9.5 5.5l3.5-2v9l-3.5-2-2-1.5 2-1.5z" fill="#dbe2e9" stroke="#9aa5b0" stroke-width="1" />
+  </svg>
+)}
+{name === 'search' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <circle cx="6.5" cy="6.5" r="4" fill="none" stroke="#3c7fb1" stroke-width="1.8" />
+    <line x1="9.7" y1="9.7" x2="13.6" y2="13.6" stroke="#3c7fb1" stroke-width="2" stroke-linecap="round" />
+  </svg>
+)}
+{name === 'globe' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <circle cx="12" cy="12" r="9" fill="#e9f2fb" stroke="#5a8fc0" />
+    <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="#5a8fc0" stroke-width="1" />
+  </svg>
+)}
+{name === 'back' && (
+  <svg {...s} viewBox="0 0 32 32" aria-hidden="true" class="ie-ico">
+    <defs>
+      <radialGradient id="ieBackG" cx="50%" cy="30%" r="75%">
+        <stop offset="0%" stop-color="#bfe3ff" />
+        <stop offset="45%" stop-color="#4f9bd8" />
+        <stop offset="100%" stop-color="#1d5c96" />
+      </radialGradient>
+      <linearGradient id="ieBackHi" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fff" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <circle cx="16" cy="16" r="14.2" fill="url(#ieBackG)" stroke="#17456f" stroke-width="1.4" />
+    <circle cx="16" cy="16" r="13" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.35" />
+    <ellipse cx="16" cy="9.4" rx="10.4" ry="5.4" fill="url(#ieBackHi)" />
+    <path d="M23 16H11.6" stroke="#fff" stroke-width="3.2" stroke-linecap="round" />
+    <path d="M16.2 9.8 10 16l6.2 6.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)}
+{name === 'forward' && (
+  <svg {...s} viewBox="0 0 32 32" aria-hidden="true" class="ie-ico">
+    <defs>
+      <radialGradient id="ieFwdG" cx="50%" cy="30%" r="75%">
+        <stop offset="0%" stop-color="#bfe3ff" />
+        <stop offset="45%" stop-color="#4f9bd8" />
+        <stop offset="100%" stop-color="#1d5c96" />
+      </radialGradient>
+      <linearGradient id="ieFwdHi" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fff" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <circle cx="16" cy="16" r="14.2" fill="url(#ieFwdG)" stroke="#17456f" stroke-width="1.4" />
+    <circle cx="16" cy="16" r="13" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.35" />
+    <ellipse cx="16" cy="9.4" rx="10.4" ry="5.4" fill="url(#ieFwdHi)" />
+    <path d="M9 16h11.4" stroke="#fff" stroke-width="3.2" stroke-linecap="round" />
+    <path d="M15.8 9.8 22 16l-6.2 6.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)}
+{name === 'suggested' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <circle cx="12" cy="12" r="9" fill="#e9f2fb" stroke="#5a8fc0" />
+    <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="#5a8fc0" stroke-width="1" />
+  </svg>
+)}
+{name === 'webslice' && (
+  <svg {...s} viewBox="0 0 24 24" aria-hidden="true" class="ie-ico">
+    <rect x="3" y="3" width="18" height="18" rx="3" fill="#2e8540" />
+    <circle cx="8" cy="16" r="1.8" fill="#fff" />
+    <path d="M7 11a6 6 0 016 6M7 7a10 10 0 0110 10" fill="none" stroke="#fff" stroke-width="1.8" />
+  </svg>
+)}

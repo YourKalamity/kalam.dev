@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Segoe UI';
+  src: url(/fonts/segoe-ui.woff2) format('woff2'), url(/fonts/segoe-ui.ttf) format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+/* Cursors */
+:root {
+  --cur-arrow: url('/cursors/arrow.cur'), default;
+  --cur-link: url('/cursors/link.cur'), pointer;
+  --cur-help: url('/cursors/help.cur'), help;
+  --cur-move: url('/cursors/move.cur'), move;
+  --cur-ns: url('/cursors/ns.cur'), ns-resize;
+  --cur-ew: url('/cursors/ew.cur'), ew-resize;
+  --cur-nwse: url('/cursors/nwse.cur'), nwse-resize;
+  --cur-nesw: url('/cursors/nesw.cur'), nesw-resize;
+  --cur-unavailable: url('/cursors/unavailable.cur'), not-allowed;
+}
+html { cursor: var(--cur-arrow); }
+
+button, select, label, [role="button"], [role="menuitem"] { cursor: var(--cur-arrow); }
+a { cursor: var(--cur-link); }
+
+html.cursor-anim, html.cursor-anim * { cursor: var(--cur-anim, progress) !important; }
+
+.touch-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+html {
+  background: #0754a6 linear-gradient(#0754a6, #0294fb);
+}
+
+body {
+  overflow: hidden;
+  font-family: var(--font-ui);
+  color: var(--content-fg);
+  background: #0754a6 url('/images/wal.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+:focus-visible {
+  outline: 2px solid #58a6e8;
+  outline-offset: 1px;
+}
+
+.display {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.desktop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

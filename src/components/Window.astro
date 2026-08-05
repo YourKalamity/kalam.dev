@@ -1,0 +1,45 @@
+---
+interface Props {
+  id: string;
+  app: string;
+  title: string;
+  icon: string;
+  className?: string;
+  hidden?: boolean;
+  bodyClass?: string;
+  resizable?: boolean;
+  maximizable?: boolean;
+}
+const {
+  id, app, title, icon, className = '', hidden = false,
+  bodyClass = 'flush', resizable = true, maximizable = true,
+} = Astro.props;
+const handles = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
+---
+<section
+  id={id}
+  class={`window glass ${className}`}
+  data-app={app}
+  aria-label={title}
+  hidden={hidden}
+  data-no-resize={!resizable ? '' : undefined}
+  data-no-max={!maximizable ? '' : undefined}
+>
+  <div class="title-bar" data-wm-drag>
+    <div class="title-bar-text">
+      <img class="title-bar-icon" src={icon} alt="" width="16" height="16" />
+      {title}
+    </div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" data-wm-action="minimize"></button>
+      {maximizable && <button aria-label="Maximize" data-wm-action="maximize"></button>}
+      <button aria-label="Close" data-wm-action="close"></button>
+    </div>
+  </div>
+
+  <div class:list={['window-body', bodyClass]}>
+    <slot />
+  </div>
+
+  {resizable && handles.map((h) => <div class={`resize-handle ${h}`} data-wm-resize={h} aria-hidden="true"></div>)}
+</section>

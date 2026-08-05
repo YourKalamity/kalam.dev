@@ -1,0 +1,94 @@
+---
+import Window from './Window.astro';
+import IeIcon from './IeIcon.astro';
+import { socials, apps } from '../lib/site.ts';
+const def = apps.find((a) => a.id === 'socialsApp')!;
+interface Props { hidden?: boolean }
+const { hidden = false } = Astro.props;
+---
+<Window id="socialsApp" app="socialsApp" title={def.title} icon={def.icon} className="socialsApp" hidden={hidden}>
+  <div class="ie-addressbar">
+    <div class="ie-navbtns">
+      <button class="ie-navbtn" id="socialsBack" type="button" aria-label="Back"><IeIcon name="back" size={30} /></button>
+      <button class="ie-navbtn" id="socialsForward" type="button" aria-label="Forward"><IeIcon name="forward" size={30} /></button>
+    </div>
+    <div class="ie-address">
+      <input id="socialsURL" type="text" value="https://www.kalam.dev/socials" aria-label="Address" readonly />
+      <button class="ie-inaddr" type="button" aria-label="Compatibility View" title="Compatibility View"><IeIcon name="compat" size={14} /></button>
+      <button class="ie-inaddr ie-addr-caret" type="button" aria-label="Recent pages"><span class="ie-caret-tri" aria-hidden="true"></span></button>
+    </div>
+    <div class="ie-addr-tools">
+      <button class="ie-addr-btn" id="socialsRefresh" type="button" aria-label="Refresh" title="Refresh"><IeIcon name="refresh" size={15} /></button>
+      <button class="ie-addr-btn" id="socialsStop" type="button" aria-label="Stop" title="Stop"><IeIcon name="stop" size={14} /></button>
+    </div>
+    <div class="ie-search">
+      <input id="socialsSearch" type="search" placeholder="Bing" aria-label="Search" />
+      <button class="ie-search-btn" type="button" aria-label="Search"><IeIcon name="search" size={14} /></button>
+      <button class="ie-search-btn ie-search-caret" type="button" aria-label="Search options"><span class="ie-caret-tri" aria-hidden="true"></span></button>
+    </div>
+  </div>
+
+  <div class="ie-favbar">
+    <button class="ie-favbtn" type="button"><IeIcon name="star" /> Favorites</button>
+    <span class="ie-fav-sep"></span>
+    <span class="ie-favitem caret"><IeIcon name="suggested" /> Suggested Sites</span>
+    <span class="ie-favitem caret"><IeIcon name="webslice" /> Web Slice Gallery</span>
+  </div>
+
+  <div class="ie-tabrow">
+    <div class="ie-tabs">
+      <div class="ie-tab active">
+        <img class="ie-tab-favicon" src="/images/ie.webp" alt="" width="16" height="16" />
+        <span class="ie-tab-title">Socials - contact kalam!</span>
+        <span class="ie-tab-close" aria-hidden="true"></span>
+      </div>
+      <button class="ie-newtab" type="button" aria-label="New tab"></button>
+    </div>
+    <div class="ie-cmdbar">
+      <button class="ie-cmd icon caret" id="ieHome" type="button" aria-label="Home" title="Home"><IeIcon name="home" /></button>
+      <button class="ie-cmd icon caret" type="button" aria-label="View feeds" title="View feeds on this page (none)"><IeIcon name="feeds" /></button>
+      <button class="ie-cmd icon caret" id="iePrint" type="button" aria-label="Print" title="Print"><IeIcon name="print" /></button>
+      <button class="ie-cmd caret" type="button"><IeIcon name="page" /> Page</button>
+      <button class="ie-cmd caret" type="button"><IeIcon name="safety" /> Safety</button>
+      <button class="ie-cmd caret" type="button"><IeIcon name="tools" /> Tools</button>
+      <button class="ie-cmd icon" type="button" aria-label="Help" title="Help"><IeIcon name="help" /></button>
+    </div>
+  </div>
+
+  <div class="socialsApp-content">
+    <div class="web20-card">
+      <div class="web20-header">
+        <h2 class="socials-title">contact kalam!</h2>
+      </div>
+      <p class="web20-status"><span class="status-dot" aria-hidden="true"></span> kalam <span class="status-state">(Available)</span></p>
+      <div class="socials-grid">
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" class="socials-icon">
+            <img src={s.icon} alt="" width="52" height="52" loading="lazy" />
+            <span>{s.name}</span>
+          </a>
+        ))}
+      </div>
+      <p class="web20-guest">don't be shy :D</p>
+      <div class="web20-footer">
+        <span class="hit-counter">visitors: <span class="hit-digits" id="hitCounter"><span>0</span><span>0</span><span>1</span><span>3</span><span>3</span><span>7</span></span></span>
+        <div class="web20-badges" aria-hidden="true">
+          <span class="badge80"><i>W3C</i>XHTML 1.0</span>
+          <span class="badge80"><i>W3C</i>CSS 2.1</span>
+          <span class="badge80 badge-rss"><i>RSS</i>2.0</span>
+        </div>
+        <p class="web20-copy">&copy; 2009&ndash;2011 kalam.dev</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ie-statusbar">
+    <span class="ie-status-text">Done</span>
+    <span class="ie-status-right">
+      <span class="ie-status-sep"></span>
+      <span class="ie-zone"><IeIcon name="globe" size={14} /> Internet | Protected Mode: On</span>
+      <span class="ie-status-sep"></span>
+      <span class="ie-zoom"><IeIcon name="search" size={13} /> 100% <span class="ie-caret-tri" aria-hidden="true"></span></span>
+    </span>
+  </div>
+</Window>

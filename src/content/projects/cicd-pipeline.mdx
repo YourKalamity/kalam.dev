@@ -1,0 +1,42 @@
+---
+title: Automated Mobile Release Pipeline
+shortDescription: CI/CD automation for building & deploying Flutter apps
+icon: /images/projects/cicd/cicd-icon.webp
+order: 9
+liveLink: null
+sourceLink: null
+bannerImage: null
+tags:
+  - DevOps
+  - CI/CD
+  - GitHub Actions
+  - GitLab CI/CD
+  - Automation
+  - Flutter
+  - Android
+  - iOS
+tldr:
+  - Identified and solved a major manual bottleneck in the mobile app release process.
+  - Architected and built a fully automated CI/CD pipeline for Flutter applications.
+  - Automated building, code signing, versioning, and deployment to both app stores.
+  - Solution was adopted as the official company-wide template for all new mobile projects.
+  - Authored the comprehensive guide for its implementation across the company.
+---
+
+### Project Overview
+
+I identified a significant inefficiency in our mobile development lifecycle: the process of building, signing, and deploying new app versions to the app stores was entirely manual, time-consuming, and prone to human error. I took the initiative to design and implement a fully automated solution to solve this bottleneck.
+
+### Pipeline Architecture and Implementation
+
+I architected a robust CI/CD pipeline using **GitLab CI/CD** (with concepts portable to GitHub Actions) that automated every step of the release process for our Flutter applications:
+
+- **Automated Builds:** the pipeline automatically triggers on a new tag, building the release versions for both Android (APK/AAB) and iOS (IPA).
+- **Code Signing & Versioning:** securely managed signing keys and automatically incremented build numbers, eliminating a complex and error-prone manual step.
+- **Automated Deployment:** integrated with the Google Play Store and Apple App Store Connect APIs to automatically upload the finished builds and submit them for review.
+
+### Outcome and Impact
+
+The new automated pipeline transformed our release process, reducing the time required for a new deployment from hours of manual work to a few minutes of automated execution. It eliminated human error, ensured consistency, and allowed developers to focus on building features instead of managing releases.
+
+The solution was so successful and well received that it was adopted as the **official company-wide template** for all new mobile application projects. I was subsequently tasked with writing the comprehensive internal guide to facilitate its adoption by other teams. This project was a clear example of how strategic automation can act as a force multiplier for an entire engineering department.

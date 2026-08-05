@@ -1,0 +1,71 @@
+---
+title: AI-Powered Laryngoscope Application
+shortDescription: On-device Throat Disease Detection
+icon: /images/projects/laryngoscope/laryngoscope-icon.webp
+order: 1
+liveLink: null
+sourceLink: null
+bannerVideo: /images/projects/laryngoscope/laryngoscope-banner.mp4
+bannerPoster: /images/projects/laryngoscope/laryngoscope-poster.webp
+tags:
+  - Android
+  - Flutter
+  - Dart
+  - TensorFlow
+  - YOLO
+  - Edge AI
+  - Computer Vision
+  - UVC Camera
+  - Model Quantisation
+  - Realtime Inference
+tldr:
+  - Developed an application for throat disease detection using ML.
+  - Curated and annotated a dataset of 3018 throat images.
+  - Trained a YOLOv11 model with 15,000 augmented images.
+  - Integrated UVC camera feed for processing.
+  - Implemented on-device inference with a quantised TF Lite model.
+  - Delivered a proof-of-concept app that detects throat abnormalities in real-time.
+  - Successfully won a contract for further development with the client.
+---
+
+### Project Overview
+
+I worked as the lead developer on a project to create a laryngoscope app for Android that uses UVC cameras to see down a patient's throat. This project was well received by the client, and a new innovative feature was requested: real-time detection of throat abnormalities using machine learning. The goal was to develop a mobile application that could flag cancerous tissue in real time, on device, reducing costs and potentially saving lives by enabling early detection.
+
+### Dataset Curation and Annotation
+
+The first step was to curate a dataset of throat images, and at this stage of the project we weren't able to collect live data from patients. Instead, my manager and the clients found datasets from various sources across the web, including medical journals and open datasets.
+
+Object detection requires a very specific type of data to train on, and the data I trained the model on had to somewhat resemble the data being passed into the model during inference. This ruled out most publicly available datasets, as they were either too zoomed in, or used Narrow Band Imaging (in contrast to the UVC camera's white light) to take the photo. Object detection also requires bounding boxes to be labelled per image for the model to accurately learn which parts of an image cause a specific class to be in view.
+
+Of the datasets that we found, the one that best fit our use case was [laryngoscope8](https://www.sciencedirect.com/science/article/abs/pii/S0167865521002646?via%3Dihub), a dataset of 3018 images taken of various consenting patients in China. The data was split into 8 different categories, crucially including a "Normal" category that would allow us to eliminate false positives, a category missing from the other datasets I looked at. There were some flaws with this set however; certain categories like "Glottic Cancer" had a very small number of images (28 in that case), which meant the accuracy for those classes was much lower. Furthermore, there was no bounding box information, so each had to be manually marked up.
+
+Labelling the data was initially done using Label Studio as it's free, open source and has a good standing in the AI/ML world. However, we quickly ran into problems as it's primarily designed to be a web app hosted on a service; running it locally gave us numerous bugs.
+
+Switching to Roboflow's environment was much better as it felt like a more mature system, and uploading to their servers was actually faster than "uploading" to the local Label Studio server hosted on device. Another benefit of using Roboflow for this task is being able to delegate labelling to other users in your team, which meant the full 3018 could be completed collaboratively.
+
+Labelling was as simple as going through each uploaded folder, identifying the affected tissue visually, and using the box tool to draw a bounding box as tight as possible. As I am not a medical expert there is a known limit to how accurate this is, but as a proof of concept it is perfectly acceptable. Ideally, the client would hire an expert in this field to mark the data themselves, and this is planned for a later stage.
+
+### Model Training and Optimisation
+
+The first step to model training is to prepare the data. Roboflow provides tools to **augment** the data by applying modifications to the original set of images to create more data to train from. This included translating, rotating, and blurring the image, and lowering and increasing brightness. As the original throat images were uniform, unless the camera was in the exact same orientation each time, finding matches would be difficult. The rotations and translations also simulate the movement of the camera within the throat. Augmenting the 3018-image dataset provided a grand total of ~15,000 images to train on, a much more complete set.
+
+I chose to use the YOLOv11 object detection model and split the dataset: 60% for training, 25% for validation, and 10% held back to validate the accuracy of the model post-training. Roboflow provides a simple interface for this, and once the dataset was split, training commenced.
+
+The model took 10 hours to train, and the weights were exported as a YOLO weights file (`weights.pt`). To improve performance on mobile devices, the weights file was **quantised to int8** format, which reduces model size and improves inference speed at the cost of some accuracy. This is common practice in mobile ML and also allows the device's NPU to be used for inference, which is much faster than the CPU.
+
+### Camera Feed Integration
+
+The `flutter_uvc_camera` plugin we used was not complete; the functionality to grab the frame directly from the UVC camera feed did not work. These gaps were maddening as they looked implemented (the API references were there), but it turned out the Kotlin code behind them was not. Eventually I modified the plugin to a state where _some_ sort of frame was captured, but this was in H264 format, incompatible with what we needed (a simple image). With further investigation and modification (admittedly with assistance from an LLM to navigate the Chinese-commented code), I found a solution to instead output the native YUYV format, a common format for UVC cameras. The TensorFlow Lite model required RGB frames, so I then implemented a conversion from YUYV to RGB in the Flutter app. Finally, the RGB frame was converted to a UInt8 format, which is what the model expects.
+
+### Tensors and Inference
+
+Using the [Netron](https://netron.app) tool, I was able to inspect the model and determine the shape of the input and output tensors. A tensor is a multi-dimensional array; in this case the input tensor is a 4D array with shape `[1, 640, 640, 3]`, where 1 is the batch size, 640 is the height and width, and 3 represents the RGB channels. The output tensor is a 3D array with shape `[1, 11, 8400]`, where 11 is the number of classes (including the background class) and 8400 is the number of bounding boxes predicted. Inference is done by passing the input tensor to the model and getting the output tensor back, which contains the bounding boxes, confidence scores and class IDs for each detected object.
+
+### Outcome
+
+The final application was able to run the model on the device in real time, detecting throat abnormalities with a high degree of accuracy, considering the model was trained on a limited dataset. It displayed bounding boxes around the detected abnormalities in almost real-time, with some latency on a high-end Samsung Galaxy S25, but this can be optimised further with more efficient code and model optimisation.
+
+The client was very impressed with the results and has since contracted the company to further develop the application and add more features.
+
+This project has been a great learning experience, as it allowed me to work with real-time object detection on mobile devices and, importantly, bolstered my enthusiasm for AI and ML applications in general.

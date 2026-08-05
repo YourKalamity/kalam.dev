@@ -1,0 +1,55 @@
+---
+title: Legacy System Modernisation
+shortDescription: Securing and containerising a legacy PHP system
+icon: /images/projects/router-revival/router-icon.webp
+order: 8
+liveLink: null
+sourceLink: null
+bannerImage: /images/projects/router-revival/router-banner.webp
+tags:
+  - System Administration
+  - DevOps
+  - Docker
+  - Linux
+  - Security Hardening
+  - PHP
+  - Python
+  - SQL Injection
+  - Legacy Code
+tldr:
+  - Resurrected, secured, and modernised a critical 9-year-old legacy PHP application.
+  - Conducted a full security audit, identifying and remediating major vulnerabilities like SQL injection.
+  - Containerised the entire multi-service application using Docker and Docker Compose.
+  - Managed a high-stakes server OS upgrade from Ubuntu 16.04 to 24.04 LTS.
+  - Transformed a complex, insecure manual setup into a stable, one-command deployment.
+---
+
+### Project Overview
+
+I was tasked with the challenge of reviving a critical, 9-year-old virtual router system written in legacy PHP. The initial request was simple: get it running. However, my initial audit revealed the system was a significant security and operational risk. I took the initiative to not just revive it, but to completely re-engineer its foundation for the modern era.
+
+### Security Audit and Remediation
+
+My first step was a comprehensive security audit of the legacy codebase. I discovered and remediated numerous critical vulnerabilities, including:
+
+- Direct susceptibility to **SQL injection attacks** due to unsanitised inputs.
+- Hardcoded database credentials and sensitive API keys committed directly into the codebase.
+- Outdated dependencies with known public exploits.
+
+I systematically patched these flaws, used `.env` files for all secrets, and updated all dependencies to secure, stable versions.
+
+### Modernisation and Containerisation
+
+To solve the system's brittleness and complex manual deployment process, I containerised the entire application using **Docker and Docker Compose**. This involved:
+
+- Creating separate, optimised Docker images for the PHP application, the database, and other services.
+- Writing a streamlined `docker-compose.yml` file that transformed the deployment into a single, reliable command.
+- This approach eliminated environment inconsistencies and dramatically simplified future maintenance and deployments.
+
+### Infrastructure Management
+
+The final challenge was deploying the modernised application onto the client's infrastructure, which was running an end-of-life version of Ubuntu (16.04 LTS). I successfully managed a high-stakes, in-place server upgrade to **Ubuntu 24.04 LTS**, navigating and resolving all resulting package dependency conflicts to ensure a stable host environment for the new containerised system.
+
+### Outcome
+
+What began as a simple revival task became a full-scale modernisation project. The result was a system that was not only functional but also secure, stable, and maintainable for the foreseeable future. I transformed a high-risk legacy asset into a reliable, modern service.

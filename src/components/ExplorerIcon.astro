@@ -1,0 +1,31 @@
+---
+interface Props { name: string; size?: number }
+const { name, size = 16 } = Astro.props;
+const s = { width: size, height: size };
+const images: Record<string, string> = {
+  desktop: '/images/icons/desktop.webp',
+  downloads: '/images/icons/downloads.webp',
+  recent: '/images/icons/recent.webp',
+  libraries: '/images/icons/libraries.webp',
+  computer: '/images/icons/computer.webp',
+  folder: '/images/icons/folder.webp',
+  network: '/images/icons/network.webp',
+  favorites: '/images/icons/favorites.webp',
+};
+---
+{images[name] && <img {...s} src={images[name]} alt="" class="ie-ico" />}
+{name === 'views' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <rect x="1.5" y="1.5" width="6" height="6" rx="1" fill="#6ea6d8" stroke="#3f739f" stroke-width="0.8" />
+    <rect x="8.5" y="1.5" width="6" height="6" rx="1" fill="#9cc4e8" stroke="#3f739f" stroke-width="0.8" />
+    <rect x="1.5" y="8.5" width="6" height="6" rx="1" fill="#9cc4e8" stroke="#3f739f" stroke-width="0.8" />
+    <rect x="8.5" y="8.5" width="6" height="6" rx="1" fill="#6ea6d8" stroke="#3f739f" stroke-width="0.8" />
+  </svg>
+)}
+{name === 'previewpane' && (
+  <svg {...s} viewBox="0 0 16 16" aria-hidden="true" class="ie-ico">
+    <rect x="1.5" y="2.5" width="13" height="11" rx="1" fill="#fff" stroke="#7d8a97" />
+    <rect x="9" y="3.5" width="4.5" height="9" fill="#c6dcf0" />
+    <path d="M3.5 5.5h4M3.5 8h4M3.5 10.5h4" stroke="#9fb0c0" stroke-width="1" />
+  </svg>
+)}

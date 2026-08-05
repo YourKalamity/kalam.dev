@@ -1,0 +1,36 @@
+---
+import Desktop from '../../layouts/Desktop.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../lib/site.ts';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const bannerSrc = entry.data.bannerImage ?? entry.data.bannerPoster;
+const banner = bannerSrc ? new URL(bannerSrc, SITE.url).href : SITE.image;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: entry.data.title,
+  abstract: entry.data.shortDescription,
+  keywords: entry.data.tags.join(', '),
+  author: { '@type': 'Person', name: SITE.author },
+  url: new URL(`/projects/${entry.id}/`, SITE.url).href,
+};
+---
+<Desktop
+  title={`${entry.data.title} | M Kalam`}
+  description={entry.data.shortDescription}
+  image={banner}
+  openApp="projectsApp"
+  activeProject={entry.id}
+  jsonLd={jsonLd}
+  ogType="article"
+/>

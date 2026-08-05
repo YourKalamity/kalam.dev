@@ -1,0 +1,31 @@
+---
+title: Lazy DSi File Downloader
+shortDescription: A tool for automated homebrew setup on Nintendo DSi systems
+icon: /images/projects/lazy-dsi-file-downloader/lazydsifiledownloadericn.webp
+order: 4
+liveLink: null
+sourceLink: https://github.com/YourKalamity/lazy-dsi-file-downloader-archive
+bannerImage: /images/projects/lazy-dsi-file-downloader/lazy-dsi-file-downloader.webp
+tags:
+  - Python
+  - GitHub Actions
+  - Tkinter
+tldr: []
+---
+
+Lazy DSi File Downloader was created in order to simplify the homebrew process outlined in [dsi.cfw.guide](https://dsi.cfw.guide/).
+
+The naming was due to the fact that I felt too _lazy_ to manually copy each of the files for each of the DSi systems I modded. Instead I spent even longer developing this app to automatically do all of this.
+
+**Features**
+
+- Download and install the appropriate [memory pit](https://gbatemp.net/threads/memory-pit-a-new-dsi-exploit-for-dsi-camera.539432/) exploit corresponding to the DSi firmware version.
+- Download and install / update TWiLight Menu++.
+- Download and install the latest version of dumpTool.
+- Download and install the latest version of Unlaunch.
+- Detect and update an existing hiyaCFW installation.
+- And install a larger list of homebrew.
+
+To handle the larger list of homebrew, I created a separate repository with a list of homebrew, download links, and instructions for my software to follow. This extensibility meant that more homebrew could be added to the download list while keeping the size of Lazy DSi File Downloader small.
+
+However, due to the security measures put in place on Windows, it became _more_ difficult to use the app for new users. This ultimately led to the archival of the project.

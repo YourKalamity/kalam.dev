@@ -1,0 +1,56 @@
+---
+import { apps } from '../lib/site.ts';
+const launchable = apps;
+const rightGroups = [
+  ['Documents', 'Pictures', 'Music'],
+  ['Games', 'Computer'],
+  ['Control Panel', 'Devices and Printers', 'Default Programs'],
+  ['Help and Support'],
+];
+---
+<div class="start-menu" id="startMenu" role="menu" aria-label="Start menu">
+  <div class="start-menu-left">
+    <div class="start-menu-app-list">
+      {launchable.map((a) => (
+        <div class="start-menu-app-option" data-wm-open={a.id} role="menuitem" tabindex="0">
+          <img class="start-menu-app-icon" src={a.icon} alt="" />
+          <span class="start-menu-app-name">{a.id === 'terminalApp' ? 'About Me' : a.title.split(' - ')[0]}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="start-menu-allprograms" role="menuitem" aria-disabled="true" tabindex="-1">
+      <svg class="sm-allprograms-tri" viewBox="0 0 8 8" aria-hidden="true"><path d="M2 1l4 3-4 3z" /></svg>
+      <span>All Programs</span>
+    </div>
+
+    <div class="start-menu-search">
+      <input type="text" placeholder="Search programs and files" aria-label="Search programs and files" />
+      <svg class="sm-search-ico" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="6.5" cy="6.5" r="4" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <line x1="9.6" y1="9.6" x2="14" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="start-menu-right">
+    <div class="start-menu-avatar"><img src="/images/user.webp" alt="Profile" /></div>
+
+    <nav class="start-menu-links">
+      <a class="start-menu-link start-menu-username" href="#" tabindex="-1">friend of kalam</a>
+      {rightGroups.map((group, i) => (
+        <>
+          {i > 0 && <div class="start-menu-rsep"></div>}
+          {group.map((l) => <a class="start-menu-link" href="#" tabindex="-1">{l}</a>)}
+        </>
+      ))}
+    </nav>
+
+    <div class="start-menu-shutdown">
+      <button class="sm-shutdown" type="button">Shut down</button>
+      <button class="sm-shutdown-more" type="button" aria-label="Shut down options">
+        <svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2 1l4 3-4 3z" /></svg>
+      </button>
+    </div>
+  </div>
+</div>

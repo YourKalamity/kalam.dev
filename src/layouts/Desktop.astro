@@ -1,0 +1,108 @@
+---
+import '7.css/dist/7.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/700.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/desktop.css';
+import '../styles/window.css';
+import '../styles/apps.css';
+
+import SEO from '../components/SEO.astro';
+import Taskbar from '../components/Taskbar.astro';
+import StartMenu from '../components/StartMenu.astro';
+import KalamApp from '../components/KalamApp.astro';
+import ProjectsApp from '../components/ProjectsApp.astro';
+import SocialsApp from '../components/SocialsApp.astro';
+import TerminalApp from '../components/TerminalApp.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  jsonLd?: Record<string, unknown>;
+  openApp: 'kalamApp' | 'projectsApp' | 'socialsApp' | 'terminalApp';
+  activeProject?: string | null;
+  noindex?: boolean;
+  ogType?: string;
+}
+const { title, description, image, jsonLd, openApp, activeProject = null, noindex = false, ogType } = Astro.props;
+const biosDate = new Intl.DateTimeFormat('en-GB', {
+  day: '2-digit',
+  month: '2-digit',
+  year: '2-digit',
+}).format(new Date());
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0754a6" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" href="/fonts/segoe-ui.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/images/wal.jpg" as="image" />
+    <SEO title={title} description={description} image={image} jsonLd={jsonLd} noindex={noindex} type={ogType} />
+  </head>
+  <body data-open-app={openApp} data-active-project={activeProject ?? undefined}>
+    <div class="boot" id="boot" hidden>
+      <div class="post" id="bootPost">
+        <pre data-t="120">klamBIOS (C) 2026 klam Megatrends, Inc.</pre>
+        <pre data-t="240">BIOS Date: {biosDate}  Ver: 07.00.1</pre>
+        <pre data-t="420">&nbsp;</pre>
+        <pre data-t="460">Main Processor : klam(R) Core(TM) k7 @ 3.10GHz</pre>
+        <pre data-t="700">Press DEL to enter SETUP, ESC to skip memory test</pre>
+        <pre data-t="800">&nbsp;</pre>
+        <pre data-t="900" id="postMem">Memory Test :        0K</pre>
+        <pre data-t="2000">Detecting IDE Primary Master  ... KLAMGATE BARRACUDA</pre>
+        <pre data-t="2200">Detecting IDE Primary Slave   ... DVD STATIC DRIVE</pre>
+        <pre data-t="2400">Detecting USB devices ........... Keyboard, Mouse OK</pre>
+        <pre data-t="2600">Initialising window manager ..... SEEMS OKIE DOKIE</pre>
+        <pre data-t="2850">&nbsp;</pre>
+        <pre data-t="2950">Booting from Hard Disk ...</pre>
+        <pre data-t="3150" class="post-cursor">_</pre>
+        <p class="post-hint">click or tap to skip</p>
+      </div>
+
+      <div class="winboot" id="bootWin" hidden>
+        <p class="winboot-text">Starting klamOS</p>
+        <div role="progressbar" class="animate winboot-bar" aria-label="Booting">
+          <div id="bootBarFill" style="width: 0%"></div>
+        </div>
+        <p class="winboot-skip">click or tap to skip</p>
+      </div>
+    </div>
+
+    <div class="shutdown" id="shutdown" hidden>
+      <div class="shutdown-center">
+        <span class="loader animate shutdown-spinner" aria-label="Shutting down"></span>
+        <span class="shutdown-text">Shutting Down...</span>
+      </div>
+      <div class="shutdown-brand">
+        <span class="shutdown-brand-name">klamOS<span class="shutdown-brand-7">7</span> <span class="shutdown-brand-ed">Ultimate</span></span>
+      </div>
+    </div>
+    <div class="poweroff" id="powerOff" hidden>
+      <p class="poweroff-text">&#9211; click or tap to boot</p>
+    </div>
+
+    <div class="display">
+      <StartMenu />
+      <Taskbar openApp={openApp} />
+
+      <main class="desktop" id="desktop">
+        <KalamApp hidden={openApp !== 'kalamApp'} />
+        <ProjectsApp activeSlug={activeProject} hidden={openApp !== 'projectsApp'} />
+        <SocialsApp hidden={openApp !== 'socialsApp'} />
+        <TerminalApp hidden={openApp !== 'terminalApp'} />
+      </main>
+
+      <div class="snap-overlay" id="snapOverlay" aria-hidden="true"></div>
+    </div>
+
+    <script>
+      import { initDesktop } from '../scripts/desktop.ts';
+      initDesktop();
+    </script>
+  </body>
+</html>

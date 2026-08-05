@@ -1,0 +1,28 @@
+/* Design tokens */
+:root {
+  /* Glass surfaces */
+  --glass-taskbar: linear-gradient(to bottom, rgba(30, 100, 211, 0.72), rgba(28, 28, 28, 0.22));
+  --glass-blur: 10px;
+  /* Chrome and content */
+  --chrome-fg: #ffffff;
+  --content-bg: #ffffff;
+  --content-fg: #202020;
+  --heading: #2d475e;
+  --tldr-bg: #a7d6f0;
+  /* Shadows and radii */
+  --shadow-window-focus: 0 14px 46px rgba(0, 0, 0, 0.6);
+  --radius: 8px;
+  --radius-sm: 4px;
+  /* Taskbar */
+  --taskbar-h: 40px;
+  /* Motion */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --wm-anim: 200ms;
+  /* font stuff */
+  --font-ui: "Segoe UI", "Segoe UI Import", "M PLUS 2", system-ui, -apple-system, Arial, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (max-width: 800px) {
+  :root { --taskbar-h: 32px; }
+}

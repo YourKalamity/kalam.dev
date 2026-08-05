@@ -1,0 +1,42 @@
+---
+import Desktop from '../layouts/Desktop.astro';
+import { SITE, sameAs } from '../lib/site.ts';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE.url}/#person`,
+      name: 'M Kalam',
+      alternateName: 'Kalam',
+      url: SITE.url,
+      image: SITE.image,
+      jobTitle: 'Software Engineer',
+      homeLocation: {
+        '@type': 'Place',
+        name: 'Birmingham, United Kingdom',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Aston University',
+      },
+      sameAs,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: SITE.url,
+      name: 'kalam.dev',
+      alternateName: 'Kalam',
+      publisher: { '@id': `${SITE.url}/#person` },
+    },
+  ],
+};
+---
+<Desktop
+  title={SITE.title}
+  description={SITE.description}
+  openApp="kalamApp"
+  jsonLd={jsonLd}
+/>

@@ -1,0 +1,21 @@
+---
+import Desktop from '../layouts/Desktop.astro';
+import { SITE, sameAs } from '../lib/site.ts';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'M Kalam',
+  url: `${SITE.url}/about/`,
+  jobTitle: 'Software Engineer',
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Aston University' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Birmingham', addressCountry: 'GB' },
+  sameAs,
+};
+---
+<Desktop
+  title="About | M Kalam"
+  description="About M Kalam, software engineer in Birmingham, UK. Aston CS grad."
+  openApp="terminalApp"
+  jsonLd={jsonLd}
+/>

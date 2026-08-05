@@ -1,0 +1,152 @@
+---
+import Window from './Window.astro';
+import IeIcon from './IeIcon.astro';
+import ExplorerIcon from './ExplorerIcon.astro';
+import { getCollection, render } from 'astro:content';
+import { apps } from '../lib/site.ts';
+const def = apps.find((a) => a.id === 'projectsApp')!;
+
+interface Props { activeSlug: string | null; hidden?: boolean }
+const { activeSlug, hidden = false } = Astro.props;
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const active = activeSlug ? (projects.find((p) => p.id === activeSlug) ?? null) : null;
+const items = active
+  ? [{ entry: active, Content: (await render(active)).Content }]
+  : [];
+---
+<Window id="projectsApp" app="projectsApp" title={def.title} icon={def.icon} className="projectsApp" hidden={hidden}>
+  <div class="explorer-addressbar">
+    <div class="ie-navbtns">
+      <button class="ie-navbtn" id="explorerBack" type="button" aria-label="Back"><IeIcon name="back" size={30} /></button>
+      <button class="ie-navbtn" id="explorerFwd" type="button" aria-label="Forward"><IeIcon name="forward" size={30} /></button>
+    </div>
+    <div class="explorer-crumbs">
+      <span class="crumb-icon">
+        <ExplorerIcon name="folder" size={16} />
+        <span class="ie-caret-tri" aria-hidden="true"></span>
+      </span>
+      <span class="crumb crumb-opt">Computer</span>
+      <span class="crumb-sep crumb-opt" aria-hidden="true"></span>
+      <a class="crumb" href="/projects" data-project-root>Projects</a>
+      <span class="crumb-tail" id="crumbTail" hidden={!active}>
+        <span class="crumb-sep" aria-hidden="true"></span>
+        <span class="crumb current" id="crumbCurrent">{active?.data.title}</span>
+      </span>
+      <span class="crumb-fill"></span>
+      <button class="ie-inaddr" type="button" aria-label="Previous locations"><span class="ie-caret-tri" aria-hidden="true"></span></button>
+      <button class="ie-inaddr" type="button" aria-label="Refresh"><IeIcon name="refresh" size={13} /></button>
+    </div>
+    <div class="explorer-search">
+      <input type="search" id="projectSearch" placeholder="Search Projects" aria-label="Search Projects" />
+      <span class="explorer-search-ico"><IeIcon name="search" size={14} /></span>
+    </div>
+  </div>
+
+  <div class="explorer-toolbar">
+    <button class="explorer-tool icon toggle-sidebar-btn" type="button" aria-label="Show folder list" aria-expanded="false">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" class="ie-ico"><path d="M2 4h12M2 8h12M2 12h12" stroke="#1c3d5a" stroke-width="1.8" stroke-linecap="round" /></svg>
+    </button>
+    <button class="explorer-tool" type="button">Organize <span class="caret">▾</span></button>
+    <button class:list={['explorer-tool', { disabled: !active?.data.sourceLink }]} id="sourceButton" type="button" aria-disabled={!active?.data.sourceLink ? 'true' : 'false'}>View source</button>
+    <button class:list={['explorer-tool', { disabled: !active?.data.liveLink }]} id="linkButton" type="button" aria-disabled={!active?.data.liveLink ? 'true' : 'false'}>Open</button>
+    <div class="explorer-toolbar-right">
+      <button class="explorer-tool icon" type="button" aria-label="Change your view" title="Change your view"><ExplorerIcon name="views" size={15} /> <span class="caret">▾</span></button>
+      <button class="explorer-tool icon" type="button" aria-label="Show the preview pane" title="Show the preview pane"><ExplorerIcon name="previewpane" size={15} /></button>
+      <button class="explorer-tool icon" type="button" aria-label="Get help" title="Get help"><IeIcon name="help" size={15} /></button>
+    </div>
+  </div>
+
+  <div class="file-explorer">
+    <nav class="explorer-navpane" aria-label="Folders">
+      <div class="navgroup-header"><span class="expander open" aria-hidden="true"></span><ExplorerIcon name="favorites" size={14} /><span>Favorites</span></div>
+      <ul class="navpane-static">
+        <li class="navpane-item"><ExplorerIcon name="desktop" size={14} /> Desktop</li>
+        <li class="navpane-item"><ExplorerIcon name="downloads" size={14} /> Downloads</li>
+        <li class="navpane-item"><ExplorerIcon name="recent" size={14} /> Recent Places</li>
+      </ul>
+
+      <div class="navgroup-header"><span class="expander open" aria-hidden="true"></span><ExplorerIcon name="libraries" size={14} /><span>Libraries</span></div>
+      <div class="navpane-sub"><span class="expander open" aria-hidden="true"></span><ExplorerIcon name="folder" size={14} /><span>Projects</span></div>
+      <ul class="navpane-list">
+        {projects.map((p) => (
+          <li>
+            <a
+              class:list={['project', { active: p.id === active?.id }]}
+              href={`/projects/${p.id}`}
+              data-project={p.id}
+              data-title={p.data.title}
+              data-desc={p.data.shortDescription}
+            >
+              <img src={p.data.icon} alt="" width="16" height="16" />
+              <span>{p.data.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="navgroup-header"><span class="expander" aria-hidden="true"></span><ExplorerIcon name="computer" size={14} /><span>Computer</span></div>
+      <div class="navgroup-header"><span class="expander" aria-hidden="true"></span><ExplorerIcon name="network" size={14} /><span>Network</span></div>
+    </nav>
+
+    <div class="navpane-backdrop" aria-hidden="true"></div>
+
+    <div class="preview-pane">
+      {items.map(({ entry, Content }) => (
+        <article
+          class:list={['project-detail', 'active']}
+          data-project={entry.id}
+          data-source={entry.data.sourceLink ?? ''}
+          data-live={entry.data.liveLink ?? ''}
+          data-title={entry.data.title}
+          data-desc={entry.data.shortDescription}
+          data-icon={entry.data.icon}
+        >
+          <h1>{entry.data.title}</h1>
+          <p class="subtitle">{entry.data.shortDescription}</p>
+
+          <div class="project-shields">
+            {entry.data.tags.map((t) => <span class="shield">{t}</span>)}
+          </div>
+
+          {entry.data.bannerVideo ? (
+            <div class="video-container">
+              <video
+                class="project-banner contain"
+                autoplay muted loop playsinline
+                preload="metadata"
+                poster={entry.data.bannerPoster ?? undefined}
+              >
+                <source src={entry.data.bannerVideo} type="video/mp4" />
+              </video>
+            </div>
+          ) : entry.data.bannerImage ? (
+            <img class="project-banner" src={entry.data.bannerImage} alt={`${entry.data.title} banner`} />
+          ) : null}
+
+          {entry.data.tldr.length > 0 && (
+            <div class="tldr">
+              <h2>TL;DR</h2>
+              <ul>{entry.data.tldr.map((li) => <li>{li}</li>)}</ul>
+            </div>
+          )}
+
+          <div class="project-content">
+            <Content />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="explorer-details">
+    <img class="details-icon" id="detailsIcon" src={active?.data.icon ?? '/images/explorer.webp'} alt="" />
+    <div class="details-text">
+      <div class="details-name" id="detailsName">{active?.data.title ?? 'Projects'}</div>
+      <div class="details-desc" id="detailsDesc">{active?.data.shortDescription ?? `${projects.length} items`}</div>
+    </div>
+  </div>
+</Window>

@@ -1,0 +1,37 @@
+---
+import '@fontsource/vt323';
+import Window from './Window.astro';
+import { PROMPT, HEADER, BANNER, ABOUT } from '../lib/terminal-content.ts';
+import { apps } from '../lib/site.ts';
+const def = apps.find((a) => a.id === 'terminalApp')!;
+interface Props {
+  hidden?: boolean;
+}
+const { hidden = true } = Astro.props;
+
+const cmdTitle = 'C:\\Windows\\system32\\cmd.exe';
+---
+<Window id="terminalApp" app="terminalApp" title={cmdTitle} icon={def.icon} className="terminalApp" hidden={hidden}>
+  <div class="terminal" id="terminal">
+    <div class="terminal-output" id="terminalOutput" aria-live="polite">
+      <pre class="cmd-pre">{HEADER}</pre>
+      <pre class="cmd-pre">&nbsp;</pre>
+      <pre class="cmd-pre">{PROMPT}about</pre>
+      <pre class="cmd-pre bright">{BANNER}</pre>
+      <pre class="cmd-pre">{ABOUT}</pre>
+      <pre class="cmd-pre">&nbsp;</pre>
+    </div>
+    <div class="terminal-input-row">
+      <span class="terminal-prompt" id="terminalPrompt">{PROMPT}</span>
+      <input
+        class="terminal-input"
+        id="terminalInput"
+        type="text"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Command Prompt input"
+      />
+    </div>
+  </div>
+</Window>
