@@ -17,7 +17,7 @@ function rehypeLazyMedia() {
 }
 
 export default defineConfig({
-  site: 'https://www.kalam.dev',
+  site: 'https://kalam.dev',
   trailingSlash: 'ignore',
 
   devToolbar: { enabled: false },

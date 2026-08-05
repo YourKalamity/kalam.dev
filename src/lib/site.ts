@@ -54,7 +54,7 @@ export const SITE = {
   title: 'M Kalam | Software Engineer',
   description:
     'M Kalam, software engineer in Birmingham, UK.',
-  url: 'https://www.kalam.dev',
-  image: 'https://www.kalam.dev/images/preview.jpg',
+  url: 'https://kalam.dev',
+  image: 'https://kalam.dev/images/preview.jpg',
   author: 'M Kalam',
 };
