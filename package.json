@@ -17,7 +17,7 @@
     "@fontsource/montserrat": "^5.3.0",
     "@fontsource/vt323": "^5.3.0",
     "7.css": "^0.21.1",
-    "astro": "^7.1.6"
+    "astro": "^7.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
